@@ -69,6 +69,7 @@
     			Situación: 23/08/2020 Minutado<br>
     			Agenda: MANDAMIENTO PAGO 150.97
     		</p>
+            <!-- Quick actions -->
     		<ul class="uk-iconnav">
     			<li><a href="expediente/67-20/imprimir" uk-icon="print"></a></li>
     			<li><a href="expediente/67-20/editar" uk-icon="pencil"></a></li>
@@ -89,56 +90,72 @@
     			<li></li>
     			<!-- Acciones contenido -->
     			<li class="uk-padding-small">
+                    <!-- Filtered table -->
     				<div uk-filter="target: .act-filter">
-    					<ul class="uk-subnav uk-subnav-pill">
-    						<li uk-filter-control="target: .autor-radeuna"><a href="#">Radeuna</a></li>
-    						<li uk-filter-control="target: .autor-marta"><a href="#">Marta</a></li>
-    					</ul>
-    				</div>
-    				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify">
-    					<caption>Actuaciones</caption>
-    					<thead>
-    						<tr>
-	    						<th>Fecha</th>
-	    						<th>Contenido</th>
-	    						<th>Autor</th>
-	    						<th>Adjuntos</th>
-	    						<th>Acciones</th>
-	    					</tr>
-    					</thead>
-    					<tbody class="act-filter">
-    						<tr class="autor-radeuna">
-    							<th>23/08/2020</th>
-    							<td>Minutado</td>
-    							<td><a href="usuario/radeuna">Ramón De Uña</a></td>
-    							<td><ul class="uk-iconnav">
-    								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
-    								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
-    								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
-    								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
-    							</ul></td>
-    							<td><ul class="uk-iconnav">
-    								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
-    								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
-    							</ul></td>
-    						</tr>
-    						<tr class="autor-marta">
-    							<th>23/08/2020</th>
-    							<td>Minutado</td>
-    							<td><a href="usuario/marta">Marta Díaz</a></td>
-    							<td><ul class="uk-iconnav">
-    								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
-    								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
-    								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
-    								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
-    							</ul></td>
-    							<td><ul class="uk-iconnav">
-    								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
-    								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
-    							</ul></td>
-    						</tr>
-    					</tbody>
-    				</table>
+                        <!-- Filters -->
+                        <div class="uk-grid-small uk-grid-divider uk-child-widht-auto" uk-grid>
+                            <div>
+                                <ul class="uk-subnav uk-subnav-pill" uk-margin>
+                                    <li uk-filter-control="group: section"><a>Todo</a></li>
+                                    <li uk-filter-control="filter: [data-section='juicio']; group: section"><a>Juicio</a></li>
+                                    <li uk-filter-control="filter: [data-section='negociacion']; group: section"><a>Negociación</a></li>
+                                </ul>
+                            </div>
+                            <div>
+            					<ul class="uk-subnav uk-subnav-pill" uk-margin>
+                                    <li uk-filter-control="group: author"><a>Todo</a></li>
+            						<li uk-filter-control="filter: [data-author='radeuna']; group: author"><a>Radeuna</a></li>
+            						<li uk-filter-control="filter: [data-author='marta']; group: author"><a>Marta</a></li>
+            					</ul>
+                            </div>
+                        </div>  
+
+                        <!-- Table -->
+        				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify">
+        					<caption>Actuaciones</caption>
+        					<thead>
+        						<tr>
+    	    						<th>Fecha</th>
+    	    						<th>Contenido</th>
+    	    						<th>Autor</th>
+    	    						<th>Adjuntos</th>
+    	    						<th>Acciones</th>
+    	    					</tr>
+        					</thead>
+        					<tbody class="act-filter">
+        						<tr data-author="radeuna">
+        							<th>23/08/2020</th>
+        							<td>Minutado</td>
+        							<td><a href="usuario/radeuna">Ramón De Uña</a></td>
+        							<td><ul class="uk-iconnav">
+        								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
+        								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
+        								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
+        								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+        							</ul></td>
+        							<td><ul class="uk-iconnav">
+        								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
+        								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+        							</ul></td>
+        						</tr>
+        						<tr data-author="marta">
+        							<th>23/08/2020</th>
+        							<td>Minutado</td>
+        							<td><a href="usuario/marta">Marta Díaz</a></td>
+        							<td><ul class="uk-iconnav">
+        								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
+        								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
+        								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
+        								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+        							</ul></td>
+        							<td><ul class="uk-iconnav">
+        								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
+        								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+        							</ul></td>
+        						</tr>
+        					</tbody>
+        				</table>
+                    </div>
     			</li>
     		</ul>
     	</div>
