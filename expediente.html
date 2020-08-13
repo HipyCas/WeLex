@@ -71,17 +71,17 @@
     		</p>
             <!-- Quick actions -->
     		<ul class="uk-iconnav">
-    			<li><a href="expediente/67-20/imprimir" uk-icon="print"></a></li>
-    			<li><a href="expediente/67-20/editar" uk-icon="pencil"></a></li>
-    			<li><a href="expediente/67-20/eliminar" uk-icon="trash"></a></li>
+    			<li><a href="expediente/67-20/imprimir" uk-icon="print" uk-tooltip="Imprimir"></a></li>
+    			<li><a href="expediente/67-20/editar" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+    			<li><a href="expediente/67-20/eliminar" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
     		</ul>
     	</div>
     	<!-- Main content w/ tabs -->
     	<div class="">
     		<!-- Tabs -->
     		<ul uk-tab>
-    			<li class="active"><a>Resumen</a></li>
-    			<li><a>Acciones</a></li>
+    			<li><a>Resumen</a></li>
+    			<li class="active"><a>Acciones</a></li>
     			<li><a>Agenda</a></li>
     			<li><a>Economico</a></li>
     		</ul>
@@ -111,15 +111,15 @@
                         </div>  
 
                         <!-- Table -->
-        				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify">
+        				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
         					<caption>Actuaciones</caption>
         					<thead>
         						<tr>
-    	    						<th>Fecha</th>
-    	    						<th>Contenido</th>
+    	    						<th class="uk-table-shrink">Fecha</th>
+    	    						<th class="uk-table-expand">Contenido</th>
     	    						<th>Autor</th>
-    	    						<th>Adjuntos</th>
-    	    						<th>Acciones</th>
+    	    						<th class="uk-table-shrink">Adjuntos</th>
+    	    						<th class="uk-table-shrink">Acciones</th>
     	    					</tr>
         					</thead>
         					<tbody class="act-filter">
@@ -143,14 +143,12 @@
         							<td>Minutado</td>
         							<td><a href="usuario/marta">Marta Díaz</a></td>
         							<td><ul class="uk-iconnav">
-        								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
-        								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
-        								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
-        								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+        								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf" uk-tooltip="MI-67/20.pdf"></a></li>
+        								<li><a href="agenda/editar?act=6787" uk-icon="calendar" uk-tooltip="Recordatorio"></a></li>
         							</ul></td>
         							<td><ul class="uk-iconnav">
-        								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
-        								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+        								<li><a href="actuacion/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+        								<li><a href="actuacion/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
         							</ul></td>
         						</tr>
         					</tbody>
