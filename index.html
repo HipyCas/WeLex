@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Ramón Office</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+	<!-- Navbar -->
+    <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
+        <div id="nav-container" class="uk-container uk-navbar-container">
+            <nav class="uk-navbar-container" uk-navbar>
+                <!-- Navbar content -->
+                <div class="uk-navbar-left nav-overlay">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="inicio">Inicio</a></li>
+                        <li class=""><a href="news">Agenda</a></li>
+                        <li><a href="expedientes">Expedientes</a></li>
+                        <li class=""><a href="minutacion">Minutación</a></li>
+                        <li><a href="listin"></a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right nav-overlay">
+                    <ul class="uk-navbar-nav">
+	                    <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+	                    <li>
+	                    	<a class="uk-parent" uk-icon="user"></a>
+	                    	<div class="uk-navbar-dropdown">
+	                    		<ul class="uk-nav uk-navbar-dropdown-nav">
+	                    			<li><a href="ajustes">Ajustes</a></li>
+	                    			<li><a href="docs">Documentación</a></li>
+	                    			<li><a href="ayuda">Ayuda</a></li>
+	                    			<li class="uk-nav-divider"></li>
+	                    			<li><ul class="uk-iconnav uk-padding-small">
+	                    				<li><a href="iniciar" uk-icon="users"></a></li>
+	                    				<li><a href="salir" uk-icon="sign-out"></a></li>
+	                    			</ul></li>
+	                    		</ul>
+	                    	</div>
+	                    </li>
+	                </ul>
+                </div>
+                <!-- Navbar overlay search field -->
+                <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+                    <div class="uk-navbar-item uk-width-expand">
+                        <form class="uk-search uk-search-navbar uk-width-1-1" action="search" method="GET">
+                            <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                        </form>
+                    </div>
+                    <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="uk-container">
+    	<!-- Introducción -->
+    	<div class="uk-article uk-margin-top uk-margin-bottom">
+    		<h3 class="uk-article-title">67/20 - SANTANDER S.A. vs RAMIRO PÉREZ</h3>
+    		<p class="uk-article-meta">Juzgado de Primera Instancia de A Coruña Nº 2 - 8654/2020</p>
+    		<p class="uk-article-lead">
+    			Situación: 23/08/2020 Minutado<br>
+    			Agenda: MANDAMIENTO PAGO 150.97
+    		</p>
+    		<ul class="uk-iconnav">
+    			<li><a href="expediente/67-20/imprimir" uk-icon="print"></a></li>
+    			<li><a href="expediente/67-20/editar" uk-icon="pencil"></a></li>
+    			<li><a href="expediente/67-20/eliminar" uk-icon="trash"></a></li>
+    		</ul>
+    	</div>
+    	<!-- Main content w/ tabs -->
+    	<div class="">
+    		<!-- Tabs -->
+    		<ul uk-tab>
+    			<li class="active"><a>Resumen</a></li>
+    			<li><a>Acciones</a></li>
+    			<li><a>Agenda</a></li>
+    			<li><a>Economico</a></li>
+    		</ul>
+    		<!-- Tab content -->
+    		<ul class="uk-switcher">
+    			<li></li>
+    			<!-- Acciones contenido -->
+    			<li class="uk-padding-small">
+    				<div uk-filter="target: .act-filter">
+    					<ul class="uk-subnav uk-subnav-pill">
+    						<li uk-filter-control="target: .autor-radeuna"><a href="#">Radeuna</a></li>
+    						<li uk-filter-control="target: .autor-marta"><a href="#">Marta</a></li>
+    					</ul>
+    				</div>
+    				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify">
+    					<caption>Actuaciones</caption>
+    					<thead>
+    						<tr>
+	    						<th>Fecha</th>
+	    						<th>Contenido</th>
+	    						<th>Autor</th>
+	    						<th>Adjuntos</th>
+	    						<th>Acciones</th>
+	    					</tr>
+    					</thead>
+    					<tbody class="act-filter">
+    						<tr class="autor-radeuna">
+    							<th>23/08/2020</th>
+    							<td>Minutado</td>
+    							<td><a href="usuario/radeuna">Ramón De Uña</a></td>
+    							<td><ul class="uk-iconnav">
+    								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
+    								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
+    								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
+    								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+    							</ul></td>
+    							<td><ul class="uk-iconnav">
+    								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
+    								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+    							</ul></td>
+    						</tr>
+    						<tr class="autor-marta">
+    							<th>23/08/2020</th>
+    							<td>Minutado</td>
+    							<td><a href="usuario/marta">Marta Díaz</a></td>
+    							<td><ul class="uk-iconnav">
+    								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
+    								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
+    								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
+    								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+    							</ul></td>
+    							<td><ul class="uk-iconnav">
+    								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
+    								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+    							</ul></td>
+    						</tr>
+    					</tbody>
+    				</table>
+    			</li>
+    		</ul>
+    	</div>
+</body>
+</html>
