@@ -60,6 +60,7 @@
             </nav>
         </div>
     </div>
+    <!-- Contenido -->
     <div class="uk-container">
     	<!-- Introducción -->
     	<div class="uk-article uk-margin-top uk-margin-bottom">
@@ -108,11 +109,21 @@
             						<li uk-filter-control="filter: [data-author='marta']; group: author"><a>Marta</a></li>
             					</ul>
                             </div>
+                            <div>
+                                <ul class="uk-subnav uk-subnav-pill" uk-margin>
+                                    <li uk-filter-control="group: atachements"><a>Todo</a></li>
+                                    <li uk-filter-control="filter: [data-atach*='archivos']; group: atachements"><a>Archivos</a></li>
+                                    <li uk-filter-control="filter: [data-atach*='calendario']; group: atachements"><a>Calendario</a></li>
+                                </ul>
+                            </div>
                         </div>  
 
                         <!-- Table -->
         				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
-        					<caption>Actuaciones</caption>
+        					<caption class="uk-margin-remove">
+                                <span class="uk-align-left uk-text-lead">Actuaciones</span>
+                                <a href="expediente/nuevo" class="uk-align-right" uk-icon="plus"></a>
+                            </caption>
         					<thead>
         						<tr>
     	    						<th class="uk-table-shrink">Fecha</th>
@@ -122,8 +133,8 @@
     	    						<th class="uk-table-shrink">Acciones</th>
     	    					</tr>
         					</thead>
-        					<tbody class="act-filter">
-        						<tr data-author="radeuna">
+        					<tbody class="act-filter uk-link-heading">
+        						<tr data-author="radeuna" data-atach="archivos calendario">
         							<th>23/08/2020</th>
         							<td>Minutado</td>
         							<td><a href="usuario/radeuna">Ramón De Uña</a></td>
@@ -138,7 +149,7 @@
         								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
         							</ul></td>
         						</tr>
-        						<tr data-author="marta">
+        						<tr data-author="marta" data-atach="archivos calendario">
         							<th>23/08/2020</th>
         							<td>Minutado</td>
         							<td><a href="usuario/marta">Marta Díaz</a></td>
