@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Ramón Office</title>
+    <title>Ramón Office</title>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- UIkit CSS -->
+    <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
 
     <!-- UIkit JS -->
@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
 </head>
 <body>
-	<!-- Navbar -->
+    <!-- Navbar -->
     <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
         <div id="nav-container" class="uk-container uk-navbar-container">
             <nav class="uk-navbar-container" uk-navbar>
@@ -30,23 +30,24 @@
                 </div>
                 <div class="uk-navbar-right nav-overlay">
                     <ul class="uk-navbar-nav">
-	                    <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
-	                    <li>
-	                    	<a class="uk-parent" uk-icon="user"></a>
-	                    	<div class="uk-navbar-dropdown">
-	                    		<ul class="uk-nav uk-navbar-dropdown-nav">
-	                    			<li><a href="ajustes"><span uk-icon="settings"></span> Ajustes</a></li>
-	                    			<li><a href="docs"><span uk-icon="copy"></span> Documentación</a></li>
-	                    			<li><a href="ayuda"><span uk-icon="question"></span> Ayuda</a></li>
-	                    			<li class="uk-nav-divider"></li>
-	                    			<li><ul class="uk-iconnav uk-padding-small">
-	                    				<li><a href="iniciar" uk-icon="users"></a></li>
-	                    				<li><a href="salir" uk-icon="sign-out"></a></li>
-	                    			</ul></li>
-	                    		</ul>
-	                    	</div>
-	                    </li>
-	                </ul>
+                        <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+                        <li>
+                            <a class="uk-parent" uk-icon="user"></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="ajustes"><span uk-icon="settings"></span> Ajustes</a></li>
+                                    <li><a href="docs"><span uk-icon="copy"></span> Documentación</a></li>
+                                    <li><a href="ayuda"><span uk-icon="question"></span> Ayuda</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><ul class="uk-iconnav uk-padding-small">
+                                        <li><a href="iniciar" uk-icon="users"></a></li>
+                                        <li><a href="salir" uk-icon="sign-out"></a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <!-- Navbar overlay search field -->
                 <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
@@ -62,37 +63,73 @@
     </div>
     <!-- Contenido -->
     <div class="uk-container">
-    	<!-- Introducción -->
-    	<div class="uk-article uk-margin-top uk-margin-bottom">
-    		<h3 class="uk-article-title">67/20 - SANTANDER S.A. vs RAMIRO PÉREZ</h3>
-    		<p class="uk-article-meta">Juzgado de Primera Instancia de A Coruña Nº 2 - 8654/2020</p>
-    		<p class="uk-article-lead">
-    			Situación: 23/08/2020 Minutado<br>
-    			Agenda: MANDAMIENTO PAGO 150.97
-    		</p>
+        <!-- Introducción -->
+        <div class="uk-article uk-margin-top uk-margin-bottom">
+            <h3 class="uk-article-title">67/20 - SANTANDER S.A. vs RAMIRO PÉREZ</h3>
+            <p class="uk-article-meta">
+                Juzgado de Primera Instancia de A Coruña Nº 2 - 8654/2020
+            </p>
+            <p class="uk-article-lead">
+                Situación: 23/08/2020 Minutado<br>
+                Agenda: MANDAMIENTO PAGO 150.97
+            </p>
             <!-- Quick actions -->
-    		<ul class="uk-iconnav">
-    			<li><a href="expediente/67-20/imprimir" uk-icon="print" uk-tooltip="Imprimir"></a></li>
-    			<li><a href="expediente/67-20/editar" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-    			<li><a href="expediente/67-20/eliminar" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-    		</ul>
-    	</div>
-    	<!-- Main content w/ tabs -->
-    	<div class="">
-    		<!-- Tabs -->
-    		<ul uk-tab>
-    			<li><a>Resumen</a></li>
-    			<li class="active"><a>Acciones</a></li>
-    			<li><a>Agenda</a></li>
-    			<li><a>Economico</a></li>
-    		</ul>
-    		<!-- Tab content -->
-    		<ul class="uk-switcher">
-    			<li></li>
-    			<!-- Actuaciones contenido -->
-    			<li class="uk-padding-small">
+            <ul class="uk-iconnav">
+                <li><a href="expediente/67-20/imprimir" uk-icon="print" uk-tooltip="Imprimir"></a></li>
+                <li><a href="expediente/67-20/editar" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+                <li><a href="expediente/67-20/eliminar" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
+            </ul>
+        </div>
+        <!-- Main content w/ tabs -->
+        <div class="">
+            <!-- Tabs -->
+            <ul uk-tab>
+                <li><a>Resumen</a></li>
+                <li class="active"><a>Acciones</a></li>
+                <li><a>Agenda</a></li>
+                <li><a>Economico</a></li>
+            </ul>
+            <!-- Tab content -->
+            <ul class="uk-switcher">
+                <!-- Resumen contenido -->
+                <li class="uk-padding-small">
+                    <form class="uk-grid-small uk-form-small uk-form-horizontal" uk-grid>
+                        <div class="uk-widht-1-1">
+                            <label class="uk-form-label" for="resumen-form-fase">Fase del procedimiento: </label>
+                            <div class="uk-form-controls">
+                                <input id="resumen-form-fase" class="uk-input uk-form-blank" value="Ejecución">
+                            </div>
+                        </div>
+                        <div class="uk-widht-1-2">
+                            <label class="uk-form-label" for="resumen-form-demanda">Demandante/s: </label>
+                            <div class="uk-form-controls">
+                                <input id="resumen-form-demanda" class="uk-input uk-form-blank" value="Ramiro Pérez">
+                            </div>
+                        </div>
+                        <div class="uk-widht-1-2">
+                            <label class="uk-form-label" for="resumen-form-demandado">Demandad@/s: </label>
+                            <div class="uk-form-controls">
+                                <input id="resumen-form-demandado" class="uk-input uk-form-blank" value="Banco Santander S.A.">
+                            </div>
+                        </div>
+                        <div class="uk-widht-1-2">
+                            <label class="uk-form-label" for="resumen-form-aboga">Abogad@/s: </label>
+                            <div class="uk-form-controls">
+                                <input id="resumen-form-aboga" class="uk-input uk-form-blank" value="Pablo Ferrero">
+                            </div>
+                        </div>
+                        <div class="uk-widht-1-2">
+                            <label class="uk-form-label" for="resumen-form-cuantia">Cuantía: </label>
+                            <div class="uk-form-controls">
+                                <input id="resumen-form-cuantia" class="uk-input uk-form-blank" value="192.67€">
+                            </div>
+                        </div>
+                    </form>
+                </li>
+                <!-- Actuaciones contenido -->
+                <li class="uk-padding-small">
                     <!-- Filtered table -->
-    				<div uk-filter="target: .act-filter">
+                    <div uk-filter="target: .act-filter">
                         <!-- Filters -->
                         <div class="uk-grid-small uk-grid-divider uk-child-widht-auto" uk-grid>
                             <div>
@@ -109,11 +146,11 @@
                                 </ul>
                             </div>
                             <div>
-            					<ul class="uk-subnav uk-subnav-pill" uk-margin>
+                                <ul class="uk-subnav uk-subnav-pill" uk-margin>
                                     <li uk-filter-control="group: author"><a>Todo</a></li>
-            						<li uk-filter-control="filter: [data-author='radeuna']; group: author"><a>Radeuna</a></li>
-            						<li uk-filter-control="filter: [data-author='marta']; group: author"><a>Marta</a></li>
-            					</ul>
+                                    <li uk-filter-control="filter: [data-author='radeuna']; group: author"><a>Radeuna</a></li>
+                                    <li uk-filter-control="filter: [data-author='marta']; group: author"><a>Marta</a></li>
+                                </ul>
                             </div>
                             <div>
                                 <ul class="uk-subnav uk-subnav-pill" uk-margin>
@@ -122,58 +159,62 @@
                                     <li uk-filter-control="filter: [data-atach*='calendario']; group: atachements"><a>Calendario</a></li>
                                 </ul>
                             </div>
-                        </div>  
+                        </div>
 
                         <!-- Table -->
-        				<table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
-        					<caption class="uk-margin-remove">
+                        <table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
+                            <caption class="uk-margin-remove">
                                 <span class="uk-align-left uk-text-lead">Actuaciones</span>
                                 <a href="expediente/nuevo" class="uk-align-right" uk-icon="plus"></a>
                             </caption>
-        					<thead>
-        						<tr>
-    	    						<th class="uk-table-shrink">Fecha</th>
-    	    						<th class="uk-table-expand">Contenido</th>
-    	    						<th>Autor</th>
-    	    						<th class="uk-table-shrink">Adjuntos</th>
-    	    						<th class="uk-table-shrink">Acciones</th>
-    	    					</tr>
-        					</thead>
-        					<tbody class="act-filter uk-link-heading">
-        						<tr data-author="radeuna" data-atach="archivos calendario" data-date="2020-08-23">
-        							<th>23/08/2020</th>
-        							<td>Minutado</td>
-        							<td><a href="usuario/radeuna">Ramón De Uña</a></td>
-        							<td><ul class="uk-iconnav">
-        								<li><a href="archivo?act=6787" uk-icon="file"></a></li>
-        								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
-        								<li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
-        								<li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
-        							</ul></td>
-        							<td><ul class="uk-iconnav">
-        								<li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
-        								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+                            <thead>
+                                <tr>
+                                    <th class="uk-table-shrink">Fecha</th>
+                                    <th class="uk-table-expand">Contenido</th>
+                                    <th>Autor</th>
+                                    <th class="uk-table-shrink">Adjuntos</th>
+                                    <th class="uk-table-shrink">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="act-filter uk-link-heading">
+                                <tr data-author="radeuna" data-atach="archivos calendario" data-date="2020-08-23">
+                                    <th>23/08/2020</th>
+                                    <td>Minutado</td>
+                                    <td><a href="usuario/radeuna">Ramón De Uña</a></td>
+                                    <td><ul class="uk-iconnav">
+                                        <li><a href="archivo?act=6787" uk-icon="file"></a></li>
+                                        <li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
+                                        <li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
+                                        <li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+                                    </ul>
+                                    </td>
+                                    <td><ul class="uk-iconnav">
+                                        <li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
+                                        <li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
                                         <li><a href="actuación/notificaciones/6787" uk-icon="mail" uk-tooltip="Notificaciones"></a></li>
-        							</ul></td>
-        						</tr>
-        						<tr data-author="marta" data-atach="archivos calendario" data-date="2020-08-20">
-        							<th>20/08/2020</th>
-        							<td>Conceptos</td>
-        							<td><a href="usuario/marta">Marta Díaz</a></td>
-        							<td><ul class="uk-iconnav">
-        								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf" uk-tooltip="MI-67/20.pdf"></a></li>
-        								<li><a href="agenda/editar?act=6787" uk-icon="calendar" uk-tooltip="Recordatorio"></a></li>
-        							</ul></td>
-        							<td><ul class="uk-iconnav">
-        								<li><a href="actuacion/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-        								<li><a href="actuacion/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-        							</ul></td>
-        						</tr>
-        					</tbody>
-        				</table>
+                                    </ul>
+                                    </td>
+                                </tr>
+                                <tr data-author="marta" data-atach="archivos calendario" data-date="2020-08-20">
+                                    <th>20/08/2020</th>
+                                    <td>Conceptos</td>
+                                    <td><a href="usuario/marta">Marta Díaz</a></td>
+                                    <td><ul class="uk-iconnav">
+                                        <li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf" uk-tooltip="MI-67/20.pdf"></a></li>
+                                        <li><a href="agenda/editar?act=6787" uk-icon="calendar" uk-tooltip="Recordatorio"></a></li>
+                                    </ul>
+                                    </td>
+                                    <td><ul class="uk-iconnav">
+                                        <li><a href="actuacion/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+                                        <li><a href="actuacion/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-    			</li>
-    		</ul>
-    	</div>
-</body>
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
