@@ -97,6 +97,12 @@
                         <div class="uk-grid-small uk-grid-divider uk-child-widht-auto" uk-grid>
                             <div>
                                 <ul class="uk-subnav uk-subnav-pill" uk-margin>
+                                    <li class="uk-active" uk-filter-control="sort: data-date; order: desc"><a>Descendiente</a></li>
+                                    <li uk-filter-control="sort: data-date"><a>Ascendiente</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="uk-subnav uk-subnav-pill" uk-margin>
                                     <li uk-filter-control="group: section"><a>Todo</a></li>
                                     <li uk-filter-control="filter: [data-section='juicio']; group: section"><a>Juicio</a></li>
                                     <li uk-filter-control="filter: [data-section='negociacion']; group: section"><a>Negociación</a></li>
@@ -134,7 +140,7 @@
     	    					</tr>
         					</thead>
         					<tbody class="act-filter uk-link-heading">
-        						<tr data-author="radeuna" data-atach="archivos calendario">
+        						<tr data-author="radeuna" data-atach="archivos calendario" data-date="2020-08-23">
         							<th>23/08/2020</th>
         							<td>Minutado</td>
         							<td><a href="usuario/radeuna">Ramón De Uña</a></td>
@@ -149,9 +155,9 @@
         								<li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
         							</ul></td>
         						</tr>
-        						<tr data-author="marta" data-atach="archivos calendario">
-        							<th>23/08/2020</th>
-        							<td>Minutado</td>
+        						<tr data-author="marta" data-atach="archivos calendario" data-date="2020-08-20">
+        							<th>20/08/2020</th>
+        							<td>Conceptos</td>
         							<td><a href="usuario/marta">Marta Díaz</a></td>
         							<td><ul class="uk-iconnav">
         								<li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf" uk-tooltip="MI-67/20.pdf"></a></li>
