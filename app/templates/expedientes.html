@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<form class="uk-grid-small uk-form-horizontal" uk-grid>
+		<div class="uk-widht-1-2">
+			<label class="uk-form-label" for="exp-number">Nº Exp: </label>
+			<div class="uk-form-controls">
+				<input class="uk-input" type="number" name="n" id="exp-number" placeholder="187/20">
+			</div>
+		</div>
+		<div class="uk-widht-1-2">
+			<label class="uk-form-label" for="autos-number">Nº Autos: </label>
+			<div class="uk-form-controls">
+				<input class="uk-input" type="number" name="autos" id="autos-number" placeholder="1045/2020">
+			</div>
+		</div>
+	</form>
+{% endblock %}

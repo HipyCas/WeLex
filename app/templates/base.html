@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% if title %}<title>{{ title }} - WeLex</title>{% else %}<title>WeLex</title>{% endif %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
+        <div id="nav-container" class="uk-container uk-navbar-container">
+            <nav class="uk-navbar-container" uk-navbar>
+                <!-- Navbar content -->
+                <div class="uk-navbar-left nav-overlay">
+                    <ul class="uk-navbar-nav">
+                        <li class="{% if inicio %}uk-active{% endif %}"><a href="inicio">Inicio</a></li>
+                        <li class="{% if agenda %}active{% endif %}"><a href="agenda">Agenda</a></li>
+                        <li class="{% if expedientes %}active{% endif %}"><a href="expedientes">Expedientes</a></li>
+                        <li class="{% if minutacion %}active{% endif %}"><a href="minutacion">Minutación</a></li>
+                        <li class="{% if listin %}active{% endif %}"><a href="listin"></a>Listín</li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right nav-overlay">
+                    <ul class="uk-navbar-nav">
+                        <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+                        <li>
+                            <a class="uk-parent" uk-icon="user"></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="ajustes"><span uk-icon="settings"></span> Ajustes</a></li>
+                                    <li><a href="docs"><span uk-icon="copy"></span> Documentación</a></li>
+                                    <li><a href="ayuda"><span uk-icon="question"></span> Ayuda</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><ul class="uk-iconnav uk-padding-small">
+                                        <li><a href="iniciar" uk-icon="users"></a></li>
+                                        <li><a href="salir" uk-icon="sign-out"></a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Navbar overlay search field -->
+                <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+                    <div class="uk-navbar-item uk-width-expand">
+                        <form class="uk-search uk-search-navbar uk-width-1-1" action="search" method="GET">
+                            <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                        </form>
+                    </div>
+                    <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Contenido -->
+    <div class="uk-container">
+			{% block content %}{% endblock %}
+	 </div>
+</body>
+</html>
