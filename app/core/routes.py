@@ -11,4 +11,3 @@ def before_request():
 @bp.route('/')
 def index():
 	return render_template('expediente.html', title='Inicio', inicio=True)
-	
