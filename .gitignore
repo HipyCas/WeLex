@@ -132,3 +132,4 @@ migrations/alembic.ini
 migrations/script.py.mako
 migrations/env.py
 migrations/README
+migrations/versions/d870328aa6e3_first_migration.py
