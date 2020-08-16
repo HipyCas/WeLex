@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Update system
+sudo apt update
+sudo apt upgrade
+
+# Install required packages
+for pkg in git, python3, pip3, mysql, gunicorn3, ufw, nginx, supervisor
+do
+	if [ -z "`type -P ${pkg}`" ]
+	then
+		echo "-> Installing package ${pkg}"
+		sudo apt install $pkg
+	else
+		echo "-> Package ${pkg} already installed"
+	fi
+done
+
+# cd to app dir
+cd ..
+
+# create venv
+echo "->" Creating viertual environment
+echo "`pip3 list`" | grep "[*virtualenv*]" > dev/null 2>&1
+[ "$?" -ne "0" ] && pip3 install virtualenv  # check if virtualenv is installed, if not install
+python3 -m virtualenv venv  # create virtualenv in venv/
+source venv/bin/activate  # activate virtualenv
+
+# install requirements
+echo "-> Installing requirements"
+
+# Create db and upgrade
+python3 -m flask db init
+python3 -m flask db upgrade
+
+# Compile translations
+python3 -m flask translate compile
+
+# Setup gunicorn
+
+

@@ -1,0 +1,103 @@
+#!/bin/sh
+
+# Move to app directory
+cd ..
+echo "->" On dir: `pwd`
+echo "->" List: `ls`
+
+# Update system
+sudo apt update
+sudo apt upgrade -y
+
+# Packages to check for
+GIT_INSTALLED="`type -P git`"; GIT_QUIT=""
+NGINX_INSTALLED="`type -P nginx`"; NGINX_QUIT=""
+GUNICORN3_INSTALLED="`type -P gunicorn3`"; GUNICORN_QUIT=""
+PYTHON3_INSTALLED="`type -P python3`"; PYTHON3_QUIT=""
+SUPERVISOR_INSTALLED="`type -P supervisor`"; SUPERVISOR_QUIT=""
+UFW_INSTALLED="`type -P ufw`"; UFW_QUIT=""
+MYSQL_INSTALLED="`type -P mysql`"; MYSQL_QUIT=""
+
+# Check for packages
+if [ -z $GIT_INSTALLED ]  # Check for git
+then
+	echo "<!!!> Package 'git' is not installed, install now (N) or exit and install manually (X)?"
+	while :
+	do
+		read GIT_INSTALL
+		case $GIT_INSTALL in
+			N)
+				echo "-> Installing package git (sudo mode set)"
+				sudo apt install git
+			;;
+			X)
+				echo "-> Stoping execution"
+				GIT_QUIT = "y"
+			;;
+		esac
+	done
+fi
+[ -z $GIT_QUIT ] && exit
+				
+if [ -z $NGINX_INSTALLED ]  # Check for Nginx
+then
+	echo "<!!!> Package 'nginx' is not installed, install now (N) or exit and install manually (X)?"
+	while :
+	do
+		read NGINX_INSTALL
+		case $NGINX_INSTALL in
+			N)
+				echo "-> Installing package nginx (sudo mode set)"
+				sudo apt install nginx
+			;;
+			X)
+				echo "-> Stoping execution"
+				NGINX_QUIT = "y"
+			;;
+		esac
+	done
+fi
+[ -z $NGINX_QUIT ] && exit
+
+if [ -z $GUNICORN3_INSTALLED ]  # Check for GUNICORN
+then
+	echo "<!!!> Package 'gunicorn3' is not installed, install now (N) or exit and install manually (X)?"
+	while :
+	do
+		read GUNICORN3_INSTALL
+		case $GUNICORN3_INSTALL in
+			N)
+				echo "-> Installing package gunicorn3 (sudo mode set)"
+				sudo apt install gunicorn3
+			;;
+			X)
+				echo "-> Stoping execution"
+				GUNICORN3_QUIT = "y"
+			;;
+		esac
+	done
+fi
+[ -z $GUNICORN3_QUIT ] && exit
+
+# Check for updates in repo
+GITHUB_NEW_CODE="`git fetch`"
+if [ -z $GITHUB_NEW_CODE ]  # Do updates if there is new code
+then
+	# Download new files
+	git pull
+
+	# Stop process
+	sudo supervisorctl stop welex
+	
+	# Flask updates
+	source venv/bin/activate
+	flask db upgrade
+	flask translate compile
+	deactivate
+
+	# Restart process
+	sudo supervisorctl start welex
+fi
+	
+# Move back to original directory
+cd scripts
