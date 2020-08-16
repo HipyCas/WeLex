@@ -128,3 +128,7 @@ dmypy.json
 #PyCharm project
 .idea/
 welex.db
+migrations/alembic.ini
+migrations/script.py.mako
+migrations/env.py
+migrations/README
