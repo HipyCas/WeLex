@@ -10,8 +10,8 @@ from config import Config
 
 db = SQLAlchemy()
 migrate = Migrate()
-#login = LoginManager()
-#login.login_view = 'auth.login'
+login = LoginManager()
+login.login_view = 'auth.login'
 mail = Mail()
 #babel = Babel()
 
@@ -21,17 +21,20 @@ def create_app(config_class=Config):
 	
 	db.init_app(app)
 	migrate.init_app(app, db)
-#	login.init_app(app)
+	login.init_app(app)
 	mail.init_app(app)
 	
 	from app.core import bp as bp_core
 	app.register_blueprint(bp_core)
 	
 	from app.expediente import bp as bp_expediente
-	app.register_blueprint(bp_expediente, url_prefix='expedientes')
+	app.register_blueprint(bp_expediente, url_prefix='/expedientes')
 	
 	from app.agenda import bp as bp_agenda
-	app.register_blueprint(bp_expediente, url_prefix='agenda')
+	app.register_blueprint(bp_expediente, url_prefix='/agenda')
+	
+	from app.auth import bp as bp_auth
+	app.register_blueprint(bp_auth, url_prefix='/auth')
 	
 	return app
 

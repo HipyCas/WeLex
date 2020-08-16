@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loading...</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+	<div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-muted">
+        <div class="uk-padding-large uk-background-default">
+            <div class="uk-background-default">
+                <div class="uk-inline">
+                    <h1 class="uk-header-small"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo"/> Login</h1>
+                </div>
+                <form action="" method="POST" class="uk-form uk-background-default">
+                    {{ form.hidden_tag() }}
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="user"></span>
+                            {{ form.username(class='uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="lock"></span>
+                            {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
+                        </div>
+                    </div>
+                    <button action="submit" class="uk-button uk-button-default">Entrar</button>
+                </form>
+        </div>
+        </div>
+	</div>
+</body>
+</html>
