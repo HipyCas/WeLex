@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Variables
-USERNAME="pi"
+APP_USERNAME="pi"
+[ -z "${APP_NAME}" ] && APP_NAME="WeLex"
+[ -z "${APP_ABS_DIR}" ] && APP_ABS_DIR="/home/${APP_USERNAME}/${APP_NAME}"
+REQUIRED_PACKAGES="git openssl mysql ufw nginx supervisor"
 
 # cd to home dir
 cd ~
@@ -43,7 +46,7 @@ fi
 
 # Install required packages
 echo "-> Installing required packages"
-for pkg in git, mysql, gunicorn3, ufw, nginx, supervisor, openssl
+for pkg in REQUIRED_PACKAGES
 do
 	if [ -z "`type -P ${pkg}`" ]
 	then
@@ -55,7 +58,7 @@ do
 done
 
 # cd to app dir
-cd WeLex
+cd APP_ABS_DIR
 
 # create venv
 echo "-> Creating virtual environment"
@@ -84,9 +87,9 @@ echo "-> Setup gunicorn"
 echo "> Create supervisor conf file"  # create supervisor welex.conf file
 sudo tee -a /etc/supervisor/conf.d/welex.conf > /dev/null << EOT
 "[program:welex]"
-"command=/home/${USERNAME}/WeLex/venv/bin/gunicorn -b localhost:8000 -w 6 welex:app"
-"directory=/home/${USERNAME}/WeLex"
-"user=${USERNAME}"
+"command=${APP_ABS_DIR}/venv/bin/gunicorn -b localhost:8000 -w 6 welex:app"
+"directory=${APP_ABS_DIR}"
+"user=${APP_USERNAME}"
 "autostart=true"
 "autorestart=true"
 "stopasgroup=true"
@@ -118,8 +121,8 @@ sudo tee -a /etc/nginx/sites-enabled/welex > /dev/null << EOT
 "	server_name _;"
 ""
 "	# location of the self-signed SSL certificate"
-"	ssl_certificate /home/${USERNAME}/WeLex/certs/cert.pem;"
-"	ssl_certificate_key /home/${USERNAME}/WeLex/certs/key.pem;"
+"	ssl_certificate ${APP_ABS_DIR}/certs/cert.pem;"
+"	ssl_certificate_key ${APP_ABS_DIR}/certs/key.pem;"
 ""
 "	# write access and error logs to /var/log"
 "	access_log /var/log/welex_access.log;"
@@ -136,10 +139,13 @@ sudo tee -a /etc/nginx/sites-enabled/welex > /dev/null << EOT
 ""
 "	location /static {"
 "		# handle static files directly, without forwarding to the application"
-"		alias /home/${USERNAME}/WeLex/app/static;"
+"		alias /home/${APP_USERNAME}/WeLex/app/static;"
 "		expires 30d;"
 "	}"
 "}"
 EOT
 echo "> Reload nginx"  # reload nginx
 sudo service nginx reload
+
+echo "`curl localhost`" | grep "[*<html>*]" > /dev/null 2>&1
+[ "$?" -eq "0" ] && echo "> Succesfully installed" || echo "> Something went wrong, go to https://hipycas.gitbook.io/${APP_NAME}"
