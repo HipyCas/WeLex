@@ -127,3 +127,4 @@ dmypy.json
 # MODIFIED SECITON
 #PyCharm project
 .idea/
+welex.db
