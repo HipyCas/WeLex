@@ -34,7 +34,7 @@ def create_app(config_class=Config):
 	app.register_blueprint(bp_expediente, url_prefix='/expediente')
 	
 	from app.agenda import bp as bp_agenda
-	app.register_blueprint(bp_expediente, url_prefix='/agenda')
+	app.register_blueprint(bp_agenda, url_prefix='/agenda')
 	
 	from app.listin import bp as bp_listin
 	app.register_blueprint(bp_listin, url_prefix='/listin')
