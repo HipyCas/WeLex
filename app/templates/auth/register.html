@@ -9,15 +9,15 @@
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="user"></span>
-            {{ form.username(class='uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
+            {{ form.name(class='uk-input', placeholder='{}'.format(form.name.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="code"></span>
-            {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
+            {{ form.token(class='uk-input', placeholder='{}'.format(form.token.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
-    <button action="submit" class="uk-button uk-button-default">Entrar</button>
+    <button action="submit" class="uk-button uk-button-default">Siguiente</button>
 </form>
 {% endblock %}
