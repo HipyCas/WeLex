@@ -1,23 +1,23 @@
 {% extends "auth/base.html" %}
 
 {% block content %}
-                <div class="uk-inline">
-                    <h1 class="uk-header-small" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="10px" width="10px"/> Login</h1>
-                </div>
-                <form action="" method="POST" class="uk-form uk-background-default">
-                    {{ form.hidden_tag() }}
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="user"></span>
-                            {{ form.username(class='uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
-                        </div>
-                    </div>
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="lock"></span>
-                            {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
-                        </div>
-                    </div>
-                    <button action="submit" class="uk-button uk-button-default">Entrar</button>
-                </form>
+<div class="uk-inline uk-text-middle">
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Login</h1>
+</div>
+<form action="" method="POST" class="uk-form uk-background-default">
+    {{ form.hidden_tag() }}
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="user"></span>
+            {{ form.username(class='uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="lock"></span>
+            {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
+        </div>
+    </div>
+    <button action="submit" class="uk-button uk-button-default">Entrar</button>
+</form>
 {% endblock %}
