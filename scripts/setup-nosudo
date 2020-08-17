@@ -12,27 +12,27 @@ cd ~
 # Update system
 echo "-> Upgrade system"
 echo "> Looking for updates"
-sudo apt update > /dev/null 2>&1
+apt update > /dev/null 2>&1
 echo "> Upgrading packages"
-sudo apt upgrade -y > /dev/null
+apt upgrade -y > /dev/null
 
 # Install Python 3.8
 echo "-> Installing Python 3.8"
 echo "> Installing dependencies"
-sudo apt install -y \
+apt install -y \
 build-essential tk-dev libncurses5-dev \
 libncursesw5-dev libreadline6-dev libdb5.3-dev \
 libgdbm-dev libsqlite3-dev libssl-dev \
 libbz2-dev libexpat1-dev liblzma-dev \
-zlib1g-dev libffi-dev tar wget vim  # install dependencies
+zlib1g-dev libffi-dev tar wget vim make gcc # install dependencies
 echo "> Downloading package"
 wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz  # download zip
 echo "> Setup python3.8"
-sudo tar zxf Python-3.8.0.tgz  # extract zip
+tar zxf Python-3.8.0.tgz  # extract zip
 cd Python-3.8.0 
-sudo ./configure --enable-optimizations  # create/configure make file
-sudo make -j 4
-sudo make altinstall  # execute make
+./configure --enable-optimizations  # create/configure make file
+make -j 4
+make altinstall  # execute make
 PYTHON_SUCCESS = "`type -P python3.8`"  # check if it was succesfully installed
 [ -z $PYTHON_SUCCESS ] && echo "> Python succesfully installed" || echo "> Python couldn't be installed, quiting `exit 1`"
 echo "> Do you want to make Python 3.8 your default python version? (yes/no)"
@@ -51,7 +51,7 @@ do
 	if [ -z "`type -P ${pkg}`" ]
 	then
 		echo "> Installing package ${pkg}"
-		sudo apt install $pkg
+		apt install $pkg
 	else
 		echo "> Package ${pkg} already installed"
 	fi
@@ -85,7 +85,7 @@ python3.8 -m flask translate compile
 # Setup gunicorn and supervisor
 echo "-> Setup gunicorn"
 echo "> Create supervisor conf file"  # create supervisor welex.conf file
-sudo tee -a /etc/supervisor/conf.d/welex.conf > /dev/null << EOT
+tee -a /etc/supervisor/conf.d/welex.conf > /dev/null << EOT
 "[program:welex]"
 "command=${APP_ABS_DIR}/venv/bin/gunicorn -b localhost:8000 -w 6 welex:app"
 "directory=${APP_ABS_DIR}"
@@ -96,7 +96,7 @@ sudo tee -a /etc/supervisor/conf.d/welex.conf > /dev/null << EOT
 "killasgroup=true"
 EOT
 echo "> Reload supervisor"  # reload supervisor
-sudo supervisor reload
+supervisor reload
 
 # Setup nginx
 echo "-> Setup nginx"
@@ -104,8 +104,8 @@ echo "> Create SSL certificate"  # SSL cert
 mkdir certs
 openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -keyout certs/key.pem -out certs/cert.pem
 echo "> Create nginx conf file"  # create nginx welex.conf file
-sudo rm /etc/nginx/sites-enabled/default
-sudo tee -a /etc/nginx/sites-enabled/welex > /dev/null << EOT
+rm /etc/nginx/sites-enabled/default
+tee -a /etc/nginx/sites-enabled/welex > /dev/null << EOT
 "server {"
 "	# listen on port 80 (http)"
 "	listen 80;"
@@ -145,7 +145,7 @@ sudo tee -a /etc/nginx/sites-enabled/welex > /dev/null << EOT
 "}"
 EOT
 echo "> Reload nginx"  # reload nginx
-sudo service nginx reload
+service nginx reload
 
 echo "`curl localhost`" | grep "[*<html>*]" > /dev/null 2>&1
 [ "$?" -eq "0" ] && echo "> Succesfully installed" || echo "> Something went wrong, go to https://hipycas.gitbook.io/${APP_NAME}"
