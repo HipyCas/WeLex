@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Vars
+REQUIRED_PACKAGES="git"
+
+# Check if WeLex is already cloned
+echo * | grep "${APP_NAME}" > /dev/null
+if [ "$?" = "0" ]; then
+	echo "> ${APP_NAME} already installed, checking if setted up..."
+	if 
+fi
+
+# Check for requirements
+for pkg in REQUIRED_PACKAGES
+do
+	if [ -z "`type -P ${pkg}`" ]; then
+		echo ""
+	fi
+done
