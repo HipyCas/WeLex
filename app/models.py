@@ -11,12 +11,22 @@ class User(db.Model, UserMixin):
 	nombre = db.Column(db.String(24))
 	apellidos = db.Column(db.String(48))
 	password_hash = db.Column(db.String)
+	registration_token_id = db.Column(db.Integer, db.ForeignKey('registrationtoken.id'))
+	registration_tokens = db.relationship('RegistrationToken', backref='dispatcher', lazy='dynamic')
 
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
 
 	def check_password(self, check):
 		return check_password_hash(self.password_hash, check)
+
+
+class RegistrationToken(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	token = db.Column(db.String, unique=True, index=True)
+	target_name = db.Column(db.String, unique=True, index=True)
+	target_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	dispatcher_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class Expediente(db.Model):
