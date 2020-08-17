@@ -27,14 +27,20 @@ def create_app(config_class=Config):
 	from app.core import bp as bp_core
 	app.register_blueprint(bp_core)
 	
+	from app.auth import bp as bp_auth
+	app.register_blueprint(bp_auth, url_prefix='/auth')
+	
 	from app.expediente import bp as bp_expediente
-	app.register_blueprint(bp_expediente, url_prefix='/expedientes')
+	app.register_blueprint(bp_expediente, url_prefix='/expediente')
 	
 	from app.agenda import bp as bp_agenda
 	app.register_blueprint(bp_expediente, url_prefix='/agenda')
 	
-	from app.auth import bp as bp_auth
-	app.register_blueprint(bp_auth, url_prefix='/auth')
+	from app.listin import bp as bp_listin
+	app.register_blueprint(bp_listin, url_prefix='/listin')
+	
+	from app.minutacion import bp as bp_minutacion
+	app.register_blueprint(bp_minutacion, url_prefix='/minutacion')
 	
 	return app
 

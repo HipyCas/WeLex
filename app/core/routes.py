@@ -9,5 +9,15 @@ def before_request():
 
 
 @bp.route('/')
-def index():
+def start():
 	return render_template('expediente.html', title='Inicio', inicio=True)
+
+
+@bp.route('/settings')
+def settings():
+	pass
+
+
+@bp.route('/help')
+def help():
+	pass
