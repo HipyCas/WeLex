@@ -1,4 +1,5 @@
 from flask import render_template
+from flask_login import login_required
 
 from app.core import bp
 
@@ -9,15 +10,18 @@ def before_request():
 
 
 @bp.route('/')
+@login_required
 def start():
-	return render_template('expediente.html', title='Inicio', inicio=True)
+	return render_template('inicio.html', title='Inicio', inicio=True)
 
 
 @bp.route('/settings')
+@login_required
 def settings():
 	pass
 
 
 @bp.route('/help')
+@login_required
 def help():
 	pass
