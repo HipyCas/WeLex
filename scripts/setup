@@ -14,7 +14,7 @@ echo "-> Upgrade system"
 echo "> Looking for updates"
 sudo apt update > /dev/null 2>&1
 echo "> Upgrading packages"
-sudo apt upgrade -y
+sudo apt upgrade -y > /dev/null
 
 # Install Python 3.8
 echo "-> Installing Python 3.8"
