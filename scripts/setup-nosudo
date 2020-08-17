@@ -1,0 +1,151 @@
+#!/bin/sh
+
+# Variables
+APP_USERNAME="pi"
+[ -z "${APP_NAME}" ] && APP_NAME="WeLex"
+[ -z "${APP_ABS_DIR}" ] && APP_ABS_DIR="/home/${APP_USERNAME}/${APP_NAME}"
+REQUIRED_PACKAGES="git openssl mysql ufw nginx supervisor"
+
+# cd to home dir
+cd ~
+
+# Update system
+echo "-> Upgrade system"
+echo "> Looking for updates"
+apt update > /dev/null 2>&1
+echo "> Upgrading packages"
+apt upgrade -y > /dev/null
+
+# Install Python 3.8
+echo "-> Installing Python 3.8"
+echo "> Installing dependencies"
+apt install -y \
+build-essential tk-dev libncurses5-dev \
+libncursesw5-dev libreadline6-dev libdb5.3-dev \
+libgdbm-dev libsqlite3-dev libssl-dev \
+libbz2-dev libexpat1-dev liblzma-dev \
+zlib1g-dev libffi-dev tar wget vim make gcc # install dependencies
+echo "> Downloading package"
+wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz  # download zip
+echo "> Setup python3.8"
+tar zxf Python-3.8.0.tgz  # extract zip
+cd Python-3.8.0 
+./configure --enable-optimizations  # create/configure make file
+make -j 4
+make altinstall  # execute make
+PYTHON_SUCCESS = "`type -P python3.8`"  # check if it was succesfully installed
+[ -z $PYTHON_SUCCESS ] && echo "> Python succesfully installed" || echo "> Python couldn't be installed, quiting `exit 1`"
+echo "> Do you want to make Python 3.8 your default python version? (yes/no)"
+read PYTHON_ALIAS
+if [ $PYTHON_ALIAS == "yes" ]; then  # create alias if wanted
+	echo "> Writing alias"
+	echo "alias python=/usr/local/bin/python3.8" >> ~/.bashrc
+else
+	echo "> Skipping..."
+fi
+
+# Install required packages
+echo "-> Installing required packages"
+for pkg in REQUIRED_PACKAGES
+do
+	if [ -z "`type -P ${pkg}`" ]
+	then
+		echo "> Installing package ${pkg}"
+		apt install $pkg
+	else
+		echo "> Package ${pkg} already installed"
+	fi
+done
+
+# cd to app dir
+cd APP_ABS_DIR
+
+# create venv
+echo "-> Creating virtual environment"
+echo "`pip3.8 list`" | grep "[*virtualenv*]" > /dev/null 2>&1
+[ "$?" -ne "0" ] && pip3.8 install virtualenv  # check if virtualenv is installed, if not install
+python3.8 -m virtualenv venv  # create virtualenv in venv/
+source venv/bin/activate  # activate virtualenv
+
+# install requirements
+echo "-> Installing requirements"
+python3.8 -m pip install -r requirements.txt
+
+echo "-> Setup Flask"
+
+# Create db and upgrade
+echo "> Create database"
+python3 -m flask db init
+python3.8 -m flask db upgrade
+
+# Compile translations
+echo "> Compile translations"
+python3.8 -m flask translate compile
+
+# Setup gunicorn and supervisor
+echo "-> Setup gunicorn"
+echo "> Create supervisor conf file"  # create supervisor welex.conf file
+tee -a /etc/supervisor/conf.d/welex.conf > /dev/null << EOT
+"[program:welex]"
+"command=${APP_ABS_DIR}/venv/bin/gunicorn -b localhost:8000 -w 6 welex:app"
+"directory=${APP_ABS_DIR}"
+"user=${APP_USERNAME}"
+"autostart=true"
+"autorestart=true"
+"stopasgroup=true"
+"killasgroup=true"
+EOT
+echo "> Reload supervisor"  # reload supervisor
+supervisor reload
+
+# Setup nginx
+echo "-> Setup nginx"
+echo "> Create SSL certificate"  # SSL cert
+mkdir certs
+openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -keyout certs/key.pem -out certs/cert.pem
+echo "> Create nginx conf file"  # create nginx welex.conf file
+rm /etc/nginx/sites-enabled/default
+tee -a /etc/nginx/sites-enabled/welex > /dev/null << EOT
+"server {"
+"	# listen on port 80 (http)"
+"	listen 80;"
+"	server_name _;"
+"	location / {"
+"		# redirect any requests to the same URL but on hhtps"
+"		return 301 https://$host$request_uri;"
+"	}"
+"}"
+"server {"
+"	# listen on port 443 (https)"
+"	listen 443 ssl;"
+"	server_name _;"
+""
+"	# location of the self-signed SSL certificate"
+"	ssl_certificate ${APP_ABS_DIR}/certs/cert.pem;"
+"	ssl_certificate_key ${APP_ABS_DIR}/certs/key.pem;"
+""
+"	# write access and error logs to /var/log"
+"	access_log /var/log/welex_access.log;"
+"	error_log /var/log/welex_error.log;"
+""
+"	location / {"
+"		# forward application requests to the gunicorn server"
+"		proxy_pass http://localhost:8000;"
+"		proxy_redirect off;"
+"		proxy_set_header Host $host;"
+"		proxy_set_header X-Real-IP $remote_addr;"
+"		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
+"	}"
+""
+"	location /static {"
+"		# handle static files directly, without forwarding to the application"
+"		alias /home/${APP_USERNAME}/WeLex/app/static;"
+"		expires 30d;"
+"	}"
+"}"
+EOT
+echo "> Reload nginx"  # reload nginx
+service nginx reload
+
+echo "`curl localhost`" | grep "[*<html>*]" > /dev/null 2>&1
+[ "$?" -eq "0" ] && echo "> Succesfully installed" || echo "> Something went wrong, go to https://hipycas.gitbook.io/${APP_NAME}"
