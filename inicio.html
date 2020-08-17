@@ -24,16 +24,38 @@
     <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
         <div id="nav-container" class="uk-container uk-navbar-container">
             <nav class="uk-navbar-container" uk-navbar>
-                <!-- Navbar content -->
-                <div class="uk-navbar-left nav-overlay">
+                <!-- Navbar content for screens bigger than small  -->
+                <div class="uk-navbar-left nav-overlay uk-visible@s">
                     <ul class="uk-navbar-nav">
                         <li class="{% if inicio %}uk-active{% endif %}"><a href="inicio">Inicio</a></li>
                         <li class="{% if agenda %}active{% endif %}"><a href="agenda">Agenda</a></li>
                         <li class="{% if expedientes %}active{% endif %}"><a href="expedientes">Expedientes</a></li>
                         <li class="{% if minutacion %}active{% endif %}"><a href="minutacion">Minutación</a></li>
-                        <li class="{% if listin %}active{% endif %}"><a href="listin"></a>Listín</li>
+                        <li class="{% if listin %}active{% endif %}"><a href="listin">Listín</a></li>
                     </ul>
                 </div>
+                <!-- Toggle icon for small screens -->
+                <div class="uk-navbar-left nav-overlay uk-hidden@s">
+                    <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#navbar-off" uk-toggle="#navbar-off"></a>
+                </div>
+                <!-- Small screen of canvas panel -->
+                <div id="navbar-off" uk-offcanvas="overlay:true; mode=push">
+                    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+                        <button class="uk-offcanvas-close" type="button" uk-close></button>
+                        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                            <li class="uk-active"><a href="{{ url_for('core.start') }}">Inicio</a></li>
+                            <li><a href="{{ url_for('core.start') }}">Agenda</a></li>
+                            <li><a href="{{ url_for('expedientes.start') }}">Expedientes</a></li>
+                            <li><a href="{{ url_for('minutacion.start') }}">Minutación</a></li>
+                            <li><a href="{{ url_for('listin.start') }}">Listín</a></li>
+                            <!--
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="{{ url_for('core.settings') }}" uk-icon="settings">Ajustes</a></li>
+                            -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Search and user icon on all screens -->
                 <div class="uk-navbar-right nav-overlay">
                     <ul class="uk-navbar-nav">
                         <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
@@ -75,45 +97,49 @@
         </div>
         <div id="agenda-hoy" class="uk-article">
             <h1 class="uk-article-title"><a href="{{ url_for('agenda.start') }}" class="uk-link-reset">Agenda hoy</a></h1>
-            <table class="uk-table uk-table-divider uk-table-hover uk-tale-justify uk-table-middle">
-                <caption class="">
-                    <span class="uk-align-left uk-margin-remove">23 de agosto 2020</span>
-                    <span class="uk-align-right uk-margin-remove">2 items</span>
-                </caption>
-                <thead>
-                    <th class="uk-table-shrink">Visibilidad</th> <!-- TODO: Mover despues de autor? -->
-                    <th class="uk.table-shrink">Tipo</th>
-                    <th class="uk-table-expand">Contenido</th>
-                    <th>Autor</th>
-                    <th class="uk-table-shrink">Acciones</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span uk-icon="lock" uk-tooltip="Privado"></span></td>
-                        <td>Recordatorio</td>
-                        <td>Minutar Exp 6787</td>
-                        <td>Ramón De Uña</td>
-                        <td><ul class="uk-iconnav">
-                            <li><a href="agenda/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-                            <li><a href="agenda/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-                            <li><a href="expedientes/67-20" uk-icon="file-text" uk-tooltip="Ir a expediente"></a></li>
-                        </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span uk-icon="unlock" uk-tooltip="Público"></span></td>
-                        <td>Vencimiento</td>
-                        <td>Entrega delaraciones Nº Exp 67/20</td>
-                        <td>Marta Díaz</td>
-                        <td><ul class="uk-iconnav">
-                            <li><a href="agenda/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-                            <li><a href="agenda/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-                            <li><a href="expedientes/67-20" uk-icon="file-text" uk-tooltip="Ir a expediente"></a></li>
-                        </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="tableOverflow" class="uk-overflow-auto">
+                <table class="uk-table uk-table-divider uk-table-hover uk-tale-justify uk-table-middle">
+                    <caption class="">
+                        <span class="uk-align-left uk-margin-remove">23 de agosto 2020</span>
+                        <span class="uk-align-right uk-margin-remove">2 items</span>
+                    </caption>
+                    <thead>
+                        <th class="uk-table-shrink">Visibilidad</th> <!-- TODO: Mover despues de autor? -->
+                        <th class="uk.table-shrink">Tipo</th>
+                        <th class="uk-table-expand">Contenido</th>
+                        <th>Autor</th>
+                        <th class="uk-table-shrink">Acciones</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span uk-icon="lock" uk-tooltip="Privado"></span></td>
+                            <td>Recordatorio</td>
+                            <td>Minutar Exp 6787</td>
+                            <td>Ramón De Uña</td>
+                            <td><ul class="uk-iconnav">
+                                <li><a href="agenda/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+                                <li><a href="agenda/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
+                                <li><a href="expedientes/67-20" uk-icon="file-text" uk-tooltip="Ir a expediente"></a></li>
+                                <li><a href="agenda/completar/6787" uk-icon="check" uk-tooltip="Marcar como completado"></a></li>
+                            </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span uk-icon="unlock" uk-tooltip="Público"></span></td>
+                            <td>Vencimiento</td>
+                            <td>Entrega delaraciones Nº Exp 67/20</td>
+                            <td>Marta Díaz</td>
+                            <td><ul class="uk-iconnav">
+                                <li><a href="agenda/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+                                <li><a href="agenda/editar/6787?eliminar=1" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
+                                <li><a href="expedientes/67-20" uk-icon="file-text" uk-tooltip="Ir a expediente"></a></li>
+                                <li><a href="agenda/editar/6787?=completar=True" uk-icon="check" uk-tooltip="Marcar como completado"></a></li>
+                            </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 	 </div>
 </body>
