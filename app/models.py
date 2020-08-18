@@ -1,4 +1,4 @@
-#from flask_security import UserMixin, RoleMixin
+from flask_security import RoleMixin
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -58,7 +58,7 @@ RegistrationToken.target_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 User.registration_token = db.relationship('RegistrationToken', back_populates="user", foreign_keys=[RegistrationToken.target], primaryjoin=(RegistrationToken.target_id==User.registration_token_id))
 """
 
-class Role(db.Model):
+class Role(db.Model, RoleMixin):
 	__tablename__ = 'roles'
 
 	id = db.Column(db.Integer, primary_key=True)
