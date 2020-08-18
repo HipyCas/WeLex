@@ -1,16 +1,20 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 
 
 class LoginForm(FlaskForm):
     username = StringField('Alias', validators=[DataRequired(), Length(max=32)])
     password = PasswordField('Contraseña', validators=[DataRequired()])
+    remember_user_pass = BooleanField('Recordar alias y contraseña')
+    remember_me = BooleanField('Recordarme')
 
 
 class RegisterForm(FlaskForm):
     name = StringField('Nombre', validators=[DataRequired()])
     token = StringField('Clave de registro', validators=[DataRequired()])
+    remember_user_pass = BooleanField('Recordar alias y contraseña')
+    login_after = BooleanField('Iniciar sesión tras registro')
 
 class RegisterDataForm(FlaskForm):
     username = StringField('Alias', validators=[DataRequired()])
