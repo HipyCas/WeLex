@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+#from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Mail
 #from flask_babel import Babel
 
@@ -12,8 +13,10 @@ db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 login.login_view = 'auth.login'
+#security = Security()
 mail = Mail()
 #babel = Babel()
+
 
 def create_app(config_class=Config):
 	app = Flask(__name__)
@@ -23,6 +26,12 @@ def create_app(config_class=Config):
 	migrate.init_app(app, db)
 	login.init_app(app)
 	mail.init_app(app)
+
+	"""
+	from app.models import User, Role
+	user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+	Security.init_app(self=Security, app=app, datastore=user_datastore)
+	"""
 	
 	from app.core import bp as bp_core
 	app.register_blueprint(bp_core)
