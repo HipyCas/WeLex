@@ -133,3 +133,7 @@ migrations/script.py.mako
 migrations/env.py
 migrations/README
 migrations/versions/d870328aa6e3_first_migration.py
+migrations/versions/243cf69e9154_bug_fixes_tokens.py
+migrations/versions/9517e241c4f5_bug_fixes_tokens.py
+migrations/versions/d94120d47724_registration_token.py
+migrations/versions/bf3713d5440f_bug_fixes_tokens.py
