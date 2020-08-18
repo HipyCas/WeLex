@@ -11,7 +11,8 @@ class User(db.Model, UserMixin):
 	nombre = db.Column(db.String(24))
 	apellidos = db.Column(db.String(48))
 	password_hash = db.Column(db.String)
-	registration_token_id = db.Column(db.Integer, db.ForeignKey('registrationtoken.id'))
+	registration_token_id = db.Column(db.Integer, db.ForeignKey('registration_tokens.id'))
+	registration_token = db.relationship('RegistrationToken', back_populates="user")
 	registration_tokens = db.relationship('RegistrationToken', backref='dispatcher', lazy='dynamic')
 
 	def set_password(self, password):
@@ -22,10 +23,11 @@ class User(db.Model, UserMixin):
 
 
 class RegistrationToken(db.Model):
+	__tablename__ = 'registration_tokens'
 	id = db.Column(db.Integer, primary_key=True)
 	token = db.Column(db.String, unique=True, index=True)
 	target_name = db.Column(db.String, unique=True, index=True)
-	target_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	target = db.relationship("User", uselist=False, back_populates="registration_token")
 	dispatcher_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
