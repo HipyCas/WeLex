@@ -18,6 +18,10 @@
             {{ form.token(class='uk-input', placeholder='{}'.format(form.token.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
+    <div class="uk-margin">
+        <label>{{ form.remember_user_pass(class='uk-checkbox') }} {{ '{}'.format(form.remember_user_pass.label).split('>')[1].split('<')[0] }}</label><br>
+        <label>{{ form.login_after(class='uk-checkbox') }} {{ '{}'.format(form.login_after.label).split('>')[1].split('<')[0] }}</label>
+    </div>
     <button action="submit" class="uk-button uk-button-default">Siguiente</button>
 </form>
 <a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.login') }}">Iniciar sesión <span uk-icon="arrow-right"></span></a>

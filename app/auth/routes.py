@@ -19,7 +19,7 @@ def login():
         if not user.check_password(form.password.data):
             flash('Contraseña incorrecta', category='danger')
             return render_template('auth/login.html', form=form)
-        login_user(user)
+        login_user(user, remember=form.remember_me.data)
         return redirect(url_for('core.start'))
     return render_template('auth/login.html', form=form)
 

@@ -18,6 +18,10 @@
             {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
+    <div class="uk-margin">
+        <label>{{ form.remember_user_pass(class='uk-checkbox') }} {{ '{}'.format(form.remember_user_pass.label).split('>')[1].split('<')[0] }}</label><br>
+        <label>{{ form.remember_me(class='uk-checkbox') }} {{ '{}'.format(form.remember_me.label).split('>')[1].split('<')[0] }}</label>
+    </div>
     <button action="submit" class="uk-button uk-button-default">Entrar</button>
 </form>
 <a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.register') }}">Registrarse con clave <span uk-icon="arrow-right"></span></a>
