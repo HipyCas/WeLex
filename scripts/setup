@@ -40,6 +40,7 @@ read PYTHON_ALIAS
 if [ $PYTHON_ALIAS == "yes" ]; then  # create alias if wanted
 	echo "> Writing alias"
 	echo "alias python=/usr/local/bin/python3.8" >> ~/.bashrc
+	source ~/.bashrc
 else
 	echo "> Skipping..."
 fi
