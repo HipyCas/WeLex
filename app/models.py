@@ -4,7 +4,31 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
 
 
+class RegistrationToken(db.Model):
+	"""
+	class PseudoUser(object):
+		def __init__(self):
+			self.user = None
+
+		def __get__(self, instance, owner):
+			#if not self.user:
+			#self.user = User()
+			return User
+	user = PseudoUser()
+	"""
+
+	__tablename__ = 'registration_tokens'
+
+	id = db.Column(db.Integer, primary_key=True)
+	token = db.Column(db.String, unique=True, index=True)
+	target_name = db.Column(db.String, unique=True, index=True)
+	target_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+	#target = db.relationship("User", uselist=False, back_populates="registration_token", foreign_keys=[user.registration_token_id])
+
+
 class User(db.Model, UserMixin):
+	__tablename__ = 'users'
+
 	id = db.Column(db.Integer, primary_key=True)
 	alias = db.Column(db.String(32), unique=True, index=True)
 	email = db.Column(db.String(140), unique=True, index=True)
@@ -12,8 +36,6 @@ class User(db.Model, UserMixin):
 	apellidos = db.Column(db.String(48))
 	password_hash = db.Column(db.String)
 	registration_token_id = db.Column(db.Integer, db.ForeignKey('registration_tokens.id'))
-	registration_token = db.relationship('RegistrationToken', back_populates="user")
-	registration_tokens = db.relationship('RegistrationToken', backref='dispatcher', lazy='dynamic')
 
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
@@ -22,13 +44,14 @@ class User(db.Model, UserMixin):
 		return check_password_hash(self.password_hash, check)
 
 
-class RegistrationToken(db.Model):
-	__tablename__ = 'registration_tokens'
-	id = db.Column(db.Integer, primary_key=True)
-	token = db.Column(db.String, unique=True, index=True)
-	target_name = db.Column(db.String, unique=True, index=True)
-	target = db.relationship("User", uselist=False, back_populates="registration_token")
-	dispatcher_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+RegistrationToken.dispatcher_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+User.registration_tokens = db.relationship('RegistrationToken', backref='dispatcher', lazy='dynamic', foreign_keys=[RegistrationToken.dispatcher_id], primaryjoin='RegistrationToken.dispatcher_id==User.id')
+
+"""
+RegistrationToken.target = db.relationship("User", uselist=False, back_populates="registration_token", foreign_keys=[User.registration_token_id])
+RegistrationToken.target_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+User.registration_token = db.relationship('RegistrationToken', back_populates="user", foreign_keys=[RegistrationToken.target], primaryjoin='RegistrationToken.target_id==User.registration_token_id')
+"""
 
 
 class Expediente(db.Model):
@@ -60,7 +83,7 @@ class Actuacion(db.Model):
 
 class Evento(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	autor = db.Column(db.Integer, db.ForeignKey('user.id'))
+	autor = db.Column(db.Integer, db.ForeignKey('users.id'))
 	actuacion = db.Column(db.Integer, db.ForeignKey('actuacion.id'))
 	visibilidad = db.Column(db.Integer)  # 0 -> publico; 1 -> privado
 	tipo = db.Column(db.String(12))  # TODO relationship new TipoEvento model

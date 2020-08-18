@@ -6,14 +6,14 @@ from wtforms.validators import DataRequired, Length, Email, ValidationError
 class LoginForm(FlaskForm):
     username = StringField('Alias', validators=[DataRequired(), Length(max=32)])
     password = PasswordField('Contraseña', validators=[DataRequired()])
-    remember_user_pass = BooleanField('Recordar alias y contraseña')
+    remember_user_pass = BooleanField('Recordar alias', default=None)
     remember_me = BooleanField('Recordarme')
 
 
 class RegisterForm(FlaskForm):
     name = StringField('Nombre', validators=[DataRequired()])
     token = StringField('Clave de registro', validators=[DataRequired()])
-    remember_user_pass = BooleanField('Recordar alias y contraseña')
+    remember_user_pass = BooleanField('Recordar alias')
     login_after = BooleanField('Iniciar sesión tras registro')
 
 class RegisterDataForm(FlaskForm):
