@@ -21,78 +21,97 @@
 
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
-        <div id="nav-container" class="uk-container uk-navbar-container">
-            <nav class="uk-navbar-container" uk-navbar>
-                <!-- Navbar content for screens bigger than small -->
-                <div class="uk-navbar-left nav-overlay uk-visible@s">
-                    <ul class="uk-navbar-nav">
-                        <li class="{% if inicio %}uk-active{% endif %}"><a href="inicio">Inicio</a></li>
-                        <li class="{% if agenda %}active{% endif %}"><a href="agenda">Agenda</a></li>
-                        <li class="{% if expedientes %}active{% endif %}"><a href="expedientes">Expedientes</a></li>
-                        <li class="{% if minutacion %}active{% endif %}"><a href="minutacion">Minutación</a></li>
-                        <li class="{% if listin %}active{% endif %}"><a href="listin">Listín</a></li>
-                    </ul>
-                </div>
-                <!-- Toggle icon for small screens -->
-                <div class="uk-navbar-left nav-overlay uk-hidden@s">
-                    <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#navbar-off" uk-toggle="#navbar-off"></a>
-                </div>
-                <!-- Small screen of canvas panel -->
-                <div id="navbar-off" uk-offcanvas="overlay:true; mode=push">
-                    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-                        <button class="uk-offcanvas-close" type="button" uk-close></button>
-                        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                            <li class="uk-active"><a href="{{ url_for('core.start') }}">Inicio</a></li>
-                            <li><a href="{{ url_for('agen.start') }}">Agenda</a></li>
-                            <li><a href="{{ url_for('exp.start') }}">Expedientes</a></li>
-                            <li><a href="{{ url_for('min.start') }}">Minutación</a></li>
-                            <li><a href="{{ url_for('list.start') }}">Listín</a></li>
-                            <!--
-                            <li class="uk-nav-divider"></li>
-                            <li><a href="{{ url_for('core.settings') }}" uk-icon="settings">Ajustes</a></li>
-                            -->
-                        </ul>
-                    </div>
-                </div>
-                <!-- User and search icons -->
-                <div class="uk-navbar-right nav-overlay">
-                    <ul class="uk-navbar-nav">
-                        <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
-                        <li>
-                            <a class="uk-parent" uk-icon="user"></a>
-                            <div class="uk-navbar-dropdown">
-                                <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li><a href="{{ url_for('core.settings') }}"><span uk-icon="settings"></span> Ajustes</a></li>
-                                    <li><a href="https://hipycas.gitbook.io/welex" rel="noopener noreferrer" target="_blank"><span uk-icon="copy"></span> Documentación</a></li>
-                                    <li><a href="{{ url_for('core.help') }}"><span uk-icon="question"></span> Ayuda</a></li>
-                                    <li class="uk-nav-divider"></li>
-                                    <li><ul class="uk-iconnav uk-padding-small">
-                                        <li><a href="{{ url_for('auth.users') }}" uk-icon="users"></a></li>
-                                        <li><a href="{{ url_for('auth.logout') }}" uk-icon="sign-out"></a></li>
-                                    </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Navbar overlay search field -->
-                <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
-                    <div class="uk-navbar-item uk-width-expand">
-                        <form class="uk-search uk-search-navbar uk-width-1-1" action="search" method="GET">
-                            <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
-                        </form>
-                    </div>
-                    <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-                </div>
-            </nav>
+    <div id="loading" class="toggle" hidden>
+        <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle">
+            <a uk-toggle="target: .toggle" uk-close></a>
+            <div uk-spinner="ratio: 2.5"></div>
         </div>
     </div>
-    <!-- Contenido -->
-    <div class="uk-container">
-			{% block content %}{% endblock %}
-	 </div>
+    <!--
+    <script>
+        var x = document.getElementById("loading");
+        console.log("Got loading div: " + x);
+        if (x.style.visibility === "hidden") {
+            console.log("Loading (" + x + ") is hidden, changing state: " + x.style.visibility);
+            x.style.visibility = "hidden";
+            document.getElementById("content").style.visibility = "visible";
+        }
+    </script>
+    -->
+    <div id="content" class="toggle">
+        <!-- Navbar -->
+        <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
+            <div id="nav-container" class="uk-container uk-navbar-container">
+                <nav class="uk-navbar-container" uk-navbar>
+                    <!-- Navbar content for screens bigger than small -->
+                    <div class="uk-navbar-left nav-overlay uk-visible@s">
+                        <ul class="uk-navbar-nav">
+                            <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">Inicio</a></li>
+                            <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">Agenda</a></li>
+                            <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">Expedientes</a></li>
+                            <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">Minutación</a></li>
+                            <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">Listín</a></li>
+                        </ul>
+                    </div>
+                    <!-- Toggle icon for small screens -->
+                    <div class="uk-navbar-left nav-overlay uk-hidden@s">
+                        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#navbar-off" uk-toggle="#navbar-off"></a>
+                    </div>
+                    <!-- Small screen of canvas panel -->
+                    <div id="navbar-off" uk-offcanvas="overlay:true; mode=push">
+                        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+                            <button class="uk-offcanvas-close" type="button" uk-close></button>
+                            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                                <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">Inicio</a></li>
+                                <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">Agenda</a></li>
+                                <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">Expedientes</a></li>
+                                <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">Minutación</a></li>
+                                <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">Listín</a></li>
+                                <!--
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="{{ url_for('core.settings') }}" uk-icon="settings">Ajustes</a></li>
+                                -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- User and search icons -->
+                    <div class="uk-navbar-right nav-overlay">
+                        <ul class="uk-navbar-nav">
+                            <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+                            <li>
+                                <a class="uk-parent" uk-icon="user"></a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="{{ url_for('core.settings') }}" uk-toggle="target: .toggle"><span uk-icon="settings"></span> Ajustes</a></li>
+                                        <li><a href="https://hipycas.gitbook.io/welex" rel="noopener noreferrer" target="_blank" uk-toggle="target: .toggle"><span uk-icon="copy"></span> Documentación</a></li>
+                                        <li><a href="{{ url_for('core.help') }}" uk-toggle="target: .toggle"><span uk-icon="question"></span> Ayuda</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><ul class="uk-iconnav uk-padding-small">
+                                            <li><a href="{{ url_for('auth.users') }}" uk-toggle="target: .toggle" uk-icon="users"></a></li>
+                                            <li><a href="{{ url_for('auth.logout') }}" uk-toggle="target: .toggle" uk-icon="sign-out"></a></li>
+                                        </ul></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Navbar overlay search field -->
+                    <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+                        <div class="uk-navbar-item uk-width-expand">
+                            <form class="uk-search uk-search-navbar uk-width-1-1" action="search" method="GET">
+                                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                                <button action="submit" uk-toggle="target: .toggle" hidden></button>
+                            </form>
+                        </div>
+                        <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Contenido -->
+        <div class="uk-container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
 </body>
 </html>

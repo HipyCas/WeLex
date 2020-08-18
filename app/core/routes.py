@@ -9,9 +9,11 @@ def before_first_request():
 	current_app.config['SECURITY_LOGIN_URL'] = url_for('auth.login')
 
 
+"""
 @bp.before_request
 def before_request():
 	return render_template('loading.html')
+"""
 
 
 @bp.route('/')
