@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length, Email, ValidationError
 class LoginForm(FlaskForm):
     username = StringField('Alias', validators=[DataRequired(), Length(max=32)])
     password = PasswordField('Contraseña', validators=[DataRequired()])
-    remember_user_pass = BooleanField('Recordar alias', default=None)
+    remember_username = BooleanField('Recordar alias', default=None)
     remember_me = BooleanField('Recordarme')
 
 

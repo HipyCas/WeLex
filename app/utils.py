@@ -1,0 +1,15 @@
+secondsMinute = 60
+secondsHour = 3600  # 60 min * 60 s
+secondsDay = 86400  # 24 h * 60 min * 60 s
+secondsMonth30 = 2592000  # 30 d * 24 h * 60 min * 60 s
+secondsMonth31 = 2578400  # 31 d * 24 h * 60 min * 60 s
+secondsMonth28 = 2419200  # 28 d * 24 h * 60 min * 60 s
+secondsMonth29 = 2505600  # 29 d * 24 h * 60 min * 60 s
+secondsTrimester = 7884000  # (365 d / 4 trimesters) * 24 h * 60 min * 60 s
+secondsTrimesterBis = 7905600  # (366 d / 4 trimesters) * 24 h * 60 min * 60 s
+secondsTrimester30 = 7735200  # 3 m * 31 d * 24 h * 60 min * 60 s
+secondsTrimester31 = 8035200  # 3 m * 31 d * 24 h * 60 min * 60 s
+secondsSemester = 15768000  # 2 * (365 d / 4 trimesters) * 24 h * 60 min * 60 s
+secondsSemesterBis = 15811200  # 2 * (366 d / 4 trimesters) * 24 h * 60 min * 60 s
+secondsYear = 31536000  # 365 d * 24 h * 60 min * 60 s
+secondsYearBis = 31622400  # 366 d * 24 h * 60 min * 60 s

@@ -1,9 +1,10 @@
 from flask import render_template, flash, url_for, redirect, request
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_security import login_user, logout_user, login_required, current_user
 
 from app.auth import bp
 from app.auth.forms import *
 from app.models import User
+from app.utils import secondsTrimester
 
 
 @bp.route('/login', methods=['GET', 'POST'])
@@ -22,12 +23,12 @@ def login():
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('core.start'))
     form.username.default = request.cookies.get('WeLex-alias')
-    if 'WeLex-recordar-user-pass' in request.cookies:
-        form.remember_user_pass.active = True
+    if 'WeLex-recordar-alias' in request.cookies:
+        form.remember_username.active = True
     else:
-        form.remember_user_pass.active = False
+        form.remember_username.active = False
     form.process()
-    return render_template('auth/login.html', form=form, cookie_save_user_pass=True)
+    return render_template('auth/login.html', form=form, cookie_save_username=True)
 
 
 @bp.route('/logout')
@@ -45,7 +46,7 @@ def register():
     if form.validate_on_submit():
         # TODO: validate token (logic)
         login_user(User.query.get(1))
-        return redirect(url_for('auth.register_data', save_user_pass=form.remember_user_pass.data, login=form.login_after.data))
+        return redirect(url_for('auth.register_data', save_username=form.remember_username.data, login=form.login_after.data))
     return render_template('auth/register.html', form=form, title='Registrarse')
 
 
@@ -61,10 +62,10 @@ def register_data():
         # current_user.email = form.email.data
         # current_user.set_password(form.password.data)
         # db.session.commit()
-        if request.args.get('save_user_pass', False, type=bool):
-            request.cookies.set_cookie('WeLex-alias', current_user.username, 60*60*24*31)
+        if request.args.get('save_username', False, type=bool):
+            request.cookies.set_cookie('WeLex-alias', current_user.username, secondsTrimester)
             #request.cookies.set_cookie('WeLex-contrasena', form.password.data, 60*60*24*31)
-            request.cookies.set_cookie('WeLex-recordar-user-pass', request.args.get('save_user_pass', False, type=bool), 60*60*24*31)
+            request.cookies.set_cookie('WeLex-recordar-alias', request.args.get('save_username', False, type=bool), secondsTrimester)
         keep_login = request.args.get('login', False, type=bool)
         if not keep_login:
             logout_user()

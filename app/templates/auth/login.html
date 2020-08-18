@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="uk-margin">
-        <label>{% if cookie_save_user_pass %}{{ form.remember_user_pass(class='uk-checkbox', checked="true") }}{% else %}{{ form.remember_user_pass(class='uk-checkbox') }}{% endif %} {{ '{}'.format(form.remember_user_pass.label).split('>')[1].split('<')[0] }}</label><br>
+        <label>{% if cookie_save_username %}{{ form.remember_username(class='uk-checkbox', checked="true") }}{% else %}{{ form.remember_username(class='uk-checkbox') }}{% endif %} {{ '{}'.format(form.remember_username.label).split('>')[1].split('<')[0] }}</label><br>
         <label>{{ form.remember_me(class='uk-checkbox') }} {{ '{}'.format(form.remember_me.label).split('>')[1].split('<')[0] }}</label>
     </div>
     <button action="submit" class="uk-button uk-button-default">Entrar</button>
