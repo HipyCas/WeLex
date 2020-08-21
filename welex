@@ -1,0 +1,25 @@
+#!/bin/python3.7
+
+
+import click
+import subprocess
+
+
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
+@click.option('-g', '--git-service', default='git', help='Git service to run, as shell command')
+@click.option('--ssh/--https', default=False, help='Clone via git or https (default: https)')
+def download(ssh, git_service):
+    if ssh:
+        git_result = subprocess.run([f'{git_service}', 'clone', 'git@github.com:HipyCas/WeLex.git']) 
+    else:
+        git_result = subprocess.run(f'{git_service} clone https://www.github.com/HipyCas/WeLex.git') 
+
+
+if __name__ == '__main__':
+    cli()
+
