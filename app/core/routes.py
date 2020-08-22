@@ -1,5 +1,5 @@
 from flask import render_template, url_for, current_app
-from flask_security import login_required
+from flask_login import login_required
 
 from app.core import bp
 

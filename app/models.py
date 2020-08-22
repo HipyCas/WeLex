@@ -1,13 +1,15 @@
-from flask_security import UserMixin, RoleMixin
-#from flask_login import UserMixin
+# from flask_security import UserMixin, RoleMixin
+from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db#, login
+from app import db, login
 
 
+"""
 roles_users_table = db.Table('roles_users',
 								db.Column('users_id', db.Integer, db.ForeignKey('user.id')),
 								db.Column('roles_id', db.Integer, db.ForeignKey('roles.id')))
+"""
 
 
 class RegistrationToken(db.Model):
@@ -35,13 +37,15 @@ class User(db.Model, UserMixin):
 
 	id = db.Column(db.Integer, primary_key=True)
 	active = db.Column(db.Boolean)
-	roles = db.relationship('Role', secondary=roles_users_table, backref='user', lazy=True)
+	admin = db.Column(db.Boolean)
+	# roles = db.relationship('Role', secondary=roles_users_table, backref='user', lazy=True)
 	alias = db.Column(db.String(32), unique=True, index=True)
 	email = db.Column(db.String(140), unique=True, index=True)
 	nombre = db.Column(db.String(24))
 	apellidos = db.Column(db.String(48))
 	password_hash = db.Column(db.String)
 	registration_token_id = db.Column(db.Integer, db.ForeignKey('registration_tokens.id'))
+	actuaciones = db.relationship('Actuacion', backref='user', lazy='dynamic')
 
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
@@ -60,12 +64,14 @@ User.registration_token = db.relationship('RegistrationToken', back_populates="u
 """
 
 
+"""
 class Role(db.Model, RoleMixin):
 	__tablename__ = 'roles'
 
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(32), unique=True, index=True)
 	description = db.Column(db.String(140))
+"""
 
 
 class Expediente(db.Model):
@@ -87,7 +93,7 @@ class Expediente(db.Model):
 class Actuacion(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	fecha = db.Column(db.Date)
-	#autor = db.Column(db.Integer, foreign_key=User.id)
+	autor = db.Column(db.Integer, db.ForeignKey('user.id'))
 	fase = db.Column(db.String(64))  # TODO relationship new Fase model?
 	contenido = db.Column(db.String(160))
 	#adjuntos = TODO relationship Adjunto/File/Archivo
@@ -104,6 +110,6 @@ class Evento(db.Model):
 	contenido = db.Column(db.String(160))
 
 
-#@login.user_loader
+@login.user_loader
 def load_user(id):
 	return User.query.get(int(id))

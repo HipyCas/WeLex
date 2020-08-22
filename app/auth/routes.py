@@ -1,5 +1,5 @@
 from flask import render_template, flash, url_for, redirect, request
-from flask_security import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 from app.auth import bp
 from app.auth.forms import *
@@ -23,11 +23,11 @@ def login():
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('core.start'))
     form.username.default = request.cookies.get('WeLex-alias')
-    if 'WeLex-recordar-alias' in request.cookies:
+    form.process()
+    if str(request.cookies.get('WeLex-recordar-alias')) == "1":
         form.remember_username.active = True
     else:
         form.remember_username.active = False
-    form.process()
     return render_template('auth/login.html', form=form, cookie_save_username=True)
 
 
