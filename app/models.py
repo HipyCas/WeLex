@@ -1,8 +1,8 @@
-from flask_security import RoleMixin
-from flask_login import UserMixin
+from flask_security import UserMixin, RoleMixin
+#from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db, login
+from app import db#, login
 
 
 roles_users_table = db.Table('roles_users',
@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
 
 	id = db.Column(db.Integer, primary_key=True)
 	active = db.Column(db.Boolean)
-	roles = db.relationship('Role', secondary=roles_users_table, backref='user', lazy='dynamic')
+	roles = db.relationship('Role', secondary=roles_users_table, backref='user', lazy=True)
 	alias = db.Column(db.String(32), unique=True, index=True)
 	email = db.Column(db.String(140), unique=True, index=True)
 	nombre = db.Column(db.String(24))
@@ -49,6 +49,7 @@ class User(db.Model, UserMixin):
 	def check_password(self, check):
 		return check_password_hash(self.password_hash, check)
 
+
 """
 RegistrationToken.dispatcher_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 User.registration_tokens = db.relationship('RegistrationToken', backref='dispatcher', lazy='dynamic', foreign_keys=[RegistrationToken.dispatcher_id], primaryjoin=(RegistrationToken.dispatcher_id==User.id))
@@ -57,6 +58,7 @@ RegistrationToken.target = db.relationship("User", uselist=False, back_populates
 RegistrationToken.target_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 User.registration_token = db.relationship('RegistrationToken', back_populates="user", foreign_keys=[RegistrationToken.target], primaryjoin=(RegistrationToken.target_id==User.registration_token_id))
 """
+
 
 class Role(db.Model, RoleMixin):
 	__tablename__ = 'roles'
@@ -102,6 +104,6 @@ class Evento(db.Model):
 	contenido = db.Column(db.String(160))
 
 
-@login.user_loader
+#@login.user_loader
 def load_user(id):
 	return User.query.get(int(id))
