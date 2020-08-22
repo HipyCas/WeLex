@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-#from flask_security import Security, SQLAlchemyUserDatastore
+from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Mail
 #from flask_babel import Babel
 
@@ -13,7 +13,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 login.login_view = 'auth.login'
-#security = Security()
+security = Security()
 mail = Mail()
 #babel = Babel()
 
@@ -27,12 +27,12 @@ def create_app(config_class=Config):
 	login.init_app(app)
 	mail.init_app(app)
 
-	"""
+	app.config['SECURITY_LOGIN_URL'] = 'auth/login'
+	app.config['SECURITY_LOGIN_USER_TEMPLATE'] = 'auth/login.html'
 	from app.models import User, Role
 	user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-	Security.init_app(self=Security, app=app, datastore=user_datastore)
-	"""
-	
+	Security.init_app(app, datastore=user_datastore)
+
 	from app.core import bp as bp_core
 	app.register_blueprint(bp_core)
 	
@@ -50,6 +50,9 @@ def create_app(config_class=Config):
 	
 	from app.minutacion import bp as bp_minutacion
 	app.register_blueprint(bp_minutacion, url_prefix='/minutacion')
+	
+	from app.errors import bp as bp_errors
+	app.register_blueprint(bp_errors)
 	
 	return app
 
