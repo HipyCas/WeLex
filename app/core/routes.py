@@ -7,6 +7,7 @@ from app.core import bp
 @bp.before_app_first_request
 def before_first_request():
 	current_app.config['SECURITY_LOGIN_URL'] = url_for('auth.login')
+	current_app.config['SECURITY_LOGIN_USER_TEMPLATE'] = 'auth/login.html'
 
 
 """
