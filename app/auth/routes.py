@@ -78,4 +78,4 @@ def register_data():
 @login_required
 @admin_required
 def users():
-    pass
+   return render_template('auth/users.html') 

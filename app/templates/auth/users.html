@@ -1,6 +1,9 @@
 {% extends "auth/base.html" %}
 
 {% block content %}
+<div class="uk-inline uk-text-middle">
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Users</h1>
+</div>
 <table class="uk-table uk-table-responsive uk-table-divider">
     <thead>
         <tr>
@@ -8,8 +11,48 @@
             <th>Active</th>
             <th>Admin</th>
             <th>Alias</th>
-            <th>Email</th>
+	    <th>Email</th>
+	    <th>Name</th>
+	    <th>Registro</th>
         </tr>
     </thead>
+    <tbody>
+	    <tr>
+		    <td>1</td>
+		    <td>True</td>
+		    <td>True</td>
+		    <td>admin</td>
+		    <td>admin@example.com</td>
+		    <td>Admin</td>
+		    <td>self</td>
+		</tr>
+	    <tr>
+		    <td>2</td>
+		    <td>No Admin <span uk-icon="close"></span></td>
+		    <td>Active <span uk-icon="check"></span></td>
+		    <td>guest</td>
+		    <td>guest@example.com</td>
+		    <td>Guest</td>
+		    <td>self</td>
+		</tr>
+	    <tr>
+		    <td>2</td>
+		    <td>Admin <span uk-icon="check"></span></td>
+		    <td>Active <span uk-icon="check"></span></td>
+		    <td>radeuna</td>
+		    <td>radeuna@mundo-r.com</td>
+		    <td>Ramón</td>
+		    <td>self</td>
+		</tr>
+	    <tr>
+		    <td>2</td>
+		    <td>Admin <span uk-icon="check"></span></td>
+		    <td>Active <span uk-icon="check"></span></td>
+		    <td>radeuna</td>
+		    <td>radeuna@mundo-r.com</td>
+		    <td>Ramón</td>
+		    <td>self</td>
+		</tr>
+	</tbody>
 </table>
 {% endblock %}
