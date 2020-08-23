@@ -1,5 +1,6 @@
 from flask import render_template, flash, url_for, redirect, request
 from flask_login import login_user, logout_user, login_required, current_user
+from werkzeug.urls import url_parse
 
 from app.decorators import admin_required
 from app.auth import bp
@@ -25,8 +26,10 @@ def login():
             flash('Usuario desactivado', category='danger')
             return render_template('auth/login.html', title='Iniciar sesión', form=form)
         login_user(user, remember=form.remember_me.data)
-        # TODO: next_page
-        return redirect(url_for('core.start'))
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('core.start')
+        return redirect(next_page)
     form.username.default = request.cookies.get('WeLex-alias')
     form.process()
     if str(request.cookies.get('WeLex-recordar-alias')) == "1":
