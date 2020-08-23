@@ -4,13 +4,6 @@ from app.models import User
 app = create_app()
 app.app_context().push()
 
-if bool(input('Set password (True) or create user (False): ')):
-    id = str(input('Id: '))
-    u = User.query.get(id)
-    u.set_password(str(input('Password to hash: ')))
-    db.session.commit()
-    exit(0)
-
 name = str(input('Name: '))
 username = str(input('Username: '))
 email = str(input('Email: '))
