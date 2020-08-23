@@ -17,11 +17,15 @@ def login():
         user = User.query.filter_by(alias=form.username.data).first()
         if user is None:
             flash('Usuario no encontrado', category='danger')
-            return render_template('auth/login.html', form=form)
+            return render_template('auth/login.html', title='Iniciar sesión', form=form)
         if not user.check_password(form.password.data):
             flash('Contraseña incorrecta', category='danger')
-            return render_template('auth/login.html', form=form)
+            return render_template('auth/login.html', title='Iniciar sesión', form=form)
+        if not user.active:
+            flash('Usuario desactivado', category='danger')
+            return render_template('auth/login.html', title='Iniciar sesión', form=form)
         login_user(user, remember=form.remember_me.data)
+        # TODO: next_page
         return redirect(url_for('core.start'))
     form.username.default = request.cookies.get('WeLex-alias')
     form.process()
