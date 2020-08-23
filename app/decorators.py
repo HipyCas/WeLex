@@ -3,6 +3,17 @@ from flask import abort, current_app
 from flask_login import current_user, login_required
 
 
+def active_required(f):
+    @wraps(f)
+    @login_required
+    def decorated_function(*args, **kwargs):
+        if current_user.is_authenticated:
+            if not current_user.active:
+                abort(401)
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 def admin_required(f):
     @wraps(f)
     @login_required

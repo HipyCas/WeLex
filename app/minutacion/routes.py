@@ -1,9 +1,10 @@
 from flask_login import login_required
 
+from app.decorators import active_required
 from app.minutacion import bp
 
 
 @bp.route('/')
-@login_required
+@active_required
 def start():
     pass

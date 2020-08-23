@@ -2,6 +2,7 @@ from flask import render_template, url_for, current_app
 from flask_login import login_required
 
 from app.core import bp
+from app.decorators import active_required
 
 
 @bp.before_app_first_request
@@ -18,18 +19,18 @@ def before_request():
 
 
 @bp.route('/')
-@login_required
+@active_required
 def start():
 	return render_template('inicio.html', title='Inicio', inicio=True)
 
 
 @bp.route('/settings')
-@login_required
+@active_required
 def settings():
 	pass
 
 
 @bp.route('/help')
-@login_required
+@active_required
 def help():
 	pass
