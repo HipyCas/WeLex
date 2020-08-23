@@ -5,8 +5,8 @@
     <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Error 401</h1>
 </div>
 <div class="uk-text-middle uk-text-center uk-margin-large">
-	<p class="uk-text-lead uk-text-bold">Cliente no identificado</p>
-	<p>Asegúrese de tener iniciada sesión para acceder</p>
+	<p class="uk-text-lead uk-text-bold">Cliente no autorizado</p>
+	<p>Asegúrese de tener iniciada sesión con una cuenta activa para acceder</p>
 </div>
 <a href="{{ url_for('core.start') }}" class="uk-button uk-button-text">Volver a inicio<span uk-icon="arrow-right"></span></a>
 {% endblock %}
