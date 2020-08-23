@@ -2,12 +2,26 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 
+from app.models import User
+
 
 class LoginForm(FlaskForm):
     username = StringField('Alias', validators=[DataRequired(), Length(max=32)])
     password = PasswordField('Contraseña', validators=[DataRequired()])
     remember_username = BooleanField('Recordar alias', default=None)
     remember_me = BooleanField('Recordarme')
+
+    """
+    def validate_username(self, username):
+        user = User.query.filter_by(alias=username.data).first()
+        if user is None:
+            raise ValidationError('Cuenta no encontrada')
+
+    def validate_password(self, password):
+        user = User.query.filter_by(alias=self.username.data).first()
+        if user is not None and user.check_password(password.data):
+            raise ValidationError('Contraseña incorrecta')
+    """
 
 
 class RegisterForm(FlaskForm):

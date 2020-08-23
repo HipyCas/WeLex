@@ -22,8 +22,11 @@
 </head>
 <body>
 	<div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-muted">
-        <div class="uk-padding-large uk-background-default uk-box-shadow-xlarge">
+        <div class="toggle uk-padding-large uk-background-default uk-box-shadow-xlarge">
             {% block content %}{% endblock %}
+        </div>
+        <div class="toggle uk-padding uk-background-default uk-box-shadow-xlarge" hidden>
+            <div uk-spinner="ratio: 1.5"></div>
         </div>
     </div>
 </body>
