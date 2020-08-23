@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 # from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Mail
-#from flask_babel import Babel
+from flask_babel import Babel
 
 from config import Config
 
@@ -15,7 +15,7 @@ login = LoginManager()
 login.login_view = 'auth.login'
 # security = Security()
 mail = Mail()
-#babel = Babel()
+babel = Babel()
 
 
 def create_app(config_class=Config):
@@ -26,6 +26,7 @@ def create_app(config_class=Config):
 	migrate.init_app(app, db)
 	login.init_app(app)
 	mail.init_app(app)
+	babel.init_app(app)
 
 	"""
 	app.config['SECURITY_LOGIN_URL'] = 'auth/login'
