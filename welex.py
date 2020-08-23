@@ -6,6 +6,6 @@ app = create_app()
 cli.register(app)
 
 
-@app.shell_context_processors
+@app.shell_context_processor
 def make_shell_context():
     return {'app': app, 'db': db, 'mail': mail, 'RegistrationToken': RegistrationToken, 'User': User, 'Expediente': Expediente, 'Actuacion': Actuacion, 'Evento': Evento}
