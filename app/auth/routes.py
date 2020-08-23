@@ -75,7 +75,13 @@ def register_data():
 
 
 @bp.route('/manage')
-@login_required
+#@login_required
 @admin_required
 def users():
    return render_template('auth/users.html') 
+
+
+@bp.route('/manage/add')
+@admin_required
+def add_user():
+    return render_template('auth/users.html', form='Cool', title='Nuevo usuario')
