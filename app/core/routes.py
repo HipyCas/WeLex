@@ -21,7 +21,7 @@ def before_request():
 @bp.route('/')
 @active_required
 def start():
-	return render_template('inicio.html', title='Inicio', inicio=True)
+	return render_template('inicio.html', title=_('Home'), inicio=True)
 
 
 @bp.route('/settings')

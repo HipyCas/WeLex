@@ -1,5 +1,6 @@
 from flask import render_template, flash, url_for, redirect, request
 from flask_login import login_user, logout_user, login_required, current_user
+from flask_babel import _
 from werkzeug.urls import url_parse
 
 from app.decorators import admin_required
@@ -17,14 +18,14 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(alias=form.username.data).first()
         if user is None:
-            flash('Usuario no encontrado', category='danger')
-            return render_template('auth/login.html', title='Iniciar sesión', form=form)
+            flash(_('User not found'), category='danger')
+            return render_template('auth/login.html', title=_('Login'), form=form)
         if not user.check_password(form.password.data):
-            flash('Contraseña incorrecta', category='danger')
-            return render_template('auth/login.html', title='Iniciar sesión', form=form)
+            flash(_('Wrong password'), category='danger')
+            return render_template('auth/login.html', title=_('Login'), form=form)
         if not user.active:
-            flash('Usuario desactivado', category='danger')
-            return render_template('auth/login.html', title='Iniciar sesión', form=form)
+            flash(_('User is deactivated'), category='danger')
+            return render_template('auth/login.html', title=_('Login'), form=form)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -36,7 +37,7 @@ def login():
         form.remember_username.active = True
     else:
         form.remember_username.active = False
-    return render_template('auth/login.html', form=form, cookie_save_username=True)
+    return render_template('auth/login.html', title=_('Login'), form=form, cookie_save_username=True)
 
 
 @bp.route('/logout')
@@ -55,14 +56,12 @@ def register():
         # TODO: validate token (logic)
         login_user(User.query.get(1))
         return redirect(url_for('auth.register_data', save_username=form.remember_username.data, login=form.login_after.data))
-    return render_template('auth/register.html', form=form, title='Registrarse')
+    return render_template('auth/register.html', title=_('Register'), form=form)
 
 
 @bp.route('/register/data', methods=['GET', 'POST'])
 @login_required
 def register_data():
-    #if current_user.password is not None:
-     #   return redirect(url_for('core.start'))
     form = RegisterDataForm()
     if form.validate_on_submit():
         # TODO logic
@@ -78,17 +77,19 @@ def register_data():
         if not keep_login:
             logout_user()
         return redirect(url_for('core.start'))
-    return render_template('auth/register_data.html', form=form, title='Completar registro')
+    return render_template('auth/register_data.html', title=_('Complete registration'), form=form)
 
 
 @bp.route('/manage')
-#@login_required
 @admin_required
 def users():
-   return render_template('auth/users.html') 
+    return render_template('auth/users.html', title=_('Users'))
 
 
 @bp.route('/manage/add')
 @admin_required
 def add_user():
-    return render_template('auth/users.html', form='Cool', title='Nuevo usuario')
+    return render_template('auth/users.html', title=_('New user'))
+
+
+# TODO: Recover password? A page to recover it with e.g. an email or a page to show info saying to ask an admin to let you change it
