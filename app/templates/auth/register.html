@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="uk-inline uk-text-middle">
-    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Register</h1>
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> {{ _('Register') }}</h1>
 </div>
 <form action="" method="POST" class="uk-form uk-background-default">
     {{ form.hidden_tag() }}
@@ -22,7 +22,7 @@
         <label>{{ form.remember_user_pass(class='uk-checkbox') }} {{ '{}'.format(form.remember_user_pass.label).split('>')[1].split('<')[0] }}</label><br>
         <label>{{ form.login_after(class='uk-checkbox') }} {{ '{}'.format(form.login_after.label).split('>')[1].split('<')[0] }}</label>
     </div>
-    <button action="submit" class="uk-button uk-button-default">Siguiente</button>
+    <button action="submit" class="uk-button uk-button-default"> {{ _('Next') }}</button>
 </form>
-<a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.login') }}">Iniciar sesión <span uk-icon="arrow-right"></span></a>
+<a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.login') }}">{{ _('Login') }} <span uk-icon="arrow-right"></span></a>
 {% endblock %}

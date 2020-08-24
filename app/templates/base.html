@@ -46,11 +46,11 @@
                     <!-- Navbar content for screens bigger than small -->
                     <div class="uk-navbar-left nav-overlay uk-visible@s">
                         <ul class="uk-navbar-nav">
-                            <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">Inicio</a></li>
-                            <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">Agenda</a></li>
-                            <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">Expedientes</a></li>
-                            <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">Minutación</a></li>
-                            <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">Listín</a></li>
+                            <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">{{ _('Home') }}</a></li>
+                            <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">{{ _('Agenda') }}</a></li>
+                            <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">{{ _('Dossiers') }}</a></li>
+                            <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">{{ _('Billing') }}</a></li>
+                            <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">{{ _('Directory') }}</a></li>
                         </ul>
                     </div>
                     <!-- Toggle icon for small screens -->
@@ -62,11 +62,11 @@
                         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
                             <button class="uk-offcanvas-close" type="button" uk-close></button>
                             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                                <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">Inicio</a></li>
-                                <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">Agenda</a></li>
-                                <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">Expedientes</a></li>
-                                <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">Minutación</a></li>
-                                <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">Listín</a></li>
+                                <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">{{ _('Home') }}</a></li>
+                                <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">{{ _('Agenda') }}</a></li>
+                                <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">{{ _('Dossiers') }}</a></li>
+                                <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">{{ _('Billing') }}</a></li>
+                                <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">{{ _('Directory') }}</a></li>
                                 <!--
                                 <li class="uk-nav-divider"></li>
                                 <li><a href="{{ url_for('core.settings') }}" uk-icon="settings">Ajustes</a></li>
@@ -82,11 +82,12 @@
                                 <a class="uk-parent" uk-icon="user"></a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li><a href="{{ url_for('core.settings') }}" uk-toggle="target: .toggle"><span uk-icon="settings"></span> Ajustes</a></li>
-                                        <li><a href="https://hipycas.gitbook.io/welex" rel="noopener noreferrer" target="_blank" uk-toggle="target: .toggle"><span uk-icon="copy"></span> Documentación</a></li>
-                                        <li><a href="{{ url_for('core.help') }}" uk-toggle="target: .toggle"><span uk-icon="question"></span> Ayuda</a></li>
+                                        <li><a href="{{ url_for('core.settings') }}" uk-toggle="target: .toggle"><span uk-icon="settings"></span> {{ _('Settings') }}</a></li>
+                                        <li><a href="https://hipycas.gitbook.io/welex" rel="noopener noreferrer" target="_blank" uk-toggle="target: .toggle"><span uk-icon="copy"></span> {{ _('Documentation') }}</a></li>
+                                        <li><a href="{{ url_for('core.help') }}" uk-toggle="target: .toggle"><span uk-icon="question"></span> {{ _('Help') }}</a></li>
                                         <li class="uk-nav-divider"></li>
                                         <li><ul class="uk-iconnav uk-padding-small">
+                                            <li><a href="{{ url_for('core.backup') }}" uk-toggle="target: .toggle" uk-icon="cloud-download"></a></li>
                                             <li><a href="{{ url_for('auth.users') }}" uk-toggle="target: .toggle" uk-icon="users"></a></li>
                                             <li><a href="{{ url_for('auth.logout') }}" uk-toggle="target: .toggle" uk-icon="sign-out"></a></li>
                                         </ul></li>
@@ -99,7 +100,7 @@
                     <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
                         <div class="uk-navbar-item uk-width-expand">
                             <form class="uk-search uk-search-navbar uk-width-1-1" action="search" method="GET">
-                                <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                                <input class="uk-search-input" type="search" placeholder="{{ _('Search...') }}" autofocus>
                                 <button action="submit" uk-toggle="target: .toggle" hidden></button>
                             </form>
                         </div>

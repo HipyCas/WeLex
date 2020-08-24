@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="uk-inline uk-text-middle">
-    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Register</h1>
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> {{ _('Complete registration') }}</h1>
 </div>
 <form action="" method="POST" class="uk-form uk-background-default">
     {{ form.hidden_tag() }}
@@ -34,6 +34,6 @@
             {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
-    <button action="submit" class="uk-button uk-button-default">Registrarse</button>
+    <button action="submit" class="uk-button uk-button-default">{{ _('Register') }}</button>
 </form>
 {% endblock %}

@@ -2,19 +2,19 @@
 
 {% block content %}
 <div class="uk-inline uk-text-middle uk-width-1-1">
-    <h1 class="uk-header-small uk-padding-remove uk-margin-remove uk-align-left" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Users</h1>
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove uk-align-left" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> {{ _('Users') }}</h1>
     <a href="{{ url_for('auth.add_user') }}" class="uk-align-right uk-align-bottom uk-margin-top uk-link-heading" uk-icon="plus"></a>
 </div>
 <table class="uk-table uk-table-responsive uk-table-divider">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Active</th>
-            <th>Admin</th>
-            <th>Alias</th>
-	    <th>Email</th>
-	    <th>Name</th>
-	    <th>Registro</th>
+            <th>{{ _('ID') }}</th>
+            <th>{{ _('Active') }}</th>
+            <th>{{ _('Admin') }}</th>
+            <th>{{ _('Username') }}</th>
+	    <th>{{ _('Email') }}</th>
+	    <th>{{ _('Name') }}</th>
+	    <th>{{ _('Register') }}</th>
         </tr>
     </thead>
     <tbody>

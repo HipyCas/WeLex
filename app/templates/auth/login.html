@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="uk-inline uk-text-middle">
-    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Login</h1>
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> {{ _('Login') }}</h1>
 </div>
 <form action="" method="POST" class="uk-form uk-background-default">
     {{ form.hidden_tag() }}
@@ -22,7 +22,7 @@
         <label>{% if cookie_save_username %}{{ form.remember_username(class='uk-checkbox', checked="true") }}{% else %}{{ form.remember_username(class='uk-checkbox') }}{% endif %} {{ '{}'.format(form.remember_username.label).split('>')[1].split('<')[0] }}</label><br>
         <label>{{ form.remember_me(class='uk-checkbox') }} {{ '{}'.format(form.remember_me.label).split('>')[1].split('<')[0] }}</label>
     </div>
-    <button action="submit" class="uk-button uk-button-default">Entrar</button>
+    <button action="submit" class="uk-button uk-button-default"> {{ _('Sign in') }}</button>
 </form>
-<a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.register') }}">Registrarse con clave <span uk-icon="arrow-right"></span></a>
+<a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.register') }}">{{ _('Register with token') }} <span uk-icon="arrow-right"></span></a>
 {% endblock %}

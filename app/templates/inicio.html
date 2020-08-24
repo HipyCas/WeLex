@@ -3,23 +3,23 @@
 {% block content %}
 <div id="cabecero" class="uk-margin-top uk-margin-bottom">
     <h1 class="uk-header-large uk-margin-remove">23 de agosto  del 2020</h1>
-    <h5 class="uk-text-muted uk-margin-remove">Iniciada sesión como {{ current_user.nombre }} {{ current_user.apellidos }}</h5>
+    <h5 class="uk-text-muted uk-margin-remove">{{ _('Logged in as') }} {{ current_user.nombre }} {{ current_user.apellidos }}</h5>
 </div>
 <div id="agenda-hoy" class="uk-article">
-    <h1 class="uk-article-title"><a href="{{ url_for('agen.start') }}" class="uk-link-heading">Agenda hoy</a></h1>
+    <h1 class="uk-article-title"><a href="{{ url_for('agen.start') }}" class="uk-link-heading">{{ _('Agenda today') }}</a></h1>
     <div class="uk-overflow-auto">
         <table class="uk-table uk-table-divider uk-table-hover uk-tale-justify uk-table-middle">
             <caption class="">
-                <span class="uk-align-left uk-margin-remove">23 de agosto 2020</span>
+                <span class="uk-align-left uk-margin-remove">23 de agosto 2020</span> <!-- TODO: localised(flask-moment) time -->
                 <span class="uk-align-right uk-margin-remove">2 items</span>
             </caption>
             <thead>
                 <tr>
-                    <th class="uk-table-shrink">Visibilidad</th> <!-- TODO: Mover despues de autor? -->
-                    <th class="uk.table-shrink">Tipo</th>
-                    <th class="uk-table-expand">Contenido</th>
-                    <th>Autor</th>
-                    <th class="uk-table-shrink">Acciones</th>
+                    <th class="uk-table-shrink">{{ _('Visibility') }}</th> <!-- TODO: Mover despues de autor? -->
+                    <th class="uk.table-shrink">{{ _('Type') }}</th>
+                    <th class="uk-table-expand">{{ _('Content') }}</th>
+                    <th>{{ _('Author') }}</th>
+                    <th class="uk-table-shrink">{{ _('Actions') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,23 +54,23 @@
     </div>
 </div>
 <div id="ultimas-actuaciones" class="uk-article">
-    <h1 class="uk-article-title"><a class="uk-link-heading">Últimas actuaciones</a></h1>
+    <h1 class="uk-article-title"><a class="uk-link-heading">{{ _('Latest records')</a></h1>
     <table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
                             <caption class="uk-margin-remove">
-                                <span class="uk-align-left uk-text-lead">Actuaciones</span>
+                                <span class="uk-align-left uk-text-lead">{{ _('Records') }}</span>
                                 <a href="expediente/nuevo" class="uk-align-right" uk-icon="plus"></a>
                             </caption>
                             <thead>
                                 <tr>
-                                    <th class="uk-table-shrink">Fecha</th>
-                                    <th class="uk-table-expand">Contenido</th>
-                                    <th>Autor</th>
-                                    <th class="uk-table-shrink">Adjuntos</th>
-                                    <th class="uk-table-shrink">Acciones</th>
+                                    <th class="uk-table-shrink">{{ _('Date') }}</th>
+                                    <th class="uk-table-expand">{{ _('Content') }}</th>
+                                    <th>{{ _('Author') }}</th>
+                                    <th class="uk-table-shrink">{{ _('Attachments') }}</th>
+                                    <th class="uk-table-shrink">{{ _('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody class="act-filter uk-link-heading">
-                                <tr data-author="radeuna" data-atach="archivos calendario" data-date="2020-08-23">
+                                <tr>
                                     <th>23/08/2020</th>
                                     <td>Minutado</td>
                                     <td><a href="usuario/radeuna">Ramón De Uña</a></td>
@@ -88,7 +88,7 @@
                                     </ul>
                                     </td>
                                 </tr>
-                                <tr data-author="marta" data-atach="archivos calendario" data-date="2020-08-20">
+                                <tr>
                                     <th>20/08/2020</th>
                                     <td>Conceptos</td>
                                     <td><a href="usuario/marta">Marta Díaz</a></td>
