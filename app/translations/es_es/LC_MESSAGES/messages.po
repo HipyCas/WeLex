@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-24 02:16+0200\n"
-"PO-Revision-Date: 2020-08-24 02:17+0200\n"
+"POT-Creation-Date: 2020-08-24 02:27+0200\n"
+"PO-Revision-Date: 2020-08-24 02:28+0200\n"
 "Last-Translator: HipyCas <hipycas@gmail.com>\n"
 "Language: es_ES\n"
 "Language-Team: es_ES <LL@li.org>\n"
@@ -59,6 +59,7 @@ msgid "Home"
 msgstr "Inicio"
 
 #: app/templates/base.html:50 app/templates/base.html:66
+#, fuzzy
 msgid "Agenda"
 msgstr "Agenda"
 
@@ -91,6 +92,50 @@ msgstr "Ayuda"
 #: app/templates/base.html:103
 msgid "Search..."
 msgstr "Buscar..."
+
+#: app/templates/inicio.html:6
+msgid "Logged in as"
+msgstr "Iniciada sesión como"
+
+#: app/templates/inicio.html:9
+msgid "Agenda today"
+msgstr "Agenda hoy"
+
+#: app/templates/inicio.html:18
+msgid "Visibility"
+msgstr "Visibilidad"
+
+#: app/templates/inicio.html:19
+msgid "Type"
+msgstr "Tipo"
+
+#: app/templates/inicio.html:20 app/templates/inicio.html:66
+msgid "Content"
+msgstr "Contenido"
+
+#: app/templates/inicio.html:21 app/templates/inicio.html:67
+msgid "Author"
+msgstr "Autor"
+
+#: app/templates/inicio.html:22 app/templates/inicio.html:69
+msgid "Actions"
+msgstr "Acciones"
+
+#: app/templates/inicio.html:57
+msgid "Latest records"
+msgstr "Últimas actuaciones"
+
+#: app/templates/inicio.html:60
+msgid "Records"
+msgstr "Actuaciones"
+
+#: app/templates/inicio.html:65
+msgid "Date"
+msgstr "Fecha"
+
+#: app/templates/inicio.html:68
+msgid "Attachments"
+msgstr "Adjuntos"
 
 #: app/templates/auth/login.html:25
 msgid "Sign in"

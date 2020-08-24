@@ -1,8 +1,8 @@
 from flask import render_template, url_for, current_app
-from flask_login import login_required
+from flask_babel import _
 
 from app.core import bp
-from app.decorators import active_required
+from app.decorators import active_required, admin_required
 
 
 @bp.before_app_first_request
@@ -33,4 +33,10 @@ def settings():
 @bp.route('/help')
 @active_required
 def help():
+	pass
+
+
+@bp.route('/backup')
+@admin_required
+def backup():
 	pass
