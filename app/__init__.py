@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -58,6 +58,11 @@ def create_app(config_class=Config):
 	app.register_blueprint(bp_errors)
 	
 	return app
+
+
+@babel.localeselector
+def locale_selector():
+	return request.accept_languages.best_match(current_app.config['LANGUAGES'])
 
 
 from app import models
