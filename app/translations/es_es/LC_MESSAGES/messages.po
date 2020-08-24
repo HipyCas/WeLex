@@ -1,0 +1,111 @@
+# Spanish (Spain) translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-08-24 01:57+0200\n"
+"PO-Revision-Date: 2020-08-24 02:02+0200\n"
+"Language: es_ES\n"
+"Language-Team: es_ES <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+"Last-Translator: HipyCas <hipycas@gmail.com>\n"
+"X-Generator: Poedit 2.3.1\n"
+
+#: app/templates/base.html:49 app/templates/base.html:65
+msgid "Home"
+msgstr "Inicio"
+
+#: app/templates/base.html:50 app/templates/base.html:66
+msgid "Agenda"
+msgstr "Agenda"
+
+#: app/templates/base.html:51 app/templates/base.html:67
+msgid "Dossiers"
+msgstr "Expedientes"
+
+#: app/templates/base.html:52 app/templates/base.html:68
+#, fuzzy
+msgid "Billing"
+msgstr "Minutación"
+
+#: app/templates/base.html:53 app/templates/base.html:69
+#, fuzzy
+msgid "Directory"
+msgstr "Listín"
+
+#: app/templates/base.html:85
+msgid "Settings"
+msgstr "Ajustes"
+
+#: app/templates/base.html:86
+msgid "Documentation"
+msgstr "Documentación"
+
+#: app/templates/base.html:87
+msgid "Help"
+msgstr "Ayuda"
+
+#: app/templates/base.html:103
+msgid "Search..."
+msgstr "Buscar..."
+
+#: app/templates/auth/login.html:5 app/templates/auth/register.html:27
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: app/templates/auth/login.html:25
+msgid "Sign in"
+msgstr "Iniciar sesion"
+
+#: app/templates/auth/login.html:27
+msgid "Register with token"
+msgstr "Registrarse con clave"
+
+#: app/templates/auth/register.html:5 app/templates/auth/register_data.html:37
+#: app/templates/auth/users.html:17
+msgid "Register"
+msgstr "Registrarse"
+
+#: app/templates/auth/register.html:25
+msgid "Next"
+msgstr "Siguiente"
+
+#: app/templates/auth/register_data.html:5
+msgid "Complete registration"
+msgstr "Completar registro"
+
+#: app/templates/auth/users.html:5
+msgid "Users"
+msgstr "Usuarios"
+
+#: app/templates/auth/users.html:11
+msgid "ID"
+msgstr "ID"
+
+#: app/templates/auth/users.html:12
+msgid "Active"
+msgstr "Activo"
+
+#: app/templates/auth/users.html:13
+msgid "Admin"
+msgstr "Admin"
+
+#: app/templates/auth/users.html:14
+msgid "Username"
+msgstr "Alias"
+
+#: app/templates/auth/users.html:15
+msgid "Email"
+msgstr "Email"
+
+#: app/templates/auth/users.html:16
+msgid "Name"
+msgstr "Nombre"
