@@ -4,9 +4,13 @@
 import click
 import subprocess
 
+from app import create_app, db as app_db
+from app.models import *
+
 
 @click.group()
 def cli():
+    """The WeLex CLI"""
     pass
 
 
@@ -14,10 +18,48 @@ def cli():
 @click.option('-g', '--git-service', default='git', help='Git service to run, as shell command')
 @click.option('--ssh/--https', default=False, help='Clone via git or https (default: https)')
 def download(ssh, git_service):
+    """Download WeLex source from the GitHub repository"""
     if ssh:
-        git_result = subprocess.run([f'{git_service}', 'clone', 'git@github.com:HipyCas/WeLex.git']) 
+        git_result = subprocess.run([f'{git_service}', 'clone', 'git@github.com:HipyCas/WeLex.git'])
     else:
-        git_result = subprocess.run(f'{git_service} clone https://www.github.com/HipyCas/WeLex.git') 
+        git_result = subprocess.run(f'{git_service} clone https://www.github.com/HipyCas/WeLex.git')
+
+
+@cli.group()
+def db():
+    """Database operations"""
+    create_app().app_context().push()
+    pass
+
+
+@db.group()
+def user():
+    """User operations"""
+    pass
+
+
+@user.command()
+@click.argument('username', type=str, nargs=-1)
+@click.option('-n', '--number', type=int, default=1, help='Number of users to create, must match number of usernames/arguments provided')
+@click.option('-un', '--name', type=str, default=None, help='Specify the name of the user to create, if creating multiple users, all will get this name')
+@click.option('-uln', '--last-name', type=str, default=None, help='Specify the last name of the user to create, if creating multiple users, all will get this last name')
+@click.option('-ue', '--email', type=str, default=None, help='Specify the email of the user to create, if creating multiple users, all will get this email')
+@click.option('-up', '--password', type=str, default=None, help='Specify the password of the user to create, if creating multiple users, all will get this password')
+def new(username, number, name, last_name, email, password):
+    for u in range(number):
+        user = User(alias=username)
+        if name is not None:
+            user.nombre = name
+        if last_name is not None:
+            user.apellidos = last_name
+        if email is not None:
+            user.email = email
+        if password is not None:
+            user.set_password(password)
+        click.echo(f'Created user {user} with data [username: {username}, name: {name}, last_name: {last_name}, email: {email}, password: {password}, password_hash: {user.password_hash}')
+        app_db.session.add(user)
+    app_db.session.commit()
+    click.echo(f'Successfully created {number} users')
 
 
 if __name__ == '__main__':
