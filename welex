@@ -56,7 +56,7 @@ def new(username, number, name, last_name, email, password):
             user.email = email
         if password is not None:
             user.set_password(password)
-        click.echo(f'Created user {user} with data [username: {username}, name: {name}, last_name: {last_name}, email: {email}, password: {password}, password_hash: {user.password_hash}')
+        click.echo(f'Created user {user} with data [username: {username}, name: {name}, last_name: {last_name}, email: {email}, password: {password}, password_hash: {user.password_hash}]')
         app_db.session.add(user)
     app_db.session.commit()
     click.echo(f'Successfully created {number} users')
