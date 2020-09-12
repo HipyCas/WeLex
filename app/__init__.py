@@ -40,7 +40,7 @@ def create_app(config_class=Config):
 	app.register_blueprint(bp_core)
 	
 	from app.auth import bp as bp_auth
-	app.register_blueprint(bp_auth, url_prefix='/auth')
+	app.register_blueprint(bp_auth, subdomain='auth')
 	
 	from app.expediente import bp as bp_expediente
 	app.register_blueprint(bp_expediente, url_prefix='/expediente')
@@ -62,7 +62,7 @@ def create_app(config_class=Config):
 
 @babel.localeselector
 def locale_selector():
-	return request.accept_languages.best_match(current_app.config['LANGUAGES'])
+	return 'es_ES'#request.accept_languages.best_match(current_app.config['LANGUAGES'])
 
 
 from app import models
