@@ -47,6 +47,9 @@ class User(db.Model, UserMixin):
 	registration_token_id = db.Column(db.Integer, db.ForeignKey('registration_tokens.id'))
 	actuaciones = db.relationship('Actuacion', backref='user', lazy='dynamic')
 
+	def __repr__(self):
+		return f'<_io.TextIOWrapper name={self.name} mode={self.mode} encoding={self.encoding}>'
+
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
 

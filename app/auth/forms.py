@@ -1,3 +1,4 @@
+from flask_babel import lazy_gettext as _l
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, ValidationError
@@ -30,6 +31,7 @@ class RegisterForm(FlaskForm):
     remember_user_pass = BooleanField('Recordar alias')
     login_after = BooleanField('Iniciar sesión tras registro')
 
+
 class RegisterDataForm(FlaskForm):
     username = StringField('Alias', validators=[DataRequired()])
     email = StringField('Correo electrónico', validators=[DataRequired(), Email(), Length(max=120)])
@@ -39,3 +41,10 @@ class RegisterDataForm(FlaskForm):
     def validate_password_repeat(self, password_repeat):
         if not password_repeat.data == self.password.data:
             return ValidationError('Las contraseñas son diferentes')
+
+
+class AddUserForm(FlaskForm):
+    name = StringField(_l('Name'), validators=[DataRequired(), Length(max=24)])
+    email = StringField(_l('Email'), validators=[Length(max=140), Email()])
+    send_email = BooleanField(_l('Send token by email'))
+    username = StringField(_l('Username'), validators=[Length(max=32)])

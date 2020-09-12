@@ -22,9 +22,10 @@
 </head>
 <body>
     <div id="loading" class="toggle" hidden>
-        <a class="uk-margin-large uk-padding-large uk-close-large uk-overlay uk-postion-z-index uk-position-absolite" uk-toggle="target: .toggle" uk-close></a>
-        <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle">
+        <!--a class="uk-margin-large uk-padding-large uk-close-large uk-overlay uk-postion-z-index uk-position-absolite" uk-toggle="target: .toggle" uk-close></a-->
+        <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-position-relative">
             <div uk-spinner="ratio: 2.5"></div>
+		    <div class="uk-position-top-left uk-padding" uk-toggle="target: .toggle" uk-close></div>
         </div>
     </div>
     <!--

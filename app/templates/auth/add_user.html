@@ -1,0 +1,44 @@
+{% extends "auth/base.html" %}
+
+{% block content %}
+<div class="uk-inline uk-text-middle uk-width-1-1">
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove uk-align-left" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> {{ _('Add User') }}</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div uk-alert style="width: 100%">
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+<form action="{{ url_for('auth.add_user') }}" method="POST" class="uk-form uk-background-default">
+    {{ form.hidden_tag() }}
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="user"></span>
+            {{ form.name(class='uk-input', placeholder='{}'.format(form.name.label).split('>')[1].split('<')[0]) }}
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="mail"></span>
+            {{ form.email(class='uk-input', placeholder='{}'.format(form.email.label).split('>')[1].split('<')[0]) }}
+        </div><br>
+        <label class="uk-padding-top-small">{{ form.send_email(class='uk-checkbox') }}  {{ '{}'.format(form.send_email.label).split('>')[1].split('<')[0] }}</label>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="info"></span>
+            {{ form.username(class='uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
+            <a href="" class="uk-form-icon uk-form-icon-flip uk-link-muted" uk-icon="help"></a>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <button action="submit" class="uk-button uk-button-default">{{ _('Create') }}</button>
+        <a href="{{ url_for('auth.users') }}" class="uk-button uk-button-danger">{{ _('Cancel') }}</a>
+    </div>
+</form>
+{% endblock %}

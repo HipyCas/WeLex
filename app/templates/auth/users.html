@@ -5,55 +5,60 @@
     <h1 class="uk-header-small uk-padding-remove uk-margin-remove uk-align-left" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> {{ _('Users') }}</h1>
     <a href="{{ url_for('auth.add_user') }}" class="uk-align-right uk-align-bottom uk-margin-top uk-link-heading" uk-icon="plus"></a>
 </div>
-<table class="uk-table uk-table-responsive uk-table-divider">
-    <thead>
-        <tr>
-            <th>{{ _('ID') }}</th>
-            <th>{{ _('Active') }}</th>
-            <th>{{ _('Admin') }}</th>
-            <th>{{ _('Username') }}</th>
-	    <th>{{ _('Email') }}</th>
-	    <th>{{ _('Name') }}</th>
-	    <th>{{ _('Register') }}</th>
-        </tr>
-    </thead>
-    <tbody>
-	    <tr>
-		    <td>1</td>
-		    <td>True</td>
-		    <td>True</td>
-		    <td>admin</td>
-		    <td>admin@example.com</td>
-		    <td>Admin</td>
-		    <td>self</td>
+<ul class="uk-subnav uk-subnav-pill" uk-switcher>
+	<li><a href="">{{ _('Users') }}</a></li>
+	<li><a href="">{{ _('Tokens') }}</a></li>
+</ul>
+<ul class="uk-switcher">
+	<li>
+		<table class="uk-table uk-table-responsive uk-table-divider">
+	<thead>
+		<tr>
+			<th>{{ _('ID') }}</th>
+			<th>{{ _('Active') }}</th>
+			<th>{{ _('Admin') }}</th>
+			<th>{{ _('Username') }}</th>
+			<th>{{ _('Email') }}</th>
+			<th>{{ _('Name') }}</th>
+			<th>{{ _('Register') }}</th>
 		</tr>
-	    <tr>
-		    <td>2</td>
-		    <td>No Admin <span uk-icon="close"></span></td>
-		    <td>Active <span uk-icon="check"></span></td>
-		    <td>guest</td>
-		    <td>guest@example.com</td>
-		    <td>Guest</td>
-		    <td>self</td>
+	</thead>
+	<tbody>
+		{% for user in users %}
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{% if user.active %}{{ _('Active') }} <span uk-icon="check"></span>{% else %}{{ _('Deactivated') }} <span uk-icon="close"></span>{% endif %}</td>
+			<td>{% if user.admin %}{{ _('Admin') }} <span uk-icon="check"></span>{% else %}{{ _('Not Admin') }} <span uk-icon="close"></span>{% endif %}</td>
+			<td>{{ user.alias }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.nombre }} {{ user.apellidos }}</td>
+			<!--td>{# RegistrationToken.query.get(user.registration_token_id)#}</td-->
 		</tr>
-	    <tr>
-		    <td>2</td>
-		    <td>Admin <span uk-icon="check"></span></td>
-		    <td>Active <span uk-icon="check"></span></td>
-		    <td>radeuna</td>
-		    <td>radeuna@mundo-r.com</td>
-		    <td>Ramón</td>
-		    <td>self</td>
-		</tr>
-	    <tr>
-		    <td>2</td>
-		    <td>Admin <span uk-icon="check"></span></td>
-		    <td>Active <span uk-icon="check"></span></td>
-		    <td>radeuna</td>
-		    <td>radeuna@mundo-r.com</td>
-		    <td>Ramón</td>
-		    <td>self</td>
-		</tr>
+		{% endfor %}
 	</tbody>
 </table>
+	</li>
+	<li>
+		<table class="uk-table uk-table-responsive uk-table-divider">
+			<thead>
+				<tr>
+					<th>{{ _('ID') }}</th>
+					<th>{{ _('Token') }}</th>
+					<th>{{ _('Target Name') }}</th>
+					<th>{{ _('Used') }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for token in tokens %}
+				<tr>
+					<td>{{ token.id }}</td>
+					<td>{{ token.token }}</td>
+					<td>{{ token.target_name }}</td>
+					<td>{{ _('No') }} <span uk-icon="close"></span></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</li>
+</ul>
 {% endblock %}

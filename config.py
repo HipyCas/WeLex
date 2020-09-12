@@ -28,3 +28,5 @@ class Config (object):
 
     # Babel
     LANGUAGES = ['en', 'es-ES']
+
+    #SERVER_NAME = 'acer.duo'
