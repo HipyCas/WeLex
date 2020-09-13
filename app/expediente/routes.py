@@ -9,3 +9,9 @@ from app.expediente import bp
 @active_required
 def start():
 	return render_template("expedientes.html", title='Expedientes', expedientes=True)
+
+
+@bp.route('/exp')
+@active_required
+def exp():
+	return render_template("expediente.html")
