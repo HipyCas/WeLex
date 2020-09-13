@@ -12,31 +12,31 @@
 <ul class="uk-switcher">
 	<li>
 		<table class="uk-table uk-table-responsive uk-table-divider">
-	<thead>
-		<tr>
-			<th>{{ _('ID') }}</th>
-			<th>{{ _('Active') }}</th>
-			<th>{{ _('Admin') }}</th>
-			<th>{{ _('Username') }}</th>
-			<th>{{ _('Email') }}</th>
-			<th>{{ _('Name') }}</th>
-			<th>{{ _('Register') }}</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for user in users %}
-		<tr>
-			<td>{{ user.id }}</td>
-			<td>{% if user.active %}{{ _('Active') }} <span uk-icon="check"></span>{% else %}{{ _('Deactivated') }} <span uk-icon="close"></span>{% endif %}</td>
-			<td>{% if user.admin %}{{ _('Admin') }} <span uk-icon="check"></span>{% else %}{{ _('Not Admin') }} <span uk-icon="close"></span>{% endif %}</td>
-			<td>{{ user.alias }}</td>
-			<td>{{ user.email }}</td>
-			<td>{{ user.nombre }} {{ user.apellidos }}</td>
-			<!--td>{# RegistrationToken.query.get(user.registration_token_id)#}</td-->
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+			<thead>
+				<tr>
+					<th>{{ _('ID') }}</th>
+					<th>{{ _('Active') }}</th>
+					<th>{{ _('Admin') }}</th>
+					<th>{{ _('Username') }}</th>
+					<th>{{ _('Email') }}</th>
+					<th>{{ _('Name') }}</th>
+					<th>{{ _('Register') }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{% if user.active %}{{ _('Active') }} <span uk-icon="check"></span>{% else %}{{ _('Deactivated') }} <span uk-icon="close"></span>{% endif %}</td>
+					<td>{% if user.admin %}{{ _('Admin') }} <span uk-icon="check"></span>{% else %}{{ _('Not Admin') }} <span uk-icon="close"></span>{% endif %}</td>
+					<td>{{ user.alias }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.nombre }} {{ user.apellidos }}</td>
+					<!--td>{# RegistrationToken.query.get(user.registration_token_id)#}</td-->
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 	</li>
 	<li>
 		<table class="uk-table uk-table-responsive uk-table-divider">
@@ -61,4 +61,5 @@
 		</table>
 	</li>
 </ul>
+<a class="uk-margin uk-button uk-button-text" href="{{ url_for('core.start') }}">{{ _('Back to home') }} <span uk-icon="arrow-right"></span></a>
 {% endblock %}
