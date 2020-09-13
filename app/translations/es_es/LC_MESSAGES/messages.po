@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-24 02:27+0200\n"
-"PO-Revision-Date: 2020-08-24 02:28+0200\n"
+"POT-Creation-Date: 2020-09-13 16:29+0200\n"
+"PO-Revision-Date: 2020-09-13 16:38+0200\n"
 "Last-Translator: HipyCas <hipycas@gmail.com>\n"
 "Language: es_ES\n"
 "Language-Team: es_ES <LL@li.org>\n"
@@ -19,77 +19,121 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: Poedit 2.3.1\n"
 
-#: app/auth/routes.py:21
+#: app/auth/forms.py:47 app/templates/auth/users.html:22
+msgid "Name"
+msgstr "Nombre"
+
+#: app/auth/forms.py:48 app/templates/auth/users.html:21
+msgid "Email"
+msgstr "Email"
+
+#: app/auth/forms.py:49
+msgid "Send token by email"
+msgstr "Enviar clave por email"
+
+#: app/auth/forms.py:50 app/templates/auth/users.html:20
+msgid "Username"
+msgstr "Alias"
+
+#: app/auth/routes.py:22
 msgid "User not found"
 msgstr "Usuario no encontrado"
 
-#: app/auth/routes.py:22 app/auth/routes.py:25 app/auth/routes.py:28
-#: app/auth/routes.py:40 app/templates/auth/login.html:5
+#: app/auth/routes.py:23 app/auth/routes.py:26 app/auth/routes.py:29
+#: app/auth/routes.py:41 app/templates/auth/login.html:5
 #: app/templates/auth/register.html:27
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: app/auth/routes.py:24
+#: app/auth/routes.py:25
 msgid "Wrong password"
 msgstr "Contraseña incorrecta"
 
-#: app/auth/routes.py:27
+#: app/auth/routes.py:28
 msgid "User is deactivated"
 msgstr "El usuario está desactivado"
 
-#: app/auth/routes.py:59 app/templates/auth/register.html:5
-#: app/templates/auth/register_data.html:37 app/templates/auth/users.html:17
+#: app/auth/routes.py:59
+msgid "Token not found"
+msgstr "Clave no encontrada"
+
+#: app/auth/routes.py:60 app/auth/routes.py:63 app/auth/routes.py:69
+#: app/templates/auth/register.html:5 app/templates/auth/register_data.html:37
+#: app/templates/auth/users.html:23
 msgid "Register"
 msgstr "Registrarse"
 
-#: app/auth/routes.py:80 app/templates/auth/register_data.html:5
+#: app/auth/routes.py:62
+#, fuzzy
+msgid "Token and name do not match"
+msgstr "Clave y nombre no coinciden"
+
+#: app/auth/routes.py:90 app/templates/auth/register_data.html:5
 msgid "Complete registration"
 msgstr "Completar registro"
 
-#: app/auth/routes.py:86 app/templates/auth/users.html:5
+#: app/auth/routes.py:98 app/templates/auth/users.html:5
+#: app/templates/auth/users.html:9
 msgid "Users"
 msgstr "Usuarios"
 
-#: app/auth/routes.py:92
-msgid "New user"
-msgstr "Nuevo usuario"
+#: app/auth/routes.py:108
+msgid "Username is already taken"
+msgstr "El usuario ya está en uso"
 
-#: app/core/routes.py:24 app/templates/base.html:49 app/templates/base.html:65
+#: app/auth/routes.py:109 app/auth/routes.py:113 app/auth/routes.py:117
+#: app/auth/routes.py:129
+msgid "Add user"
+msgstr "Añadir usario"
+
+#: app/auth/routes.py:112
+msgid "Name is already registered"
+msgstr "Nombre ya registrado"
+
+#: app/auth/routes.py:116
+msgid "Email is already registered"
+msgstr "Correo electrónico ya registrado"
+
+#: app/auth/routes.py:127
+msgid "Token successfully created"
+msgstr "Clave creada con éxito"
+
+#: app/core/routes.py:24 app/templates/base.html:50 app/templates/base.html:66
 msgid "Home"
 msgstr "Inicio"
 
-#: app/templates/base.html:50 app/templates/base.html:66
+#: app/templates/base.html:51 app/templates/base.html:67
 #, fuzzy
 msgid "Agenda"
 msgstr "Agenda"
 
-#: app/templates/base.html:51 app/templates/base.html:67
+#: app/templates/base.html:52 app/templates/base.html:68
 msgid "Dossiers"
 msgstr "Expedientes"
 
-#: app/templates/base.html:52 app/templates/base.html:68
+#: app/templates/base.html:53 app/templates/base.html:69
 #, fuzzy
 msgid "Billing"
 msgstr "Minutación"
 
-#: app/templates/base.html:53 app/templates/base.html:69
+#: app/templates/base.html:54 app/templates/base.html:70
 #, fuzzy
 msgid "Directory"
 msgstr "Listín"
 
-#: app/templates/base.html:85
+#: app/templates/base.html:86
 msgid "Settings"
 msgstr "Ajustes"
 
-#: app/templates/base.html:86
+#: app/templates/base.html:87
 msgid "Documentation"
 msgstr "Documentación"
 
-#: app/templates/base.html:87
+#: app/templates/base.html:88
 msgid "Help"
 msgstr "Ayuda"
 
-#: app/templates/base.html:103
+#: app/templates/base.html:104
 msgid "Search..."
 msgstr "Buscar..."
 
@@ -137,11 +181,23 @@ msgstr "Fecha"
 msgid "Attachments"
 msgstr "Adjuntos"
 
-#: app/templates/auth/login.html:25
+#: app/templates/auth/add_user.html:5
+msgid "Add User"
+msgstr "Añadir Usuario"
+
+#: app/templates/auth/add_user.html:40
+msgid "Create"
+msgstr "Crear"
+
+#: app/templates/auth/add_user.html:41
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: app/templates/auth/login.html:35
 msgid "Sign in"
 msgstr "Iniciar sesion"
 
-#: app/templates/auth/login.html:27
+#: app/templates/auth/login.html:37
 msgid "Register with token"
 msgstr "Registrarse con clave"
 
@@ -149,26 +205,45 @@ msgstr "Registrarse con clave"
 msgid "Next"
 msgstr "Siguiente"
 
-#: app/templates/auth/users.html:11
+#: app/templates/auth/users.html:10
+msgid "Tokens"
+msgstr "Claves"
+
+#: app/templates/auth/users.html:17 app/templates/auth/users.html:45
 msgid "ID"
 msgstr "ID"
 
-#: app/templates/auth/users.html:12
+#: app/templates/auth/users.html:18 app/templates/auth/users.html:30
 msgid "Active"
 msgstr "Activo"
 
-#: app/templates/auth/users.html:13
+#: app/templates/auth/users.html:19 app/templates/auth/users.html:31
 msgid "Admin"
 msgstr "Admin"
 
-#: app/templates/auth/users.html:14
-msgid "Username"
-msgstr "Alias"
+#: app/templates/auth/users.html:30
+msgid "Deactivated"
+msgstr "Desactivado"
 
-#: app/templates/auth/users.html:15
-msgid "Email"
-msgstr "Email"
+#: app/templates/auth/users.html:31
+msgid "Not Admin"
+msgstr "No Admin"
 
-#: app/templates/auth/users.html:16
-msgid "Name"
-msgstr "Nombre"
+#: app/templates/auth/users.html:46
+msgid "Token"
+msgstr "Clave"
+
+#: app/templates/auth/users.html:47
+msgid "Target Name"
+msgstr "Nombre de registro"
+
+#: app/templates/auth/users.html:48
+msgid "Used"
+msgstr "Utilizado"
+
+#: app/templates/auth/users.html:57
+msgid "No"
+msgstr "No"
+
+#~ msgid "New user"
+#~ msgstr "Nuevo usuario"
