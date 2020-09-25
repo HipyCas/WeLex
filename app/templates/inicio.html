@@ -55,55 +55,57 @@
 </div>
 <div id="ultimas-actuaciones" class="uk-article">
     <h1 class="uk-article-title"><a class="uk-link-heading">{{ _('Latest records') }}</a></h1>
-    <table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
-        <caption class="uk-margin-remove">
-            <span class="uk-align-left uk-text-lead">{{ _('Records') }}</span>
-            <a href="expediente/nuevo" class="uk-align-right" uk-icon="plus"></a>
-        </caption>
-        <thead>
-            <tr>
-                <th class="uk-table-shrink">{{ _('Date') }}</th>
-                <th class="uk-table-expand">{{ _('Content') }}</th>
-                <th>{{ _('Author') }}</th>
-                <th class="uk-table-shrink">{{ _('Attachments') }}</th>
-                <th class="uk-table-shrink">{{ _('Actions') }}</th>
-            </tr>
-        </thead>
-        <tbody class="act-filter uk-link-heading">
-            <tr>
-                <th>23/08/2020</th>
-                <td>Minutado</td>
-                <td><a href="usuario/radeuna">Ramón De Uña</a></td>
-                <td><ul class="uk-iconnav">
-                    <li><a href="archivo?act=6787" uk-icon="file"></a></li>
-                    <li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
-                    <li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
-                    <li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
-                </ul>
-                </td>
-                <td><ul class="uk-iconnav">
-                    <li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
-                    <li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
-                    <li><a href="actuación/notificaciones/6787" uk-icon="mail" uk-tooltip="Notificaciones"></a></li>
-                </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>20/08/2020</th>
-                <td>Conceptos</td>
-                <td><a href="usuario/marta">Marta Díaz</a></td>
-                <td><ul class="uk-iconnav">
-                    <li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf" uk-tooltip="MI-67/20.pdf"></a></li>
-                    <li><a href="agenda/editar?act=6787" uk-icon="calendar" uk-tooltip="Recordatorio"></a></li>
-                </ul>
-                </td>
-                <td><ul class="uk-iconnav">
-                    <li><a href="actuacion/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-                    <li><a href="actuacion/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-                </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
+            <caption class="uk-margin-remove">
+                <span class="uk-align-left uk-text-lead">{{ _('Records') }}</span>
+                <a href="expediente/nuevo" class="uk-align-right" uk-icon="plus"></a>
+            </caption>
+            <thead>
+                <tr>
+                    <th class="uk-table-shrink">{{ _('Date') }}</th>
+                    <th class="uk-table-expand">{{ _('Content') }}</th>
+                    <th>{{ _('Author') }}</th>
+                    <th class="uk-table-shrink">{{ _('Attachments') }}</th>
+                    <th class="uk-table-shrink">{{ _('Actions') }}</th>
+                </tr>
+            </thead>
+            <tbody class="act-filter uk-link-heading">
+                <tr>
+                    <th>23/08/2020</th>
+                    <td>Minutado</td>
+                    <td><a href="usuario/radeuna">Ramón De Uña</a></td>
+                    <td><ul class="uk-iconnav">
+                        <li><a href="archivo?act=6787" uk-icon="file"></a></li>
+                        <li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf"></a></li>
+                        <li><a href="archivo?act=6787&n=2" uk-icon="file-text"></a></li>
+                        <li><a href="agenda/editar?act=6787" uk-icon="calendar"></a></li>
+                    </ul>
+                    </td>
+                    <td><ul class="uk-iconnav">
+                        <li><a href="actuacion/editar/6787" uk-icon="pencil"></a></li>
+                        <li><a href="actuacion/eliminar/6787" uk-icon="trash"></a></li>
+                        <li><a href="actuación/notificaciones/6787" uk-icon="mail" uk-tooltip="Notificaciones"></a></li>
+                    </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>20/08/2020</th>
+                    <td>Conceptos</td>
+                    <td><a href="usuario/marta">Marta Díaz</a></td>
+                    <td><ul class="uk-iconnav">
+                        <li><a href="acchivo?act=6787&n=1" uk-icon="file-pdf" uk-tooltip="MI-67/20.pdf"></a></li>
+                        <li><a href="agenda/editar?act=6787" uk-icon="calendar" uk-tooltip="Recordatorio"></a></li>
+                    </ul>
+                    </td>
+                    <td><ul class="uk-iconnav">
+                        <li><a href="actuacion/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
+                        <li><a href="actuacion/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
+                    </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
