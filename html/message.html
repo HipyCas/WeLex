@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Ramón Office</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="uk-navbar-container uk-sticky uk-sticky-fixed uk-dark">
+        <div id="nav-container" class="uk-container uk-navbar-container uk-dark">
+            <nav class="uk-navbar-container uk-dark" uk-navbar>
+                <!-- Navbar content -->
+                <div class="uk-navbar-left nav-overlay">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="inicio">Inicio</a></li>
+                        <li class=""><a href="news">Agenda</a></li>
+                        <li><a href="expedientes">Expedientes</a></li>
+                        <li class=""><a href="minutacion">Minutación</a></li>
+                        <li><a href="listin"></a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right nav-overlay">
+                    <ul class="uk-navbar-nav">
+                        <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+                        <li class="uk-flex uk-flex-middle uk-flex-center"><a uk-icon="commenting"></a><span class="uk-badge uk-margin-left-remove">3</span></li>
+                        <li>
+                            <a class="uk-parent" uk-icon="user"></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="ajustes"><span uk-icon="settings"></span> Ajustes</a></li>
+                                    <li><a href="docs"><span uk-icon="copy"></span> Documentación</a></li>
+                                    <li><a href="ayuda"><span uk-icon="question"></span> Ayuda</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><ul class="uk-iconnav uk-padding-small">
+                                        <li><a href="iniciar" uk-icon="users"></a></li>
+                                        <li><a href="salir" uk-icon="sign-out"></a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Navbar overlay search field -->
+                <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+                    <div class="uk-navbar-item uk-width-expand">
+                        <form class="uk-search uk-search-navbar uk-width-1-1" action="search" method="GET">
+                            <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                        </form>
+                    </div>
+                    <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Main Content -->
+    <div class="uk-container">
+        <h3>Chat</h3>
+        <div id="conversation-list" class="uk-grid-row-small uk-child-width-1-1" uk-grid>
+            <div class="uk-card uk-card-body uk-card-default uk-card-hover">
+                <img src="https://image.posterlounge.es/img/products/660000/653583/653583_poster_l.jpg" width="80" height="80" class="uk-border-rounded uk-margin-remove uk-margin-right-large">
+                <span class="uk-text-muted uk-margin-left-medium"><b>Marta Díaz:</b> Nos vemos mañana en e juzgado</span>
+            </div>
+            <div class="uk-card uk-card-body uk-card-default uk-card-hover">
+                <img src="https://image.posterlounge.es/img/products/660000/653583/653583_poster_l.jpg" width="80" height="80" class="uk-border-rounded">
+                <b>Marta Díaz</b>
+                <p class="uk-text-muted">Nos vemos mañana en e juzgado</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
