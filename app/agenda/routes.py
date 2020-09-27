@@ -1,4 +1,6 @@
-from flask_login import login_required
+from flask import render_template, request
+from flask_babel import _
+from datetime import datetime
 
 from app.decorators import active_required
 from app.agenda import bp
@@ -7,4 +9,6 @@ from app.agenda import bp
 @bp.route('/')
 @active_required
 def start():
-    pass
+    date = request.args.get('date', datetime.today().strftime('%Y-%m-%d'), str)
+    # TODO: query event by date `date`
+    return render_template('agenda.html', title=_('Agenda'), date=date)
