@@ -5,6 +5,9 @@ from flask_login import LoginManager
 # from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Mail
 from flask_babel import Babel
+import os
+from logging.handlers import RotatingFileHandler
+import logging
 
 from config import Config
 
@@ -56,6 +59,18 @@ def create_app(config_class=Config):
 	
 	from app.errors import bp as bp_errors
 	app.register_blueprint(bp_errors)
+
+	if not app.debug or not app.testing:
+		if not os.path.exists('logs'):
+			os.mkdir('logs')
+		file_handler = RotatingFileHandler('logs/welex.log', maxBytes=10240, backupCount=10)
+
+		file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+		file_handler.setLevel(logging.DEBUG)
+		app.logger.addHandler(file_handler)
+
+		app.logger.setLevel(logging.DEBUG)
+		app.logger.info('WeLex startup')
 	
 	return app
 
