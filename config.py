@@ -1,8 +1,6 @@
 import os
 import secrets
 from dotenv import load_dotenv
-import uuid
-from flask import url_for
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -13,7 +11,7 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 
 class Config (object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'vlEbiw2_zY6DYN1dMhD-FeDCJqGRTmut9BEqKtmnKqs'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or secrets.token_urlsafe()
 
     # SQLAlchemy / database
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
