@@ -25,4 +25,4 @@ class Config (object):
     # SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT') or 329741136734917748598368574161514991107
 
     # Babel
-    LANGUAGES = ['en', 'es-ES']
+    LANGUAGES = ['en', 'es_ES']
