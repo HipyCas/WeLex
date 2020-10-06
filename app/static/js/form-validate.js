@@ -27,5 +27,18 @@ $(document).ready(function(){
     	$(this).attr("placeholder") + " *");
     })
 
+    // Set no-empty validation
+    required.each(function() {
+    	$(this).on('input', function(event) {
+    		if ($(this).val().length < 1) {
+    			$(this).addClass('uk-form-danger');
+    			$(this).attr('uk-tooltip', 'This field is required');
+    		} else {
+    			$(this).removeClass('uk-form-danger');
+    			$(this).removeAttr('uk-tooltip');
+    		}
+    	});
+    });
+
 	console.log('>> Form validation script finished');
 });
