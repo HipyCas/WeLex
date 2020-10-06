@@ -16,5 +16,9 @@ $(document).ready(function(){
     var passwordValid = false; console.log("Password Valid:" + passwordValid);
     var emailValid = false; console.log("Email Valid: " + emailValid);
 
+    // Disable button until all conditions are met
+    console.log("> Disabling submit button");
+    submit.addClass("uk-disabled");
+
 	console.log('>> Form validation script finished');
 });
