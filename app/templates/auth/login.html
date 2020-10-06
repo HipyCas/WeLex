@@ -14,25 +14,31 @@
     {% endif %}
     {% endwith %}
 </div>
-<form action="" method="POST" class="uk-form uk-background-default">
+<form action="" method="POST" class="uk-form uk-background-default" novalidate>
     {{ form.hidden_tag() }}
+    <!-- Username field -->
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="user"></span>
-            {{ form.username(class='uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
+            {{ form.username(class='form-required uk-input', placeholder='{}'.format(form.username.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
+    <!-- Password field -->
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="lock"></span>
-            {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
+            {{ form.password(class='form-required uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
         </div>
     </div>
+    <!-- Checkboxes -->
     <div class="uk-margin">
+        <!-- "Recordar alias" -->
         <label>{% if cookie_save_username %}{{ form.remember_username(class='uk-checkbox', checked="true") }}{% else %}{{ form.remember_username(class='uk-checkbox') }}{% endif %} {{ '{}'.format(form.remember_username.label).split('>')[1].split('<')[0] }}</label><br>
+        <!-- "Recordarme" -->
         <label>{{ form.remember_me(class='uk-checkbox') }} {{ '{}'.format(form.remember_me.label).split('>')[1].split('<')[0] }}</label>
     </div>
-    <button action="submit" class="uk-button uk-button-default"> {{ _('Sign in') }}</button>
+    <!-- Submit button -->
+    <button action="submit" class="form-submit uk-button uk-button-default"> {{ _('Sign in') }}</button>
 </form>
 <a class="uk-button uk-button-text uk-margin-top" href="{{ url_for('auth.register') }}">{{ _('Register with token') }} <span uk-icon="arrow-right"></span></a>
 {% endblock %}

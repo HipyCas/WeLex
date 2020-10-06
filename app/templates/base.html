@@ -2,12 +2,15 @@
 <html lang="{{ g.locale }}">
 <head>
 
-    <!-- UIkit CSS -->
+    <!-- UIKit CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}" />
-
-    <!-- UIkit JS -->
+    <!-- UIKit JS -->
     <script src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+    <!-- UIKit Icons -->
     <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
+
+    <!-- JQuery CDN -->
+    <script src="{{ url_for('static', filename='jquery-3.5.1.min.js') }}"></script>
 
     <!-- Title -->
     {% if title %}<title>{{ title }} - WeLex</title>{% else %}<title>WeLex</title>{% endif %}
@@ -18,6 +21,11 @@
 
     <!-- Icons -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
+    {% if form %}
+    <!-- Custom dynamic validation script -->
+    <script type="text/javascript" scr="{{ url_for('static', filename='js/form-validate.js') }}"></script>
+    {% endif %}
 
 </head>
 <body>
