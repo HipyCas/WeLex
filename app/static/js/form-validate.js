@@ -5,10 +5,10 @@ $(document).ready(function(){
 
 	// Get form components
 	console.log("> Getting elements");
-	var required = $(".form-required"); console.log("required: " + required);
-	var password = $(".form-password"); console.log("Password: " + password);
-	var email = $(".form-email"); console.log("Email: " + email);
-    var submit = $(".form-submit"); console.log("Submit: " + submit);
+	const required = $(".form-required"); console.log("required: " + required);
+	const password = $(".form-password"); console.log("Password: " + password);
+	const email = $(".form-email"); console.log("Email: " + email);
+    const submit = $(".form-submit"); console.log("Submit: " + submit);
 
     // Create vars to record state
     console.log("> Setting valid vars");
