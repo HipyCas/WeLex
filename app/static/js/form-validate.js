@@ -20,5 +20,12 @@ $(document).ready(function(){
     console.log("> Disabling submit button");
     submit.addClass("uk-disabled");
 
+    // Add '*' to required fields
+    required.each(function() {
+    	$(this).attr(
+    	"placeholder",
+    	$(this).attr("placeholder") + " *");
+    })
+
 	console.log('>> Form validation script finished');
 });
