@@ -30,12 +30,24 @@ $(document).ready(function(){
     // Set no-empty validation
     required.each(function() {
     	$(this).on('input', function(event) {
+    		let valid = false;
     		if ($(this).val().length < 1) {
     			$(this).addClass('uk-form-danger');
     			$(this).attr('uk-tooltip', 'This field is required');
+    			valid = false;
     		} else {
     			$(this).removeClass('uk-form-danger');
     			$(this).removeAttr('uk-tooltip');
+    			valid = true;
+    		}
+    		let allValid = true;
+    		required.each(function() {
+    			if ($(this).val().length < 1)
+    				allValid = false;
+    		});
+    		requiredValid = allValid;
+    		if (requiredValid && passwordValid && emailValid) { // Chcek length of password an email items so you're not always comparing to a false
+    			submit.removeClass('uk-disabled');
     		}
     	});
     });
