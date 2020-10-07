@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     // Disable button until all conditions are met
     console.log("> Disabling submit button");
-    submit.addClass("uk-disabled");
+    submit.attr("disabled", "true");
 
     // Add '*' to required fields
     required.each(function() {
@@ -36,6 +36,7 @@ $(document).ready(function(){
     		if ($(this).val().length < 1) {  // Case length is smaller than 0, meaning field is empty
     			$(this).addClass('uk-form-danger');
     			$(this).attr('uk-tooltip', 'This field is required');
+				UIkit.tooltip($(this)).show();
     		} else {
     			$(this).removeClass('uk-form-danger');
     			$(this).removeAttr('uk-tooltip');
@@ -48,7 +49,7 @@ $(document).ready(function(){
 			});
     		requiredValid = allValid; // set global requiredValid to allValid so others can know if .form-required are completed
     		if (requiredValid && passwordValid && emailValid) { // Check length of password an email items so you're not always comparing to a false
-    			submit.removeClass('uk-disabled');  // Enable button
+    			submit.removeAttr('disabled');  // Enable button
     		}
     	});
 	});
@@ -58,6 +59,7 @@ $(document).ready(function(){
 			if (!emailRegex.test($(this).val())) {
 				$(this).addClass('uk-form-danger');
 				$(this).attr('uk-tooltip', 'Not a valid email address');
+				UIkit.tooltip($(this)).show();
 			} else {
 				$(this).removeClass('uk-form-danger');
 				$(this).removeAttr('uk-tooltip');
@@ -70,7 +72,7 @@ $(document).ready(function(){
 			});
 			emailValid = allValid;
 			if (requiredValid && passwordValid && emailValid) {
-				submit.removeClass('uk-disabled');
+				submit.removeAttr('disabled');
 			}
 		});
 	});
