@@ -31,7 +31,7 @@ $(document).ready(function(){
     required.each(function() {
     	$(this).on('input', function(event) {
     		let valid = false;
-    		if ($(this).val().length < 1) {
+    		if ($(this).val().length < 1) {  // Case length is smaller than 0, meaning field is empty
     			$(this).addClass('uk-form-danger');
     			$(this).attr('uk-tooltip', 'This field is required');
     			valid = false;
@@ -39,15 +39,16 @@ $(document).ready(function(){
     			$(this).removeClass('uk-form-danger');
     			$(this).removeAttr('uk-tooltip');
     			valid = true;
-    		}
+			}
+			// Determine if all .form-required are valid
     		let allValid = true;
     		required.each(function() {
     			if ($(this).val().length < 1)
     				allValid = false;
-    		});
-    		requiredValid = allValid;
+			});
+    		requiredValid = allValid; // set global reuiredValid to allValid so others can know if .form-required are completed
     		if (requiredValid && passwordValid && emailValid) { // Chcek length of password an email items so you're not always comparing to a false
-    			submit.removeClass('uk-disabled');
+    			submit.removeClass('uk-disabled');  // Enable button
     		}
     	});
     });
