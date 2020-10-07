@@ -3,6 +3,9 @@ console.log(">> Script called for first time");
 $(document).ready(function(){
 	console.log('>> Form validation script started');
 
+	// Create regex's
+	const emailRegex = /[a-zA-Z0-9]+@[a-zA-Z0-6]{2,}.(com|co|es|en|fr|it|pt|ir|bg|nl|no|au|ch|de|sw|gl|gal|int|org|edu)/
+
 	// Get form components
 	console.log("> Getting elements");
 	const required = $(".form-required"); console.log("required: " + required);
@@ -30,15 +33,12 @@ $(document).ready(function(){
     // Set no-empty validation
     required.each(function() {
     	$(this).on('input', function(event) {
-    		let valid = false;
     		if ($(this).val().length < 1) {  // Case length is smaller than 0, meaning field is empty
     			$(this).addClass('uk-form-danger');
     			$(this).attr('uk-tooltip', 'This field is required');
-    			valid = false;
     		} else {
     			$(this).removeClass('uk-form-danger');
     			$(this).removeAttr('uk-tooltip');
-    			valid = true;
 			}
 			// Determine if all .form-required are valid
     		let allValid = true;
@@ -51,7 +51,29 @@ $(document).ready(function(){
     			submit.removeClass('uk-disabled');  // Enable button
     		}
     	});
-    });
+	});
+	
+	email.each(function() {
+		$(this).on('input', function(event) {
+			if (!emailRegex.test($(this).val())) {
+				$(this).addClass('uk-form-danger');
+				$(this).attr('uk-tooltip', 'Not a valid email address');
+			} else {
+				$(this).removeClass('uk-form-danger');
+				$(this).removeAttr('uk-tooltip');
+			}
+			let allValid = true;
+			email.each(function() {
+				if (!emailRegex.test($(this).val())) {
+					allValid = false;
+				}
+			});
+			emailValid = allValid;
+			if (requiredValid && passwordValid && emailValid) {
+				submit.removeClass('uk-disabled');
+			}
+		});
+	});
 
 	console.log('>> Form validation script finished');
 });
