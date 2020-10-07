@@ -140,3 +140,4 @@ migrations/versions/bf3713d5440f_bug_fixes_tokens.py
 scripts/setup.sh
 migrations/versions/0782a68ec3d0_initial_migration.py
 migrations/versions/41718c007dc0_initial_migration.py
+pyrightconfig.json
