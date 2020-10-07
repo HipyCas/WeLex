@@ -15,9 +15,9 @@ $(document).ready(function(){
 
     // Create vars to record state
     console.log("> Setting valid vars");
-    var requiredValid = false; console.log("required Valid: " + requiredValid);
-    var passwordValid = false; console.log("Password Valid:" + passwordValid);
-    var emailValid = false; console.log("Email Valid: " + emailValid);
+    var requiredValid = (required.length > 0) ? false : true; console.log("required Valid: " + requiredValid);
+    var passwordValid = (password.length > 0) ? false : true; console.log("Password Valid:" + passwordValid);
+    var emailValid = (email.length > 0) ? false : true; console.log("Email Valid: " + emailValid);
 
     // Disable button until all conditions are met
     console.log("> Disabling submit button");
