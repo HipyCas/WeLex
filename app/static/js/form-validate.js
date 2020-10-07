@@ -25,7 +25,7 @@ $(document).ready(function(){
     	$(this).attr(
     	"placeholder",
     	$(this).attr("placeholder") + " *");
-    })
+	})
 
     // Set no-empty validation
     required.each(function() {
@@ -46,8 +46,8 @@ $(document).ready(function(){
     			if ($(this).val().length < 1)
     				allValid = false;
 			});
-    		requiredValid = allValid; // set global reuiredValid to allValid so others can know if .form-required are completed
-    		if (requiredValid && passwordValid && emailValid) { // Chcek length of password an email items so you're not always comparing to a false
+    		requiredValid = allValid; // set global requiredValid to allValid so others can know if .form-required are completed
+    		if (requiredValid && passwordValid && emailValid) { // Check length of password an email items so you're not always comparing to a false
     			submit.removeClass('uk-disabled');  // Enable button
     		}
     	});
