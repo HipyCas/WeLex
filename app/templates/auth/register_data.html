@@ -24,8 +24,19 @@
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="lock"></span>
-            {{ form.password(class='uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
+            {{ form.password(class='form-password uk-input', placeholder='{}'.format(form.password.label).split('>')[1].split('<')[0]) }}
+            <div class="form-password--drop" uk-drop>
+                <pre>
+<b>Make your password secure</b>
+<span uk-icon="close" class="longer10Icon"></span> Longer than 10 characters
+<span uk-icon="close" class="lowercaseIcon"></span> Includes lowercase
+<span uk-icon="close" class="uppercaseIcon"></span> Includes uppercase
+<span uk-icon="close" class="numberIcon"></span> Includes a number
+<span uk-icon="close" class="specialIcon"></span> Includes a special character
+                </pre>
+            </div>
         </div>
+        <div class="form-password--progress uk-progress uk-text-primary" value="0" max="4"></div> 
     </div>
     <!-- Repeat password -->
     <div class="uk-margin">
