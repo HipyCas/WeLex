@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="uk-inline uk-text-middle">
-    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Error 412</h1>
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Error 412</h1>
 </div>
 <div class="uk-text-middle uk-text-center uk-margin-large">
 	<p class="uk-text-lead uk-text-bold">Precondiciones fallidas</p>
 	<p>La solicitud requiere unas condiciones que no se pueden satisfacer</p>
 </div>
-<a href="{{ url_for('core.start') }}" class="uk-button uk-button-text">Volver a inicio<span uk-icon="arrow-right"></span></a>
+<a href="{{ url_for('core.start') }}" class="uk-button uk-button-text">{{ _("Go back home") }}<span uk-icon="arrow-right"></span></a>
 {% endblock %}
