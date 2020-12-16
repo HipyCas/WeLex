@@ -7,17 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-13 16:29+0200\n"
+"POT-Creation-Date: 2020-12-16 18:45+0100\n"
 "PO-Revision-Date: 2020-09-13 16:38+0200\n"
 "Last-Translator: HipyCas <hipycas@gmail.com>\n"
 "Language: es_ES\n"
 "Language-Team: es_ES <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: Poedit 2.3.1\n"
+
+#: app/agenda/routes.py:15 app/templates/base.html:56
+#: app/templates/base.html:72
+#, fuzzy
+msgid "Agenda"
+msgstr "Agenda"
 
 #: app/auth/forms.py:47 app/templates/auth/users.html:22
 msgid "Name"
@@ -36,104 +41,209 @@ msgid "Username"
 msgstr "Alias"
 
 #: app/auth/routes.py:22
-msgid "User not found"
-msgstr "Usuario no encontrado"
+msgid "User or password is incorrect"
+msgstr ""
 
-#: app/auth/routes.py:23 app/auth/routes.py:26 app/auth/routes.py:29
-#: app/auth/routes.py:41 app/templates/auth/login.html:5
-#: app/templates/auth/register.html:27
+#: app/auth/routes.py:23 app/auth/routes.py:26 app/auth/routes.py:39
+#: app/templates/auth/login.html:5 app/templates/auth/register.html:27
 msgid "Login"
 msgstr "Iniciar sesión"
 
 #: app/auth/routes.py:25
-msgid "Wrong password"
-msgstr "Contraseña incorrecta"
-
-#: app/auth/routes.py:28
 msgid "User is deactivated"
 msgstr "El usuario está desactivado"
 
-#: app/auth/routes.py:59
+#: app/auth/routes.py:31
+msgid "Successfully logged in"
+msgstr ""
+
+#: app/auth/routes.py:57
 msgid "Token not found"
 msgstr "Clave no encontrada"
 
-#: app/auth/routes.py:60 app/auth/routes.py:63 app/auth/routes.py:69
+#: app/auth/routes.py:58 app/auth/routes.py:61 app/auth/routes.py:67
 #: app/templates/auth/register.html:5 app/templates/auth/register_data.html:37
 #: app/templates/auth/users.html:23
 msgid "Register"
 msgstr "Registrarse"
 
-#: app/auth/routes.py:62
+#: app/auth/routes.py:60
 #, fuzzy
 msgid "Token and name do not match"
 msgstr "Clave y nombre no coinciden"
 
-#: app/auth/routes.py:90 app/templates/auth/register_data.html:5
+#: app/auth/routes.py:88 app/templates/auth/register_data.html:5
 msgid "Complete registration"
 msgstr "Completar registro"
 
-#: app/auth/routes.py:98 app/templates/auth/users.html:5
+#: app/auth/routes.py:96 app/templates/auth/users.html:5
 #: app/templates/auth/users.html:9
 msgid "Users"
 msgstr "Usuarios"
 
-#: app/auth/routes.py:108
+#: app/auth/routes.py:106
 msgid "Username is already taken"
 msgstr "El usuario ya está en uso"
 
-#: app/auth/routes.py:109 app/auth/routes.py:113 app/auth/routes.py:117
-#: app/auth/routes.py:129
+#: app/auth/routes.py:107 app/auth/routes.py:111 app/auth/routes.py:115
+#: app/auth/routes.py:127
 msgid "Add user"
 msgstr "Añadir usario"
 
-#: app/auth/routes.py:112
+#: app/auth/routes.py:110
 msgid "Name is already registered"
 msgstr "Nombre ya registrado"
 
-#: app/auth/routes.py:116
+#: app/auth/routes.py:114
 msgid "Email is already registered"
 msgstr "Correo electrónico ya registrado"
 
-#: app/auth/routes.py:127
+#: app/auth/routes.py:125
 msgid "Token successfully created"
 msgstr "Clave creada con éxito"
 
-#: app/core/routes.py:24 app/templates/base.html:50 app/templates/base.html:66
+#: app/core/routes.py:46 app/templates/base.html:55 app/templates/base.html:71
 msgid "Home"
 msgstr "Inicio"
 
-#: app/templates/base.html:51 app/templates/base.html:67
-#, fuzzy
-msgid "Agenda"
-msgstr "Agenda"
+#: app/templates/_event_modals.html:4
+msgid "Delete event?"
+msgstr ""
 
-#: app/templates/base.html:52 app/templates/base.html:68
+#: app/templates/_event_modals.html:5
+msgid "This will permanently delete this event. This action cannot be undone"
+msgstr ""
+
+#: app/templates/_event_modals.html:11 app/templates/_event_modals.html:35
+#: app/templates/auth/add_user.html:41
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: app/templates/_event_modals.html:12 app/templates/_events_table.html:33
+#: app/templates/agenda.html:43 app/templates/agenda.html:56
+msgid "Delete"
+msgstr ""
+
+#: app/templates/_event_modals.html:20
+msgid "Edit Event"
+msgstr ""
+
+#: app/templates/_event_modals.html:34
+msgid "Reset"
+msgstr ""
+
+#: app/templates/_event_modals.html:36
+msgid "Save"
+msgstr ""
+
+#: app/templates/_events_table.html:8 app/templates/agenda.html:29
+msgid "Visibility"
+msgstr "Visibilidad"
+
+#: app/templates/_events_table.html:9 app/templates/agenda.html:30
+msgid "Type"
+msgstr "Tipo"
+
+#: app/templates/_events_table.html:10 app/templates/agenda.html:31
+#: app/templates/inicio.html:25
+msgid "Content"
+msgstr "Contenido"
+
+#: app/templates/_events_table.html:11 app/templates/agenda.html:32
+#: app/templates/inicio.html:26
+msgid "Author"
+msgstr "Autor"
+
+#: app/templates/_events_table.html:12 app/templates/agenda.html:33
+#: app/templates/inicio.html:28
+msgid "Actions"
+msgstr "Acciones"
+
+#: app/templates/_events_table.html:19 app/templates/agenda.html:37
+msgid "Private"
+msgstr ""
+
+#: app/templates/_events_table.html:20 app/templates/agenda.html:50
+msgid "Public"
+msgstr ""
+
+#: app/templates/_events_table.html:21 app/templates/_events_table.html:27
+msgid "Undefined"
+msgstr ""
+
+#: app/templates/_events_table.html:24 app/templates/agenda.html:38
+msgid "Reminder"
+msgstr ""
+
+#: app/templates/_events_table.html:25 app/templates/agenda.html:51
+msgid "Due"
+msgstr ""
+
+#: app/templates/_events_table.html:26
+msgid "Event?"
+msgstr ""
+
+#: app/templates/_events_table.html:32 app/templates/agenda.html:42
+#: app/templates/agenda.html:55
+msgid "Edit"
+msgstr ""
+
+#: app/templates/_events_table.html:34 app/templates/agenda.html:44
+#: app/templates/agenda.html:57
+msgid "Go to dossier"
+msgstr ""
+
+#: app/templates/_events_table.html:35 app/templates/agenda.html:45
+msgid "Mark as completed"
+msgstr ""
+
+#: app/templates/agenda.html:6
+msgid "Daily Agenda"
+msgstr ""
+
+#: app/templates/agenda.html:9
+msgid "Jump to date:"
+msgstr ""
+
+#: app/templates/agenda.html:14
+msgid "Go"
+msgstr ""
+
+#: app/templates/agenda.html:24
+msgid "Previous"
+msgstr ""
+
+#: app/templates/agenda.html:25 app/templates/auth/register.html:25
+msgid "Next"
+msgstr "Siguiente"
+
+#: app/templates/base.html:57 app/templates/base.html:73
 msgid "Dossiers"
 msgstr "Expedientes"
 
-#: app/templates/base.html:53 app/templates/base.html:69
+#: app/templates/base.html:58 app/templates/base.html:74
 #, fuzzy
 msgid "Billing"
 msgstr "Minutación"
 
-#: app/templates/base.html:54 app/templates/base.html:70
+#: app/templates/base.html:59 app/templates/base.html:75
 #, fuzzy
 msgid "Directory"
 msgstr "Listín"
 
-#: app/templates/base.html:86
+#: app/templates/base.html:91
 msgid "Settings"
 msgstr "Ajustes"
 
-#: app/templates/base.html:87
+#: app/templates/base.html:92
 msgid "Documentation"
 msgstr "Documentación"
 
-#: app/templates/base.html:88
+#: app/templates/base.html:93
 msgid "Help"
 msgstr "Ayuda"
 
-#: app/templates/base.html:104
+#: app/templates/base.html:109
 msgid "Search..."
 msgstr "Buscar..."
 
@@ -145,39 +255,19 @@ msgstr "Iniciada sesión como"
 msgid "Agenda today"
 msgstr "Agenda hoy"
 
-#: app/templates/inicio.html:18
-msgid "Visibility"
-msgstr "Visibilidad"
-
-#: app/templates/inicio.html:19
-msgid "Type"
-msgstr "Tipo"
-
-#: app/templates/inicio.html:20 app/templates/inicio.html:66
-msgid "Content"
-msgstr "Contenido"
-
-#: app/templates/inicio.html:21 app/templates/inicio.html:67
-msgid "Author"
-msgstr "Autor"
-
-#: app/templates/inicio.html:22 app/templates/inicio.html:69
-msgid "Actions"
-msgstr "Acciones"
-
-#: app/templates/inicio.html:57
+#: app/templates/inicio.html:15
 msgid "Latest records"
 msgstr "Últimas actuaciones"
 
-#: app/templates/inicio.html:60
+#: app/templates/inicio.html:19
 msgid "Records"
 msgstr "Actuaciones"
 
-#: app/templates/inicio.html:65
+#: app/templates/inicio.html:24
 msgid "Date"
 msgstr "Fecha"
 
-#: app/templates/inicio.html:68
+#: app/templates/inicio.html:27
 msgid "Attachments"
 msgstr "Adjuntos"
 
@@ -189,10 +279,6 @@ msgstr "Añadir Usuario"
 msgid "Create"
 msgstr "Crear"
 
-#: app/templates/auth/add_user.html:41
-msgid "Cancel"
-msgstr "Cancelar"
-
 #: app/templates/auth/login.html:35
 msgid "Sign in"
 msgstr "Iniciar sesion"
@@ -200,10 +286,6 @@ msgstr "Iniciar sesion"
 #: app/templates/auth/login.html:37
 msgid "Register with token"
 msgstr "Registrarse con clave"
-
-#: app/templates/auth/register.html:25
-msgid "Next"
-msgstr "Siguiente"
 
 #: app/templates/auth/users.html:10
 msgid "Tokens"
@@ -245,5 +327,95 @@ msgstr "Utilizado"
 msgid "No"
 msgstr "No"
 
+#: app/templates/auth/users.html:64
+msgid "Back to home"
+msgstr ""
+
+#: app/templates/errors/401.html:6 app/templates/errors/403.html:6
+#: app/templates/errors/404.html:6 app/templates/errors/413.html:6
+#: app/templates/errors/414.html:6 app/templates/errors/415.html:6
+#: app/templates/errors/418.html:6 app/templates/errors/500.html:6
+msgid "Error"
+msgstr ""
+
+#: app/templates/errors/401.html:9
+msgid "User is not authorized"
+msgstr ""
+
+#: app/templates/errors/401.html:10
+msgid "Ensure that you are logged in with an active account"
+msgstr ""
+
+#: app/templates/errors/401.html:12 app/templates/errors/403.html:12
+#: app/templates/errors/404.html:12 app/templates/errors/412.html:11
+#: app/templates/errors/413.html:12 app/templates/errors/414.html:12
+#: app/templates/errors/415.html:12 app/templates/errors/418.html:12
+#: app/templates/errors/500.html:12
+msgid "Go back home"
+msgstr ""
+
+#: app/templates/errors/403.html:9
+msgid "Access denied"
+msgstr ""
+
+#: app/templates/errors/403.html:10
+msgid "Check if you have permission to access this page"
+msgstr ""
+
+#: app/templates/errors/404.html:9
+msgid "The site or file requested dies not exist"
+msgstr ""
+
+#: app/templates/errors/404.html:10
+msgid "Please check if the address is correct"
+msgstr ""
+
+#: app/templates/errors/413.html:9
+msgid "Load Too Long"
+msgstr ""
+
+#: app/templates/errors/413.html:10
+msgid "The request payload is longer than what the server accepts"
+msgstr ""
+
+#: app/templates/errors/414.html:9
+msgid "URL Too Long"
+msgstr ""
+
+#: app/templates/errors/414.html:10
+msgid "The URI that has been request is too long for processing"
+msgstr ""
+
+#: app/templates/errors/415.html:9
+msgid "Filetype Not Supported"
+msgstr ""
+
+#: app/templates/errors/415.html:10
+msgid "The file that has been sent is not acceptable"
+msgstr ""
+
+#: app/templates/errors/418.html:9
+msgid "I'm a teapot!"
+msgstr ""
+
+#: app/templates/errors/418.html:10
+msgid "I'm sorry I cannot brew coffe, I'm only a teapot"
+msgstr ""
+
+#: app/templates/errors/500.html:9
+msgid "Server Error"
+msgstr ""
+
+#: app/templates/errors/500.html:10
+msgid "The error has been registered and notified"
+msgstr ""
+
 #~ msgid "New user"
 #~ msgstr "Nuevo usuario"
+
+#~ msgid "User not found"
+#~ msgstr "Usuario no encontrado"
+
+#~ msgid "Wrong password"
+#~ msgstr "Contraseña incorrecta"
+
