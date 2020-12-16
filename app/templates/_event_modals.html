@@ -1,0 +1,39 @@
+<!-- Delete confirmation modal -->
+<div id="event{{ event.id }}-delete" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <h2 class="uk-modal-title uk-text-center uk-text-danger">{{ _("Delete event?") }}</h2>
+        <p class="uk-text-center">{{ _("This will permanently delete this event. This action cannot be undone") }}</p>
+        <form id="form{{ event.id }}-delete" class="uk-text-center" method="get" action="{{ url_for('agenda.event_delete', id=event.id) }}">
+            <input class="url" hidden name="next" value="">
+            <label class="uk-margin-auto-horizontal"><input class="uk-checkbox" type="checkbox" name="delete_backup"> Delete from backup</label>
+        </form>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">{{ _("Cancel") }}</button>
+            <button class="uk-button uk-button-danger modal.link" type="submit" form="form{{ event.id }}-delete" href="{{ url_for('agenda.event_delete', id=event.id) }}">{{ _("Delete") }}</button>
+        </p>
+    </div>
+</div>
+<!-- Complete confirmation modal -->
+<div id="event{{ event.id }}-edit" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">{{ _('Edit Event') }} {{ event.id }}</h2>
+        </div>
+        <div class="uk-modal-body">
+            <form id="form{{ event.id }}-edit" action="event/{{ event.id }}/update" method="get" class="uk-form-stacked uk-grid-small" uk-grid>
+                <input hidden name="next" class="url">
+                <div>
+                    <label class="uk-form-label" for="some-text">Text input yay!</label>
+                    <div class="uk-form-controls">
+                        <input id="some-text" name="text" placeholder="Some text..." class="uk-input" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button type="reset" class="uk-button uk-button-text uk-margin-right" form="form{{ event.id }}-edit">{{ _("Reset") }}</button>
+            <button type="submit" class="uk-button uk-button-default uk-modal-close">{{ _("Cancel")}}</button>
+            <button type="submit" class="uk-button uk-button-primary" form="form{{ event.id }}-edit">{{ _("Save") }}</button>
+        </div>
+    </div>
+</div>
