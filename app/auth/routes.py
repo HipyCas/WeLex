@@ -18,11 +18,8 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(alias=form.username.data).first()
-        if user is None:
-            flash(_('User not found'), category='danger')
-            return render_template('auth/login.html', title=_('Login'), form=form)
-        if not user.check_password(form.password.data):
-            flash(_('Wrong password'), category='danger')
+        if user is None or not user.check_password(form.password.data):
+            flash(_('User or password is incorrect'), category='danger')
             return render_template('auth/login.html', title=_('Login'), form=form)
         if not user.active:
             flash(_('User is deactivated'), category='danger')
@@ -31,6 +28,7 @@ def login():
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('core.start')
+        flash(_('Successfully logged in'), 'success')
         return redirect(next_page)
     form.username.default = request.cookies.get('WeLex-alias')
     form.process()
