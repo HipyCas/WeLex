@@ -1,4 +1,4 @@
-from flask import render_template, url_for, current_app
+from flask import render_template, url_for, current_app, flash
 from flask_babel import _
 
 from app.core import bp
@@ -21,7 +21,29 @@ def before_request():
 @bp.route('/')
 @active_required
 def start():
-	return render_template('inicio.html', title=_('Home'), inicio=True)
+	events = [
+		{
+			'id': 6787,
+			'type': 'due',
+			'visibility': 'public',
+			'content': 'Entrega Documentos Juzagado Exp.22/18',
+			'author': {
+				'first_name': 'Ramón',
+				'last_name': 'De Uña'
+			}
+		},
+		{
+			'id': 6788,
+			'type': 'reminder',
+			'visibility': 'private',
+			'content': 'Minutar Exp.22/18',
+			'author': {
+				'first_name': 'Ramón',
+				'last_name': 'De Uña'
+			}
+		}
+	]
+	return render_template('inicio.html', title=_('Home'), inicio=True, events=events)
 
 
 @bp.route('/settings')
