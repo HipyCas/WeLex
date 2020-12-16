@@ -8,49 +8,7 @@
 <div id="agenda-hoy" class="uk-article">
     <h1 class="uk-article-title"><a href="{{ url_for('agen.start') }}" class="uk-link-heading">{{ _('Agenda today') }}</a></h1>
     <div class="uk-overflow-auto">
-        <table class="uk-table uk-table-divider uk-table-hover uk-tale-justify uk-table-middle">
-            <caption class="">
-                <span class="uk-align-left uk-margin-remove">23 de agosto 2020</span> <!-- TODO: localised(flask-moment) time -->
-                <span class="uk-align-right uk-margin-remove">2 items</span>
-            </caption>
-            <thead>
-                <tr>
-                    <th class="uk-table-shrink">{{ _('Visibility') }}</th> <!-- TODO: Mover despues de autor? -->
-                    <th class="uk.table-shrink">{{ _('Type') }}</th>
-                    <th class="uk-table-expand">{{ _('Content') }}</th>
-                    <th>{{ _('Author') }}</th>
-                    <th class="uk-table-shrink">{{ _('Actions') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span uk-icon="lock" uk-tooltip="Privado"></span></td>
-                    <td>Recordatorio</td>
-                    <td>Minutar Exp 6787</td>
-                    <td>Ramón De Uña</td>
-                    <td><ul class="uk-iconnav">
-                        <li><a href="agenda/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-                        <li><a href="agenda/eliminar/6787" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-                        <li><a href="expedientes/67-20" uk-icon="file-text" uk-tooltip="Ir a expediente"></a></li>
-                        <li><a href="agenda/completar/6787" uk-icon="check" uk-tooltip="Marcar como completado"></a></li>
-                    </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span uk-icon="unlock" uk-tooltip="Público"></span></td>
-                    <td>Vencimiento</td>
-                    <td>Entrega delaraciones Nº Exp 67/20</td>
-                    <td>Marta Díaz</td>
-                    <td><ul class="uk-iconnav">
-                        <li><a href="agenda/editar/6787" uk-icon="pencil" uk-tooltip="Editar"></a></li>
-                        <li><a href="agenda/editar/6787?eliminar=1" uk-icon="trash" uk-tooltip="Eliminar"></a></li>
-                        <li><a href="expedientes/67-20" uk-icon="file-text" uk-tooltip="Ir a expediente"></a></li>
-                        <li><a href="agenda/editar/6787?=completar=True" uk-icon="check" uk-tooltip="Marcar como completado"></a></li>
-                    </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        {% include "_events_table.html" %}
     </div>
 </div>
 <div id="ultimas-actuaciones" class="uk-article">
@@ -108,4 +66,7 @@
         </table>
     </div>
 </div>
+{% for event in events %}
+    {% include "_event_modals.html" %}
+{% endfor %}
 {% endblock %}
