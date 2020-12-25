@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-12-16 18:45+0100\n"
-"PO-Revision-Date: 2020-12-16 18:57+0100\n"
+"PO-Revision-Date: 2020-09-13 16:38+0200\n"
 "Last-Translator: HipyCas <hipycas@gmail.com>\n"
 "Language: es_ES\n"
 "Language-Team: es_ES <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: Poedit 2.3.1\n"
 
 #: app/agenda/routes.py:15 app/templates/base.html:56
 #: app/templates/base.html:72
@@ -43,7 +42,7 @@ msgstr "Alias"
 
 #: app/auth/routes.py:22
 msgid "User or password is incorrect"
-msgstr "Usuario o contraseña incorrecta"
+msgstr ""
 
 #: app/auth/routes.py:23 app/auth/routes.py:26 app/auth/routes.py:39
 #: app/templates/auth/login.html:5 app/templates/auth/register.html:27
@@ -56,7 +55,7 @@ msgstr "El usuario está desactivado"
 
 #: app/auth/routes.py:31
 msgid "Successfully logged in"
-msgstr "Sesión iniciada con éxito"
+msgstr ""
 
 #: app/auth/routes.py:57
 msgid "Token not found"
@@ -109,11 +108,11 @@ msgstr "Inicio"
 
 #: app/templates/_event_modals.html:4
 msgid "Delete event?"
-msgstr "Eliminar evento?"
+msgstr ""
 
 #: app/templates/_event_modals.html:5
 msgid "This will permanently delete this event. This action cannot be undone"
-msgstr "El evento será eliminado permanentemente. Esta acción no se puede deshacer"
+msgstr ""
 
 #: app/templates/_event_modals.html:11 app/templates/_event_modals.html:35
 #: app/templates/auth/add_user.html:41
@@ -123,19 +122,19 @@ msgstr "Cancelar"
 #: app/templates/_event_modals.html:12 app/templates/_events_table.html:33
 #: app/templates/agenda.html:43 app/templates/agenda.html:56
 msgid "Delete"
-msgstr "Eliminar"
+msgstr ""
 
 #: app/templates/_event_modals.html:20
 msgid "Edit Event"
-msgstr "Editar Evento"
+msgstr ""
 
 #: app/templates/_event_modals.html:34
 msgid "Reset"
-msgstr "Limpiar"
+msgstr ""
 
 #: app/templates/_event_modals.html:36
 msgid "Save"
-msgstr "Guardar"
+msgstr ""
 
 #: app/templates/_events_table.html:8 app/templates/agenda.html:29
 msgid "Visibility"
@@ -162,57 +161,57 @@ msgstr "Acciones"
 
 #: app/templates/_events_table.html:19 app/templates/agenda.html:37
 msgid "Private"
-msgstr "Privado"
+msgstr ""
 
 #: app/templates/_events_table.html:20 app/templates/agenda.html:50
 msgid "Public"
-msgstr "Público"
+msgstr ""
 
 #: app/templates/_events_table.html:21 app/templates/_events_table.html:27
 msgid "Undefined"
-msgstr "Sin definir"
+msgstr ""
 
 #: app/templates/_events_table.html:24 app/templates/agenda.html:38
 msgid "Reminder"
-msgstr "Recordatorio"
+msgstr ""
 
 #: app/templates/_events_table.html:25 app/templates/agenda.html:51
 msgid "Due"
-msgstr "Vencimiento"
+msgstr ""
 
 #: app/templates/_events_table.html:26
 msgid "Event?"
-msgstr "Evento?"
+msgstr ""
 
 #: app/templates/_events_table.html:32 app/templates/agenda.html:42
 #: app/templates/agenda.html:55
 msgid "Edit"
-msgstr "Editar"
+msgstr ""
 
 #: app/templates/_events_table.html:34 app/templates/agenda.html:44
 #: app/templates/agenda.html:57
 msgid "Go to dossier"
-msgstr "Ir a expediente"
+msgstr ""
 
 #: app/templates/_events_table.html:35 app/templates/agenda.html:45
 msgid "Mark as completed"
-msgstr "Marcar como completado"
+msgstr ""
 
 #: app/templates/agenda.html:6
 msgid "Daily Agenda"
-msgstr "Agenda Diaria"
+msgstr ""
 
 #: app/templates/agenda.html:9
 msgid "Jump to date:"
-msgstr "Saltar a fecha:"
+msgstr ""
 
 #: app/templates/agenda.html:14
 msgid "Go"
-msgstr "Ir"
+msgstr ""
 
 #: app/templates/agenda.html:24
 msgid "Previous"
-msgstr "Anterior"
+msgstr ""
 
 #: app/templates/agenda.html:25 app/templates/auth/register.html:25
 msgid "Next"
@@ -330,22 +329,22 @@ msgstr "No"
 
 #: app/templates/auth/users.html:64
 msgid "Back to home"
-msgstr "Volver a inicio"
+msgstr ""
 
 #: app/templates/errors/401.html:6 app/templates/errors/403.html:6
 #: app/templates/errors/404.html:6 app/templates/errors/413.html:6
 #: app/templates/errors/414.html:6 app/templates/errors/415.html:6
 #: app/templates/errors/418.html:6 app/templates/errors/500.html:6
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #: app/templates/errors/401.html:9
 msgid "User is not authorized"
-msgstr "El usuario no está autorizado"
+msgstr ""
 
 #: app/templates/errors/401.html:10
 msgid "Ensure that you are logged in with an active account"
-msgstr "Asegúrese de tener sesión iniciada con una cuenta activa"
+msgstr ""
 
 #: app/templates/errors/401.html:12 app/templates/errors/403.html:12
 #: app/templates/errors/404.html:12 app/templates/errors/412.html:11
@@ -353,63 +352,63 @@ msgstr "Asegúrese de tener sesión iniciada con una cuenta activa"
 #: app/templates/errors/415.html:12 app/templates/errors/418.html:12
 #: app/templates/errors/500.html:12
 msgid "Go back home"
-msgstr "Volver al inicio"
+msgstr ""
 
 #: app/templates/errors/403.html:9
 msgid "Access denied"
-msgstr "Acceso denegado"
+msgstr ""
 
 #: app/templates/errors/403.html:10
 msgid "Check if you have permission to access this page"
-msgstr "Confirma si tienes permisos para acceder a esta página"
+msgstr ""
 
 #: app/templates/errors/404.html:9
 msgid "The site or file requested dies not exist"
-msgstr "El sitio o archivo solicitado no existe"
+msgstr ""
 
 #: app/templates/errors/404.html:10
 msgid "Please check if the address is correct"
-msgstr "Por favor confirma que la dirección es correcta"
+msgstr ""
 
 #: app/templates/errors/413.html:9
 msgid "Load Too Long"
-msgstr "Carga Demasiado Grande"
+msgstr ""
 
 #: app/templates/errors/413.html:10
 msgid "The request payload is longer than what the server accepts"
-msgstr "El cuerpo de la solicitud es mayor de lo que el servidor acepta"
+msgstr ""
 
 #: app/templates/errors/414.html:9
 msgid "URL Too Long"
-msgstr "URL Demasiado Larga"
+msgstr ""
 
 #: app/templates/errors/414.html:10
 msgid "The URI that has been request is too long for processing"
-msgstr "La URI que ha solicitado es demasiado larga para ser procesada"
+msgstr ""
 
 #: app/templates/errors/415.html:9
 msgid "Filetype Not Supported"
-msgstr "Tipo de Archivo No Soportado"
+msgstr ""
 
 #: app/templates/errors/415.html:10
 msgid "The file that has been sent is not acceptable"
-msgstr "El archivo enviado no es aceptable"
+msgstr ""
 
 #: app/templates/errors/418.html:9
 msgid "I'm a teapot!"
-msgstr "Soy una tetera!"
+msgstr ""
 
 #: app/templates/errors/418.html:10
 msgid "I'm sorry I cannot brew coffe, I'm only a teapot"
-msgstr "Lo siento, no puedo hacer café, solo soy una tetera"
+msgstr ""
 
 #: app/templates/errors/500.html:9
 msgid "Server Error"
-msgstr "Error en el servidor"
+msgstr ""
 
 #: app/templates/errors/500.html:10
 msgid "The error has been registered and notified"
-msgstr "El error ha sido registrado y notificado"
+msgstr ""
 
 #~ msgid "New user"
 #~ msgstr "Nuevo usuario"
@@ -419,3 +418,4 @@ msgstr "El error ha sido registrado y notificado"
 
 #~ msgid "Wrong password"
 #~ msgstr "Contraseña incorrecta"
+

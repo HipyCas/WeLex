@@ -6,11 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}" />
 
     <!-- UIkit JS -->
-    <script src="{{ url_for('static', filename='js/uikit.min.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}" defer></script>
-
-    <!-- JQuery -->
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
 
     <!-- Title -->
     {% if title %}<title>{{ title }} - WeLex</title>{% else %}<title>WeLex</title>{% endif %}
@@ -20,11 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Icons -->
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
 
 </head>
 <body>
-    <!-- Loading Spinner -->
     <div id="loading" class="toggle" hidden>
         <!--a class="uk-margin-large uk-padding-large uk-close-large uk-overlay uk-postion-z-index uk-position-absolite" uk-toggle="target: .toggle" uk-close></a-->
         <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-position-relative">
@@ -43,7 +39,6 @@
         }
     </script>
     -->
-    <!-- Page Content -->
     <div id="content" class="toggle">
         <!-- Navbar -->
         <div class="uk-navbar-container uk-sticky uk-sticky-fixed">
@@ -53,7 +48,7 @@
                     <div class="uk-navbar-left nav-overlay uk-visible@s">
                         <ul class="uk-navbar-nav">
                             <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">{{ _('Home') }}</a></li>
-                            <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agenda.start') }}" uk-toggle="target: .toggle">{{ _('Agenda') }}</a></li>
+                            <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">{{ _('Agenda') }}</a></li>
                             <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">{{ _('Dossiers') }}</a></li>
                             <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">{{ _('Billing') }}</a></li>
                             <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">{{ _('Directory') }}</a></li>
@@ -69,7 +64,7 @@
                             <button class="uk-offcanvas-close" type="button" uk-close></button>
                             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
                                 <li class="{% if inicio %}uk-active{% endif %}"><a href="{{ url_for('core.start') }}" uk-toggle="target: .toggle">{{ _('Home') }}</a></li>
-                                <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agenda.start') }}" uk-toggle="target: .toggle">{{ _('Agenda') }}</a></li>
+                                <li class="{% if agenda %}uk-active{% endif %}"><a href="{{ url_for('agen.start') }}" uk-toggle="target: .toggle">{{ _('Agenda') }}</a></li>
                                 <li class="{% if expediente %}uk-active{% endif %}"><a href="{{ url_for('exp.start') }}" uk-toggle="target: .toggle">{{ _('Dossiers') }}</a></li>
                                 <li class="{% if minutacion %}uk-active{% endif %}"><a href="{{ url_for('min.start') }}" uk-toggle="target: .toggle">{{ _('Billing') }}</a></li>
                                 <li class="{% if listin %}uk-active{% endif %}"><a href="{{ url_for('list.start') }}" uk-toggle="target: .toggle">{{ _('Directory') }}</a></li>
@@ -117,38 +112,9 @@
         </div>
         <!-- Contenido -->
         <div class="uk-container">
-            <!-- Alerts/Messages -->
-            {% with messages = get_flashed_messages(with_categories=True) %}
-            {% if messages %}
-                <div class="uk-margin-top">
-                {% for category, message in messages %}
-                    <div class="uk-alert-{{ category }}" uk-alert>
-                        <a class="uk-alert-close" uk-close></a>
-                        <p>{{ message }}</p>
-                    </div>
-                {% endfor %}
-                </div>
-            {% endif %}
-            {% endwith %}
-            <!-- Template content -->
             {% block content %}{% endblock %}
         </div>
         <br>
     </div>
-    <!-- Script -->
-    <script>
-        $('.url').each(function () {
-            $(this).attr('value', window.location.href);
-        });
-        /*$('.url-href-append').each(function () {
-            $(this).attr('href', $(this).attr('href') + "?url=" + window.location.href);  // ! Replace with url for server deploy
-        });*/
-        $('a').each(function () {
-            let attr = $(this).attr('uk-toggle');
-            if ((typeof attr === typeof undefined || attr === false) && !$(this).hasClass('uk-modal-close') && !this.hasClass('uk-alert-close') ) {
-                $(this).attr('uk-toggle', "target: .toggle");
-            }
-        });
-    </script>
 </body>
 </html>
