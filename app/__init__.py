@@ -57,10 +57,13 @@ def create_app(config_class=Config):
 	from app.minutacion import bp as bp_minutacion
 	app.register_blueprint(bp_minutacion, url_prefix='/minutacion')
 	
-	from app.errors import bp as bp_errors
+	from app.errors import bp as bp_errors  # ERRORS Blueprint
 	app.register_blueprint(bp_errors)
 
-	if not app.debug or not app.testing:
+	from app.filters import bp as bp_filters  # FILTERS Blueprint
+	app.register_blueprint(bp_filters)
+
+	if not app.debug and not app.testing:
 		if not os.path.exists('logs'):
 			os.mkdir('logs')
 		file_handler = RotatingFileHandler('logs/welex.log', maxBytes=10240, backupCount=10)
