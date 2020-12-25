@@ -15,12 +15,18 @@ def start():
     return render_template('agenda.html', title=_('Agenda'), date=date)
 
 
-event_delete_route = '/delete/<id>'
-@bp.route(event_delete_route)
+@bp.route('/delete/<id>')
 @active_required
 def event_delete(id):
     # TODO Redirect to passed url
     flash(f'Deleted event {id} successfully', 'success')
     # Redirect to passed url
+    next_page = request.args.get('next')
+    return redirect(next_page)
+
+
+@bp.route('/complete/<id>')
+def event_complete(id):
+    flash(f'Event {id} was successfully completed', category='success')
     next_page = request.args.get('next')
     return redirect(next_page)

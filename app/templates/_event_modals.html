@@ -13,6 +13,18 @@
         </p>
     </div>
 </div>
+<!-- Complete confirmation modal -->
+<div id="event{{ event.id }}-complete" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <h2 class="uk-modal-title uk-text-center uk-text-success">{{ _("Complete event?") }}</h2>
+        <p class="uk-text-center">{{ _("The event will be marked as complete and removed from daily agenda") }}</p>
+        <form id="form{{ event.id }}-complete" hidden method="dialog" action="{{ url_for('agenda.event_complete', id=event.id) }}"><input name='next' class="url"></form>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">{{ _("Cancel") }}</button>
+            <button class="uk-button uk-button-primary" type="submit" form="form{{ event.id }}-complete">{{ _("Complete") }}</button>
+        </p>
+    </div>
+</div>
 <!-- Edit event modal -->
 <div id="event{{ event.id }}-edit" class="uk-flex-top" uk-modal>
     <div class="uk-modal-dialog uk-margin-auto-vertical">
