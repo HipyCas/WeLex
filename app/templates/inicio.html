@@ -6,7 +6,7 @@
     <h5 class="uk-text-muted uk-margin-remove">{{ _('Logged in as') }} {{ current_user.nombre }} {{ current_user.apellidos }}</h5>
 </div>
 <div id="agenda-hoy" class="uk-article">
-    <h1 class="uk-article-title"><a href="{{ url_for('agen.start') }}" class="uk-link-heading">{{ _('Agenda today') }}</a></h1>
+    <h1 class="uk-article-title"><a href="{{ url_for('agenda.start') }}" class="uk-link-heading">{{ _('Agenda today') }}</a></h1>
     <div class="uk-overflow-auto">
         {% include "_events_table.html" %}
     </div>
