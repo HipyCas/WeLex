@@ -1,0 +1,41 @@
+<table class="uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-middle">
+    <caption>
+        <span class="uk-align-left uk-margin-remove">23 de agosto 2020</span> <!-- TODO: localised(flask-moment) time -->
+        <span class="uk-align-right uk-margin-remove">{{ items | length }} items</span>
+    </caption>
+    <thead>
+        <tr>
+            <th class="uk-table-shrink">{{ _('Visibility') }}</th> <!-- TODO: Mover despues de autor? -->
+            <th class="uk.table-shrink">{{ _('Type') }}</th>
+            <th class="uk-table-expand">{{ _('Content') }}</th>
+            <th>{{ _('Author') }}</th>
+            <th class="uk-table-shrink">{{ _('Actions') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr data-event="{{ event.id }}">
+            <td>
+                {% if event.visibility == 'private' %}<span uk-icon="lock" uk-tooltip="{{ _('Private') }}"></span>
+                {% elif event.visibility == 'public' %}<span uk-icon="unlock" uk-tooltip="{{ _('Public') }}"></span>
+                {% else %}<span uk-icon="question" uk-tooltip="{{ _('Undefined') }}"></span>{% endif %}
+            </td>
+            <td>
+                {% if event.type == 'reminder' %}{{ _('Reminder') }}
+                {% elif event.type == 'due' %}{{ _('Due') }}
+                {% elif event.type == 'event?' %}{{ _('Event?') }}
+                {% else %}{{ _('Undefined') }}{% endif %}
+            </td>
+            <td>{{ event.content }}</td>
+            <td>{{ event.author.first_name }} {{ event.author.last_name }}</td>
+            <td><ul class="uk-iconnav">
+                <li><a href="#event{{ event.id }}-edit" uk-toggle uk-icon="pencil" uk-tooltip="{{ _('Edit') }}"></a></li>
+                <li><a href="#event{{ event.id }}-delete" uk-toggle uk-icon="trash" uk-tooltip="{{ _('Delete') }}"></a></li>
+                <li><a href="dossiers/{{ event.dossier_id }}" uk-icon="file-text" uk-tooltip="{{ _('Go to dossier') }}"></a></li>
+                <li><a href="#event{{ event.id }}-complete" uk-toggle uk-icon="check" uk-tooltip="{{ _('Mark as completed') }}"></a></li>
+            </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

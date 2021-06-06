@@ -6,7 +6,7 @@
     {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <div uk-alert style="width: 100%">
+            <div uk-alert>
                 <a class="uk-alert-close" uk-close></a>
                 <p>{{ message }}</p>
             </div>

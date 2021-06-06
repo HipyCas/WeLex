@@ -2,11 +2,12 @@
 
 {% block content %}
 <div class="uk-inline uk-text-middle">
-    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/> Error 413</h1>
+    <h1 class="uk-header-small uk-padding-remove uk-margin-remove" id="loginHeader"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="app_logo" height="45px" width="45px" class="uk-margin-remove uk-padding-remove"/>
+		{{ _("Error") }} 413</h1>
 </div>
 <div class="uk-text-middle uk-text-center uk-margin-large">
-	<p class="uk-text-lead uk-text-bold">Carga demasiado larga</p>
-	<p>Su solicitud es más grande de lo que el servidor permite</p>
+	<p class="uk-text-lead uk-text-bold">{{ _("Load Too Long") }}</p>
+	<p>{{ _("The request payload is longer than what the server accepts") }}</p>
 </div>
-<a href="{{ url_for('core.start') }}" class="uk-button uk-button-text">Volver a inicio<span uk-icon="arrow-right"></span></a>
+<a href="{{ url_for('core.start') }}" class="uk-button uk-button-text">{{ _("Go back home") }}<span uk-icon="arrow-right"></span></a>
 {% endblock %}
