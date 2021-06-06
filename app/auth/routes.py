@@ -61,9 +61,9 @@ def register():
             return render_template('auht/register.html', title=_('Register'), form=form)
         user = User(nombre=form.name.data, registration_token_id=token.id, active=False, admin=False)
         db.session.add(user)
-        db.sesion.commit()
+        db.session.commit()
         login_user(user)
-        return redirect(url_for('auth.register_data', save_username=form.remember_username.data, login=form.login_after.data))
+        return redirect(url_for('auth.register_data', save_username=form.remember_user_pass.data, login=form.login_after.data))
     return render_template('auth/register.html', title=_('Register'), form=form)
 
 
